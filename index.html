@@ -118,12 +118,20 @@
   body{background:#FFFFFF;color:#0C0C0C;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue",Helvetica,sans-serif;letter-spacing:-.011em;font-size:16px;line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
   html{scroll-behavior:smooth}
   ::selection{background:#D6006E;color:#fff}
-  a{color:#0C0C0C;text-decoration:none}
+  a{color:#0C0C0C;text-decoration:none;transition:color 160ms ease}
   a:hover{color:#D6006E}
+  a[href^="mailto:"]{transition:color 160ms ease,transform 140ms cubic-bezier(.23,1,.32,1)}
+  a[href^="mailto:"]:active{transform:scale(.97)}
+  [data-bar]{transition:transform 120ms ease-out}
+  [data-bar]:active{transform:scale(.98)}
   :focus-visible{outline:2px solid #D6006E;outline-offset:4px}
   @keyframes blip{0%,100%{opacity:1}50%{opacity:.22}}
   @keyframes slide{to{transform:translateX(-50%)}}
-  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important}}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *{animation:none!important}
+    [data-rv],[data-fade]{transition:opacity .2s ease!important;transform:none!important}
+  }
   @media (max-width:700px){
     .grid2{grid-template-columns:1fr!important;gap:14px!important}
     .row3{grid-template-columns:1fr!important;row-gap:6px!important}
@@ -133,6 +141,12 @@
   @media (max-width:480px){
     header[data-sec]{padding-top:11vh!important}
   }
+  .mail-btn{display:inline-flex;align-items:center;gap:9px;background:#0C0C0C;color:#FFF6EA;font-family:'Martian Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding:16px 26px;border:1px solid #0C0C0C;transition:background 180ms ease,color 180ms ease,transform 160ms cubic-bezier(.23,1,.32,1)}
+  .mail-btn:focus-visible{background:#D6006E;color:#fff}
+  @media (hover:hover) and (pointer:fine){
+    .mail-btn:hover{background:#D6006E;color:#fff;transform:translateY(-2px)}
+  }
+  .mail-btn span{font-size:14px;line-height:1}
 </style>
 </helmet>
 
@@ -152,12 +166,12 @@
   <span data-tc="">00:00</span> / 05:28
 </div>
 <nav style="position:fixed;right:28px;top:50%;transform:translateY(-50%);z-index:91;display:grid;gap:16px" aria-hidden="true">
-  <b data-mark="" style="display:block;width:20px;height:1px;background:#0C0C0C;opacity:.3;transition:width .4s cubic-bezier(.16,1,.3,1),background .4s,opacity .4s"></b>
-  <b data-mark="" style="display:block;width:20px;height:1px;background:#0C0C0C;opacity:.3;transition:width .4s cubic-bezier(.16,1,.3,1),background .4s,opacity .4s"></b>
-  <b data-mark="" style="display:block;width:20px;height:1px;background:#0C0C0C;opacity:.3;transition:width .4s cubic-bezier(.16,1,.3,1),background .4s,opacity .4s"></b>
-  <b data-mark="" style="display:block;width:20px;height:1px;background:#0C0C0C;opacity:.3;transition:width .4s cubic-bezier(.16,1,.3,1),background .4s,opacity .4s"></b>
-  <b data-mark="" style="display:block;width:20px;height:1px;background:#0C0C0C;opacity:.3;transition:width .4s cubic-bezier(.16,1,.3,1),background .4s,opacity .4s"></b>
-  <b data-mark="" style="display:block;width:20px;height:1px;background:#0C0C0C;opacity:.3;transition:width .4s cubic-bezier(.16,1,.3,1),background .4s,opacity .4s"></b>
+  <b data-mark="" style="display:block;width:40px;height:1px;background:#0C0C0C;opacity:.3;transform:scaleX(.5);transform-origin:left;transition:transform .4s cubic-bezier(.16,1,.3,1),background .4s,opacity .4s"></b>
+  <b data-mark="" style="display:block;width:40px;height:1px;background:#0C0C0C;opacity:.3;transform:scaleX(.5);transform-origin:left;transition:transform .4s cubic-bezier(.16,1,.3,1),background .4s,opacity .4s"></b>
+  <b data-mark="" style="display:block;width:40px;height:1px;background:#0C0C0C;opacity:.3;transform:scaleX(.5);transform-origin:left;transition:transform .4s cubic-bezier(.16,1,.3,1),background .4s,opacity .4s"></b>
+  <b data-mark="" style="display:block;width:40px;height:1px;background:#0C0C0C;opacity:.3;transform:scaleX(.5);transform-origin:left;transition:transform .4s cubic-bezier(.16,1,.3,1),background .4s,opacity .4s"></b>
+  <b data-mark="" style="display:block;width:40px;height:1px;background:#0C0C0C;opacity:.3;transform:scaleX(.5);transform-origin:left;transition:transform .4s cubic-bezier(.16,1,.3,1),background .4s,opacity .4s"></b>
+  <b data-mark="" style="display:block;width:40px;height:1px;background:#0C0C0C;opacity:.3;transform:scaleX(.5);transform-origin:left;transition:transform .4s cubic-bezier(.16,1,.3,1),background .4s,opacity .4s"></b>
 </nav>
 
 <header data-sec="" style="min-height:100svh;display:flex;flex-direction:column;justify-content:center;position:relative;padding:14vh 0 10vh;overflow:hidden">
@@ -209,23 +223,18 @@
   <div style="max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,54px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr))">
     <p data-fade="" style="opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);padding:24px clamp(10px,2vw,26px) 24px 0;position:relative">
       <span style="position:absolute;top:16px;right:12px;color:#FF6B5A;font-family:Archivo,sans-serif;font-size:13px;line-height:1">*</span>
-      <s style="display:block;text-decoration:none;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 125,'wght' 900;font-size:clamp(1.7rem,4vw,2.9rem);letter-spacing:-.04em;line-height:1">7</s>
-      <span style="font-family:'Martian Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;opacity:.7;display:block;margin-top:6px">Años en medios</span>
+      <s data-count="6" style="display:block;text-decoration:none;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 125,'wght' 900;font-size:clamp(1.7rem,4vw,2.9rem);letter-spacing:-.04em;line-height:1">6</s>
+      <span style="font-family:'Martian Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;opacity:.7;display:block;margin-top:6px">Años de experiencia</span>
     </p>
     <p data-fade="" data-d="80" style="opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);padding:24px clamp(10px,2vw,26px);border-left:1px solid rgba(12,12,12,.2);position:relative">
       <span style="position:absolute;top:16px;right:12px;color:#FF6B5A;font-family:Archivo,sans-serif;font-size:13px;line-height:1">*</span>
-      <s style="display:block;text-decoration:none;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 125,'wght' 900;font-size:clamp(1.7rem,4vw,2.9rem);letter-spacing:-.04em;line-height:1">40+</s>
+      <s data-count="20" data-suffix="+" style="display:block;text-decoration:none;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 125,'wght' 900;font-size:clamp(1.7rem,4vw,2.9rem);letter-spacing:-.04em;line-height:1">20+</s>
       <span style="font-family:'Martian Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;opacity:.7;display:block;margin-top:6px">Marcas asesoradas</span>
     </p>
     <p data-fade="" data-d="160" style="opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);padding:24px clamp(10px,2vw,26px);border-left:1px solid rgba(12,12,12,.2);position:relative">
       <span style="position:absolute;top:16px;right:12px;color:#FF6B5A;font-family:Archivo,sans-serif;font-size:13px;line-height:1">*</span>
-      <s style="display:block;text-decoration:none;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 125,'wght' 900;font-size:clamp(1.7rem,4vw,2.9rem);letter-spacing:-.04em;line-height:1">12</s>
-      <span style="font-family:'Martian Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;opacity:.7;display:block;margin-top:6px">Rubros</span>
-    </p>
-    <p data-fade="" data-d="240" style="opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);padding:24px clamp(10px,2vw,26px);border-left:1px solid rgba(12,12,12,.2);position:relative">
-      <span style="position:absolute;top:16px;right:12px;color:#FF6B5A;font-family:Archivo,sans-serif;font-size:13px;line-height:1">*</span>
-      <s style="display:block;text-decoration:none;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 125,'wght' 900;font-size:clamp(1.7rem,4vw,2.9rem);letter-spacing:-.04em;line-height:1">3</s>
-      <span style="font-family:'Martian Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;opacity:.7;display:block;margin-top:6px">Premios de contenido</span>
+      <s data-count="10" data-prefix="+" style="display:block;text-decoration:none;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 125,'wght' 900;font-size:clamp(1.7rem,4vw,2.9rem);letter-spacing:-.04em;line-height:1">+10</s>
+      <span style="font-family:'Martian Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;opacity:.7;display:block;margin-top:6px">Diferentes rubros</span>
     </p>
   </div>
 </section>
@@ -305,7 +314,7 @@
     <p style="overflow:hidden"><span data-rv="" style="display:block;transform:translateY(112%);transition:transform .85s cubic-bezier(.16,1,.3,1);font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.65">03 — Qué puedes contratar</span></p>
     <div data-cards="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px;margin-top:clamp(24px,5vh,54px)">
       <article data-card="" data-fade="" tabindex="0" style="opacity:0;transform:translateY(22px);transition:opacity .45s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1),color .35s;position:relative;isolation:isolate;padding:24px 22px 26px;min-height:clamp(300px,42vh,420px);border:1px solid rgba(12,12,12,.2);background:#FFFDF7;display:flex;flex-direction:column;justify-content:space-between;transform-origin:center bottom;cursor:pointer">
-        <span data-fill="" style="position:absolute;inset:0;z-index:-1;background:linear-gradient(158deg,#0C0C0C 0%,#3B1226 58%,#6B2350 100%);transform:scaleY(0);transform-origin:bottom;transition:transform .5s cubic-bezier(.16,1,.3,1)"></span>
+        <span data-fill="" style="position:absolute;inset:0;z-index:-1;background:linear-gradient(158deg,#0C0C0C 0%,#3B1226 58%,#6B2350 100%);transform:scaleY(0);transform-origin:bottom;transition:transform .42s cubic-bezier(.77,0,.175,1)"></span>
         <p data-cn="" style="font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.2em;transition:color .35s">S/01</p>
         <h3 style="font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 900;font-size:clamp(1.45rem,2.5vw,2.4rem);line-height:.92;letter-spacing:-.035em;text-transform:uppercase;margin:auto 0 14px">Estrategia de contenidos</h3>
         <div>
@@ -318,7 +327,7 @@
         </div>
       </article>
       <article data-card="" data-fade="" data-d="90" tabindex="0" style="opacity:0;transform:translateY(22px);transition:opacity .45s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1),color .35s;position:relative;isolation:isolate;padding:24px 22px 26px;min-height:clamp(300px,42vh,420px);border:1px solid rgba(12,12,12,.2);background:#FFFDF7;display:flex;flex-direction:column;justify-content:space-between;transform-origin:center bottom;cursor:pointer">
-        <span data-fill="" style="position:absolute;inset:0;z-index:-1;background:linear-gradient(158deg,#0C0C0C 0%,#3B1226 58%,#6B2350 100%);transform:scaleY(0);transform-origin:bottom;transition:transform .5s cubic-bezier(.16,1,.3,1)"></span>
+        <span data-fill="" style="position:absolute;inset:0;z-index:-1;background:linear-gradient(158deg,#0C0C0C 0%,#3B1226 58%,#6B2350 100%);transform:scaleY(0);transform-origin:bottom;transition:transform .42s cubic-bezier(.77,0,.175,1)"></span>
         <p data-cn="" style="font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.2em;transition:color .35s">S/02</p>
         <h3 style="font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 900;font-size:clamp(1.45rem,2.5vw,2.4rem);line-height:.92;letter-spacing:-.035em;text-transform:uppercase;margin:auto 0 14px">Gestión de redes</h3>
         <div>
@@ -331,7 +340,7 @@
         </div>
       </article>
       <article data-card="" data-fade="" data-d="180" tabindex="0" style="opacity:0;transform:translateY(22px);transition:opacity .45s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1),color .35s;position:relative;isolation:isolate;padding:24px 22px 26px;min-height:clamp(300px,42vh,420px);border:1px solid rgba(12,12,12,.2);background:#FFFDF7;display:flex;flex-direction:column;justify-content:space-between;transform-origin:center bottom;cursor:pointer">
-        <span data-fill="" style="position:absolute;inset:0;z-index:-1;background:linear-gradient(158deg,#0C0C0C 0%,#3B1226 58%,#6B2350 100%);transform:scaleY(0);transform-origin:bottom;transition:transform .5s cubic-bezier(.16,1,.3,1)"></span>
+        <span data-fill="" style="position:absolute;inset:0;z-index:-1;background:linear-gradient(158deg,#0C0C0C 0%,#3B1226 58%,#6B2350 100%);transform:scaleY(0);transform-origin:bottom;transition:transform .42s cubic-bezier(.77,0,.175,1)"></span>
         <p data-cn="" style="font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.2em;transition:color .35s">S/03</p>
         <h3 style="font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 900;font-size:clamp(1.45rem,2.5vw,2.4rem);line-height:.92;letter-spacing:-.035em;text-transform:uppercase;margin:auto 0 14px">Marca personal</h3>
         <div>
@@ -358,46 +367,46 @@
     <p style="overflow:hidden"><span data-rv="" style="display:block;transform:translateY(112%);transition:transform .85s cubic-bezier(.16,1,.3,1);font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.65">04 — Cuatro etapas, ocho semanas</span></p>
     <div style="border-top:1px solid rgba(12,12,12,.2);margin-top:clamp(20px,4vh,44px)">
       <div data-row="" data-open="1" style="border-bottom:1px solid rgba(12,12,12,.2);position:relative;isolation:isolate;color:#fff">
-        <span data-fill="" style="position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#0C0C0C 0%,#0C0C0C 52%,#5B1B3C 82%,#8A4A7A 100%);transform:scaleX(1);transform-origin:left;transition:transform .42s cubic-bezier(.16,1,.3,1)"></span>
+        <span data-fill="" style="position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#0C0C0C 0%,#0C0C0C 52%,#5B1B3C 82%,#8A4A7A 100%);transform:scaleX(1);transform-origin:left;transition:transform .38s cubic-bezier(.77,0,.175,1)"></span>
         <button data-bar="" aria-expanded="true" style="width:100%;background:none;border:0;font:inherit;color:inherit;text-align:left;cursor:pointer;display:flex;align-items:baseline;gap:clamp(12px,3vw,40px);padding:20px 4px">
           <span style="font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.18em;opacity:.6;flex:0 0 auto">01</span>
           <span style="font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 900;font-size:clamp(1.2rem,3vw,2.4rem);line-height:1;letter-spacing:-.035em;text-transform:uppercase;flex:1">Diagnóstico</span>
           <span data-x="" style="font-family:'Martian Mono',monospace;font-size:14px;transition:transform .42s cubic-bezier(.16,1,.3,1),color .3s;flex:0 0 auto;color:#FFD84A;transform:rotate(45deg)">+</span>
         </button>
-        <div data-body="" style="display:grid;grid-template-rows:1fr;transition:grid-template-rows .45s cubic-bezier(.16,1,.3,1)">
+        <div data-body="" style="display:grid;grid-template-rows:1fr;transition:grid-template-rows .38s cubic-bezier(.77,0,.175,1)">
           <div style="overflow:hidden"><p style="padding:0 4px 24px;max-width:52ch;font-size:15.5px;line-height:1.5">Reviso lo que ya publicaste, hablo con tu equipo y mido de dónde llega tu audiencia hoy. Al final tienes un documento con lo que funciona, lo que no y por qué.</p></div>
         </div>
       </div>
       <div data-row="" style="border-bottom:1px solid rgba(12,12,12,.2);position:relative;isolation:isolate">
-        <span data-fill="" style="position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#0C0C0C 0%,#0C0C0C 52%,#5B1B3C 82%,#8A4A7A 100%);transform:scaleX(0);transform-origin:left;transition:transform .42s cubic-bezier(.16,1,.3,1)"></span>
+        <span data-fill="" style="position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#0C0C0C 0%,#0C0C0C 52%,#5B1B3C 82%,#8A4A7A 100%);transform:scaleX(0);transform-origin:left;transition:transform .38s cubic-bezier(.77,0,.175,1)"></span>
         <button data-bar="" aria-expanded="false" style="width:100%;background:none;border:0;font:inherit;color:inherit;text-align:left;cursor:pointer;display:flex;align-items:baseline;gap:clamp(12px,3vw,40px);padding:20px 4px">
           <span style="font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.18em;opacity:.6;flex:0 0 auto">02</span>
           <span style="font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 900;font-size:clamp(1.2rem,3vw,2.4rem);line-height:1;letter-spacing:-.035em;text-transform:uppercase;flex:1">Estrategia</span>
           <span data-x="" style="font-family:'Martian Mono',monospace;font-size:14px;transition:transform .42s cubic-bezier(.16,1,.3,1),color .3s;flex:0 0 auto">+</span>
         </button>
-        <div data-body="" style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.16,1,.3,1)">
+        <div data-body="" style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .38s cubic-bezier(.77,0,.175,1)">
           <div style="overflow:hidden"><p style="padding:0 4px 24px;max-width:52ch;font-size:15.5px;line-height:1.5">Definimos audiencia, mensaje central y los tres ejes de contenido que vas a sostener. Sin esto, todo lo que venga después es ruido ordenado.</p></div>
         </div>
       </div>
       <div data-row="" style="border-bottom:1px solid rgba(12,12,12,.2);position:relative;isolation:isolate">
-        <span data-fill="" style="position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#0C0C0C 0%,#0C0C0C 52%,#5B1B3C 82%,#8A4A7A 100%);transform:scaleX(0);transform-origin:left;transition:transform .42s cubic-bezier(.16,1,.3,1)"></span>
+        <span data-fill="" style="position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#0C0C0C 0%,#0C0C0C 52%,#5B1B3C 82%,#8A4A7A 100%);transform:scaleX(0);transform-origin:left;transition:transform .38s cubic-bezier(.77,0,.175,1)"></span>
         <button data-bar="" aria-expanded="false" style="width:100%;background:none;border:0;font:inherit;color:inherit;text-align:left;cursor:pointer;display:flex;align-items:baseline;gap:clamp(12px,3vw,40px);padding:20px 4px">
           <span style="font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.18em;opacity:.6;flex:0 0 auto">03</span>
           <span style="font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 900;font-size:clamp(1.2rem,3vw,2.4rem);line-height:1;letter-spacing:-.035em;text-transform:uppercase;flex:1">Producción</span>
           <span data-x="" style="font-family:'Martian Mono',monospace;font-size:14px;transition:transform .42s cubic-bezier(.16,1,.3,1),color .3s;flex:0 0 auto">+</span>
         </button>
-        <div data-body="" style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.16,1,.3,1)">
+        <div data-body="" style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .38s cubic-bezier(.77,0,.175,1)">
           <div style="overflow:hidden"><p style="padding:0 4px 24px;max-width:52ch;font-size:15.5px;line-height:1.5">Guiones, piezas y calendario cargado. Trabajamos con dos semanas de adelanto para que nunca publiques con apuro.</p></div>
         </div>
       </div>
       <div data-row="" style="border-bottom:1px solid rgba(12,12,12,.2);position:relative;isolation:isolate">
-        <span data-fill="" style="position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#0C0C0C 0%,#0C0C0C 52%,#5B1B3C 82%,#8A4A7A 100%);transform:scaleX(0);transform-origin:left;transition:transform .42s cubic-bezier(.16,1,.3,1)"></span>
+        <span data-fill="" style="position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#0C0C0C 0%,#0C0C0C 52%,#5B1B3C 82%,#8A4A7A 100%);transform:scaleX(0);transform-origin:left;transition:transform .38s cubic-bezier(.77,0,.175,1)"></span>
         <button data-bar="" aria-expanded="false" style="width:100%;background:none;border:0;font:inherit;color:inherit;text-align:left;cursor:pointer;display:flex;align-items:baseline;gap:clamp(12px,3vw,40px);padding:20px 4px">
           <span style="font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.18em;opacity:.6;flex:0 0 auto">04</span>
           <span style="font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 900;font-size:clamp(1.2rem,3vw,2.4rem);line-height:1;letter-spacing:-.035em;text-transform:uppercase;flex:1">Medición</span>
           <span data-x="" style="font-family:'Martian Mono',monospace;font-size:14px;transition:transform .42s cubic-bezier(.16,1,.3,1),color .3s;flex:0 0 auto">+</span>
         </button>
-        <div data-body="" style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.16,1,.3,1)">
+        <div data-body="" style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .38s cubic-bezier(.77,0,.175,1)">
           <div style="overflow:hidden"><p style="padding:0 4px 24px;max-width:52ch;font-size:15.5px;line-height:1.5">Reporte mensual con las métricas que importan para tu objetivo, no las que se ven bonitas. Ajustamos el plan con esos datos.</p></div>
         </div>
       </div>
@@ -481,6 +490,9 @@
   <div style="max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,54px)">
     <p style="overflow:hidden"><span data-rv="" style="display:block;transform:translateY(112%);transition:transform .85s cubic-bezier(.16,1,.3,1);font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.65">Conversemos</span></p>
     <a href="mailto:Claudiacoilla.v@gmail.com" data-fade="" data-d="80" style="opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),color .3s;display:inline-block;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 125,'wght' 900;font-size:clamp(2.3rem,8.5vw,7rem);line-height:.86;letter-spacing:-.05em;text-transform:uppercase;margin-top:8px">Hablemos</a>
+    <div data-fade="" data-d="140" style="opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)">
+      <a href="mailto:Claudiacoilla.v@gmail.com" class="mail-btn"><span aria-hidden="true">✉</span>Escríbeme por correo</a>
+    </div>
     <div style="display:flex;justify-content:center;gap:clamp(14px,4vw,44px);flex-wrap:wrap;margin-top:clamp(18px,3vh,32px);font-family:'Martian Mono',monospace;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;opacity:.7">
       <p>Claudiacoilla.v@gmail.com</p>
       <p>Respuesta en 24 h hábiles</p>
@@ -507,11 +519,30 @@ class Component extends DCLogic {
     const root = document;
     const soft = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+    // cuenta de 0 al valor final con ease-out; respeta reduced-motion mostrando el número final directo
+    const countUp = (el) => {
+      const target = parseInt(el.dataset.count, 10);
+      const prefix = el.dataset.prefix || "";
+      const suffix = el.dataset.suffix || "";
+      if (soft || !window.requestAnimationFrame) { el.textContent = prefix + target + suffix; return; }
+      const dur = 900;
+      const t0 = performance.now();
+      const ease = (t) => 1 - Math.pow(1 - t, 3);
+      const step = (now) => {
+        const p = Math.min(1, (now - t0) / dur);
+        el.textContent = prefix + Math.round(ease(p) * target) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+
     const reveal = (n) => {
       const d = parseInt(n.dataset.d || "0", 10);
       setTimeout(() => {
         if (n.hasAttribute("data-rv")) n.style.transform = "translateY(0)";
         else { n.style.opacity = "1"; n.style.transform = n.dataset.rest || "none"; }
+        const counter = n.querySelector("[data-count]");
+        if (counter) countUp(counter);
       }, soft ? 0 : d);
     };
 
@@ -652,7 +683,7 @@ class Component extends DCLogic {
       secs.forEach((s, i) => { if (s.getBoundingClientRect().top < vh * 0.5) cur = i; });
       marks.forEach((m, i) => {
         const on = i === cur;
-        m.style.width = on ? "40px" : "20px";
+        m.style.transform = on ? "scaleX(1)" : "scaleX(.5)";
         m.style.background = on ? "#D6006E" : "#0C0C0C";
         m.style.opacity = on ? "1" : "0.3";
       });
