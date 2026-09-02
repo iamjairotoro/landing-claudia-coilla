@@ -128,8 +128,8 @@
           fill="none" stroke="#0A0A0A" stroke-width="3"/>
       </svg>
       <h1 class="disp" aria-label="Claudia Coilla" style="position:relative; margin:0; font-size:136px; line-height:.92; letter-spacing:-.03em; text-transform:uppercase;">
-        <span id="typewriter-line1" aria-hidden="true"></span><br>
-        <span id="typewriter-line2" aria-hidden="true"></span><span class="cursor" aria-hidden="true">|</span>
+        <span id="typewriter-line1" aria-hidden="true"></span><span id="typewriter-cursor-1" class="cursor" aria-hidden="true" style="visibility:hidden;">|</span><br>
+        <span id="typewriter-line2" aria-hidden="true"></span><span id="typewriter-cursor-2" class="cursor" aria-hidden="true" style="visibility:hidden;">|</span>
       </h1>
     </div>
 
@@ -696,23 +696,67 @@
     card.addEventListener('mouseenter', function () { card.style.transition = ''; });
   }
 
-  // efecto typewriter del nombre en el H1: escribe letra por letra al montar
+  // efecto typewriter del nombre en el H1: tipea/borra en bucle eterno
+  // el nombre en 5 variantes de idioma, cursor parpadeante que sigue la línea activa
   function setupTypewriter() {
     var soft = matchMedia('(prefers-reduced-motion: reduce)').matches;
     var el1 = document.getElementById('typewriter-line1');
     var el2 = document.getElementById('typewriter-line2');
+    var cur1 = document.getElementById('typewriter-cursor-1');
+    var cur2 = document.getElementById('typewriter-cursor-2');
     if (!el1 || !el2) return;
-    var line1 = 'Claudia', line2 = 'Coilla';
-    if (soft) { el1.textContent = line1; el2.textContent = line2; return; }
-    var i = 0, j = 0, speed = 120;
-    function typeLine1() {
-      if (i < line1.length) { el1.textContent += line1.charAt(i); i++; setTimeout(typeLine1, speed); }
-      else { setTimeout(typeLine2, speed); }
+
+    var PHRASES = [
+      ['CLAUDIA', 'COILLA'],       // castellano (original)
+      ['クロウディア', 'コイルァ'],   // japonés katakana — Kuroodia Koirua
+      ['CLAUDIA', 'COILLA'],       // francés (el nombre no cambia)
+      ['KLAUDIA', 'KOILLA'],       // polaco / variante fonética
+      ['克劳迪娅', '科利亚']         // chino simplificado — Kèláodíyà Kēlíyà
+    ];
+
+    if (soft) {
+      el1.textContent = PHRASES[0][0];
+      el2.textContent = PHRASES[0][1];
+      return;
     }
-    function typeLine2() {
-      if (j < line2.length) { el2.textContent += line2.charAt(j); j++; setTimeout(typeLine2, speed); }
+
+    var TYPE_SPEED = 110, DELETE_SPEED = 55, HOLD_MS = 1400, GAP_MS = 350;
+    var phraseIndex = 0, timer;
+
+    function setCursor(row) {
+      if (cur1) cur1.style.visibility = row === 1 ? 'visible' : 'hidden';
+      if (cur2) cur2.style.visibility = row === 2 ? 'visible' : 'hidden';
     }
-    typeLine1();
+    function typeLine(el, text, i, row, cb) {
+      setCursor(row);
+      el.textContent = text.slice(0, i);
+      if (i < text.length) { timer = setTimeout(function () { typeLine(el, text, i + 1, row, cb); }, TYPE_SPEED); }
+      else { cb(); }
+    }
+    function deleteLine(el, text, i, row, cb) {
+      setCursor(row);
+      el.textContent = text.slice(0, i);
+      if (i > 0) { timer = setTimeout(function () { deleteLine(el, text, i - 1, row, cb); }, DELETE_SPEED); }
+      else { cb(); }
+    }
+    function runPhrase() {
+      var pair = PHRASES[phraseIndex];
+      typeLine(el1, pair[0], 0, 1, function () {
+        timer = setTimeout(function () {
+          typeLine(el2, pair[1], 0, 2, function () {
+            timer = setTimeout(function () {
+              deleteLine(el2, pair[1], pair[1].length, 2, function () {
+                deleteLine(el1, pair[0], pair[0].length, 1, function () {
+                  phraseIndex = (phraseIndex + 1) % PHRASES.length;
+                  timer = setTimeout(runPhrase, GAP_MS);
+                });
+              });
+            }, HOLD_MS);
+          });
+        }, GAP_MS);
+      });
+    }
+    runPhrase();
   }
 
   // formulario de contacto: envía a Web3Forms (llega directo al Gmail de Claudia,
