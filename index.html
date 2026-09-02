@@ -61,12 +61,16 @@
     .press { transition: transform 120ms cubic-bezier(.16,1,.3,1), box-shadow 120ms cubic-bezier(.16,1,.3,1); }
     .press:active { transform: translate(2px,2px); box-shadow: 2px 2px 0 #0A0A0A !important; }
 
-    /* nav flotante: enlaces con estado activo dinámico (scroll spy) */
-    .nav-link { background: transparent; cursor: pointer; transition: background 160ms ease, color 160ms ease; }
-    .nav-link.is-active { background: #002FA7; color: #FFFFFF !important; }
+    /* nav flotante: enlaces con estado activo dinámico (scroll spy),
+       cada sección resalta con su propio color al estar en pantalla */
+    .nav-link { background: transparent; color: #0A0A0A; cursor: pointer; transition: background-color 0.2s ease, color 0.2s ease; }
+    .nav-link.is-active[data-target="inicio"] { background: #FF5A1F; color: #FFFFFF; }
+    .nav-link.is-active[data-target="sobre-mi"] { background: #F6C2D6; color: #0A0A0A; }
+    .nav-link.is-active[data-target="coleccion"] { background: #E22619; color: #FFFFFF; }
+    .nav-link.is-active[data-target="clientes"] { background: #0A0A0A; color: #FFFFFF; }
 
     /* offset de anclaje para que el nav flotante no tape los títulos */
-    #inicio, #sobre-mi, #coleccion, #proyectos, #contacto { scroll-margin-top: 80px; }
+    #inicio, #sobre-mi, #coleccion, #clientes, #contacto { scroll-margin-top: 80px; }
 
     /* tilt 3D de la polaroid */
     .tilt-photo { transition: transform .5s cubic-bezier(.19,1,.22,1); }
@@ -105,10 +109,10 @@
         <span style="width:10px; height:10px; border-radius:50%; background:#F6C2D6; display:block;"></span>
       </div>
       <div style="display:flex; gap:6px; font-size:12px; font-weight:600; letter-spacing:.02em;">
-        <a href="#inicio" data-target="inicio" class="cursor-target nav-link is-active" style="padding:8px 16px; border-radius:999px; color:#0A0A0A;">Inicio</a>
-        <a href="#sobre-mi" data-target="sobre-mi" class="cursor-target nav-link" style="padding:8px 16px; border-radius:999px; color:#0A0A0A;">Sobre mí</a>
-        <a href="#coleccion" data-target="coleccion" class="cursor-target nav-link" style="padding:8px 16px; border-radius:999px; color:#0A0A0A;">Colección</a>
-        <a href="#proyectos" data-target="proyectos" class="cursor-target nav-link" style="padding:8px 16px; border-radius:999px; color:#0A0A0A;">Proyectos</a>
+        <a href="#inicio" data-target="inicio" class="cursor-target nav-link is-active" style="padding:8px 16px; border-radius:999px;">Inicio</a>
+        <a href="#sobre-mi" data-target="sobre-mi" class="cursor-target nav-link" style="padding:8px 16px; border-radius:999px;">Sobre mí</a>
+        <a href="#coleccion" data-target="coleccion" class="cursor-target nav-link" style="padding:8px 16px; border-radius:999px;">Colección</a>
+        <a href="#clientes" data-target="clientes" class="cursor-target nav-link" style="padding:8px 16px; border-radius:999px;">Clientes</a>
       </div>
       <a href="#contacto" data-target="contacto" class="cursor-target press nav-link" style="padding:9px 20px; border-radius:999px; background:#002FA7; color:#FFFFFF; font-size:12px; font-weight:700; letter-spacing:.02em; box-shadow:4px 4px 0 #0A0A0A;">Contacto</a>
     </div>
@@ -289,7 +293,7 @@
   </div>
 
   <!-- ===== CONFIARON EN MÍ (marquee) ===== -->
-  <div id="proyectos" style="width:100%; overflow:hidden; padding:32px 0; border-top:2px solid #0A0A0A; border-bottom:2px solid #0A0A0A; background:#F6C2D6; margin:0 0 90px;">
+  <div id="clientes" style="width:100%; overflow:hidden; padding:32px 0; border-top:2px solid #0A0A0A; border-bottom:2px solid #0A0A0A; background:#F6C2D6; margin:0 0 90px;">
     <p class="reveal" style="text-align:center; font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; margin:0 0 20px; color:#0A0A0A;">Confiaron en mí</p>
 
     <div class="marquee-track" style="display:flex; width:max-content; gap:12px; align-items:center;">
@@ -620,7 +624,7 @@
   // resalta en azul Klein el enlace del nav que corresponde a la sección visible
   function setupNavSpy() {
     var links = document.querySelectorAll('.nav-link[data-target]');
-    var sections = Array.prototype.slice.call(document.querySelectorAll('#inicio, #sobre-mi, #coleccion, #proyectos, #contacto'));
+    var sections = Array.prototype.slice.call(document.querySelectorAll('#inicio, #sobre-mi, #coleccion, #clientes, #contacto'));
     if (!links.length || !sections.length || !('IntersectionObserver' in window)) return;
     function setActive(id) {
       links.forEach(function (link) {
