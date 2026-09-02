@@ -424,11 +424,11 @@
   <div id="modal-backdrop" data-close-modal hidden style="position:fixed; inset:0; background:rgba(10,10,10,.5); z-index:100; align-items:center; justify-content:center; padding:24px;">
     <div style="position:relative; background:#FFFFFF; border:2px solid #0A0A0A; box-shadow:6px 6px 0 #0A0A0A; max-width:640px; width:100%; max-height:86vh; overflow-y:auto; padding:40px 36px 36px;">
 
-      <span class="modal-close cursor-target" data-close-modal style="position:absolute; top:16px; right:16px; width:34px; height:34px; border:2px solid #0A0A0A; border-radius:999px; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700; cursor:pointer; background:#FFFFFF;">✕</span>
+      <span class="modal-close cursor-target" data-close-modal role="button" aria-label="Cerrar" style="position:absolute; top:16px; right:16px; width:34px; height:34px; border:2px solid #0A0A0A; border-radius:999px; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700; cursor:pointer; background:#FFFFFF;">✕</span>
 
       <div class="modal-panel" data-panel="1" hidden>
         <p style="font-size:12px; font-weight:700; letter-spacing:.03em; opacity:.5; margin:0 0 6px;">Obra Nº 01</p>
-        <h3 class="disp" style="font-size:30px; text-transform:uppercase; letter-spacing:-.02em; margin:0 0 18px; max-width:22ch;">Post para redes sociales</h3>
+        <h3 class="disp" style="font-size:30px; text-transform:uppercase; letter-spacing:-.02em; margin:0 0 18px; max-width:22ch;">Posts</h3>
         <div style="border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; padding:18px; margin-bottom:18px; background:#FFFFFF;">
           <p style="font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; margin:0 0 8px;">Grupo 1 — Diseño esencial / simple</p>
           <p style="font-size:13.5px; line-height:1.5; opacity:.8; margin:0 0 12px;">Piezas gráficas enfocadas en comunicación directa, plantillas limpias, tipografía y composición rápida.</p>
@@ -456,7 +456,7 @@
 
       <div class="modal-panel" data-panel="2" hidden>
         <p style="font-size:12px; font-weight:700; letter-spacing:.03em; opacity:.5; margin:0 0 6px;">Obra Nº 02</p>
-        <h3 class="disp" style="font-size:30px; text-transform:uppercase; letter-spacing:-.02em; margin:0 0 18px; max-width:22ch;">Tarjetas de presentación y chapitas</h3>
+        <h3 class="disp" style="font-size:30px; text-transform:uppercase; letter-spacing:-.02em; margin:0 0 18px; max-width:22ch;">Tarjetas y chapitas</h3>
         <div style="border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; padding:18px; margin-bottom:18px; background:#FFFFFF;">
           <p style="font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; margin:0 0 8px;">Grupo 1 — Tarjetas de presentación</p>
           <p style="font-size:13.5px; line-height:1.5; opacity:.8; margin:0 0 12px;">Diseño de papelería corporativa de pequeño formato, optimizado con marcas de corte, sangrado y preparación de color para imprenta.</p>
@@ -481,7 +481,7 @@
 
       <div class="modal-panel" data-panel="3" hidden>
         <p style="font-size:12px; font-weight:700; letter-spacing:.03em; opacity:.5; margin:0 0 6px;">Obra Nº 03</p>
-        <h3 class="disp" style="font-size:30px; text-transform:uppercase; letter-spacing:-.02em; margin:0 0 18px; max-width:22ch;">Flyers y volantes</h3>
+        <h3 class="disp" style="font-size:30px; text-transform:uppercase; letter-spacing:-.02em; margin:0 0 18px; max-width:22ch;">Flyers</h3>
         <p style="font-size:13.5px; line-height:1.5; opacity:.8; margin:0 0 14px;">Piezas promocionales de 1 o 2 caras diseñadas para difusión en canales digitales o impresión física.</p>
         <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:14px; margin-bottom:18px;">
           <img src="assets/img/flyers/flyer-01.jpg" alt="Flyer 'Pronto' anunciando el single 'Mientras espero' de Max Ramírez" style="width:100%; aspect-ratio:9/16; object-fit:cover; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A;">
@@ -505,7 +505,7 @@
 
       <div class="modal-panel" data-panel="5" hidden>
         <p style="font-size:12px; font-weight:700; letter-spacing:.03em; opacity:.5; margin:0 0 6px;">Obra Nº 05</p>
-        <h3 class="disp" style="font-size:30px; text-transform:uppercase; letter-spacing:-.02em; margin:0 0 18px; max-width:22ch;">Libretas y cuadernos</h3>
+        <h3 class="disp" style="font-size:30px; text-transform:uppercase; letter-spacing:-.02em; margin:0 0 18px; max-width:22ch;">Booklets</h3>
         <p style="font-size:13.5px; line-height:1.5; opacity:.8; margin:0 0 14px;">Maquetación editorial de papelería corporativa personalizada. Diseño de portada, contraportada e interiores.</p>
         <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:14px; margin-bottom:18px;">
           <img src="assets/img/libretas/booklet-01.jpg" alt="Portada de la libreta 'Soy Oasis', Fundación Summer" style="width:100%; aspect-ratio:2/3; object-fit:cover; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A;">
@@ -538,7 +538,7 @@
           </div>
         </div>
 
-        <p style="font-size:14px; line-height:1.55; margin:0; background:#F6C2D6; padding:16px 18px; border-radius:8px;">Entregable: PDF trazado a curvas para imprenta con guías de doblez. Plazo de 3 a 5 días hábiles.</p>
+        <p style="font-size:14px; line-height:1.55; margin:0; background:#F6C2D6; padding:16px 18px; border-radius:8px;">Entregable: PDF trazado a curvas para imprenta con guías de doblez. Plazo de 3 a 5 días hábiles · Valor: $65.000 – $130.000 CLP.</p>
       </div>
 
       <div class="modal-panel" data-panel="7" hidden>
@@ -551,12 +551,12 @@
             <img src="assets/img/presentaciones/ted-01.jpg" alt="Slide de campaña 'Sé testigo salvador', Fundación Summer" style="width:100%; aspect-ratio:16/9; object-fit:cover; border:2px solid #0A0A0A;">
             <img src="assets/img/presentaciones/ted-02.jpg" alt="Slide del encuentro anual de Fundación Summer, con frase 'Hablamos para inspirar'" style="width:100%; aspect-ratio:16/9; object-fit:cover; border:2px solid #0A0A0A;">
           </div>
-          <p style="font-size:12px; font-weight:600; opacity:.6; margin:0;">Ideal para: charlas de speaker, lanzamientos o webinars.</p>
+          <p style="font-size:12px; font-weight:600; opacity:.6; margin:0;">Ideal para: charlas tipo speaker, lanzamientos o webinars.</p>
         </div>
 
         <div style="border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; padding:18px; margin-bottom:18px; background:#FFFFFF;">
           <p style="font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; margin:0 0 8px;">Grupo 2 — Formato corporativo explicativo · documento / lectura</p>
-          <p style="font-size:13.5px; line-height:1.5; opacity:.8; margin:0 0 12px;">Presentaciones estructuradas para reportes directivos, dossier comerciales o entregables de lectura independiente. Incluye diagramación de datos complejos, tablas, infografías e información explicativa detallada.</p>
+          <p style="font-size:13.5px; line-height:1.5; opacity:.8; margin:0 0 12px;">Presentaciones estructuradas para reportes directivos, dossiers comerciales o entregables de lectura independiente. Incluye diagramación de datos complejos, tablas, infografías e información explicativa detallada.</p>
           <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:4px;">
             <img src="assets/img/presentaciones/ldl-01.jpg" alt="Slide 'Cultura organizacional' (Misión, Visión, Propósitos) de la campaña Litro de Luz" style="width:100%; aspect-ratio:16/9; object-fit:cover; border:2px solid #0A0A0A;">
             <img src="assets/img/presentaciones/ldl-02.jpg" alt="Slide de infografía de stakeholders de la campaña Litro de Luz" style="width:100%; aspect-ratio:16/9; object-fit:cover; border:2px solid #0A0A0A;">
@@ -565,12 +565,12 @@
           <p style="font-size:12px; font-weight:600; opacity:.6; margin:0;">Ejemplo: campaña digital "Litro de Luz" — diagramación de stakeholders, objetivos y cultura organizacional.</p>
         </div>
 
-        <p style="font-size:14px; line-height:1.55; margin:0; background:#F6C2D6; padding:16px 18px; border-radius:8px;">Entregable: archivo PPTX editable + versión en PDF. Plazo de 4 a 6 días hábiles.</p>
+        <p style="font-size:14px; line-height:1.55; margin:0; background:#F6C2D6; padding:16px 18px; border-radius:8px;">Entregable: archivo PPTX editable + versión en PDF. Plazo de 4 a 6 días hábiles · Valor: $100.000 – $220.000 CLP.</p>
       </div>
 
       <div class="modal-panel" data-panel="8" hidden>
         <p style="font-size:12px; font-weight:700; letter-spacing:.03em; opacity:.5; margin:0 0 6px;">Obra Nº 08</p>
-        <h3 class="disp" style="font-size:30px; text-transform:uppercase; letter-spacing:-.02em; margin:0 0 18px; max-width:22ch;">08 — Todo lo que imagines</h3>
+        <h3 class="disp" style="font-size:30px; text-transform:uppercase; letter-spacing:-.02em; margin:0 0 18px; max-width:22ch;">Todo lo que imagines</h3>
         <div style="border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; padding:18px; margin-bottom:18px; background:#FFFFFF;">
           <p style="font-size:13.5px; line-height:1.5; opacity:.8; margin:0 0 14px;">¿Tienes un proyecto que no calza en ninguna de las categorías anteriores? Desarrollo piezas gráficas personalizadas según los requerimientos específicos de tu marca.</p>
           <div style="display:flex; flex-wrap:wrap; gap:8px;">
