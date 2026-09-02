@@ -126,12 +126,12 @@
       <span style="font-size:12px; font-weight:600; letter-spacing:.03em; padding:8px 16px; border:2px dashed #0A0A0A; border-radius:999px; transform:rotate(2deg); background:#FFFFFF;">Cuida cada detalle</span>
     </div>
 
-    <div class="reveal" style="position:relative; display:inline-block; padding:6px 36px; transition-delay:60ms;">
+    <div class="reveal" style="position:relative; display:inline-block; padding:6px 36px; min-height:263px; transition-delay:60ms;">
       <svg aria-hidden="true" viewBox="0 0 420 130" preserveAspectRatio="none" style="position:absolute; inset:-16px -26px; width:calc(100% + 52px); height:calc(100% + 32px); pointer-events:none;">
         <path d="M18,6 C140,0 300,3 402,8 C412,44 410,84 404,122 C280,128 120,126 14,120 C6,80 8,36 18,6 Z"
           fill="none" stroke="#0A0A0A" stroke-width="3"/>
       </svg>
-      <h1 class="disp" aria-label="Claudia Coilla" style="position:relative; margin:0; font-size:136px; line-height:.92; letter-spacing:-.03em; text-transform:uppercase;">
+      <h1 class="disp" aria-label="Claudia Coilla" style="position:relative; margin:0; font-size:136px; line-height:.92; letter-spacing:-.03em;">
         <span id="typewriter-line1" aria-hidden="true"></span><span id="typewriter-cursor-1" class="cursor" aria-hidden="true" style="visibility:hidden;">|</span><br>
         <span id="typewriter-line2" aria-hidden="true"></span><span id="typewriter-cursor-2" class="cursor" aria-hidden="true" style="visibility:hidden;">|</span>
       </h1>
@@ -704,7 +704,7 @@
   }
 
   // efecto typewriter del nombre en el H1: tipea/borra en bucle eterno
-  // el nombre en 5 variantes de idioma, cursor parpadeante que sigue la línea activa
+  // el nombre, apodos y roles; cursor parpadeante que sigue la línea activa
   function setupTypewriter() {
     var soft = matchMedia('(prefers-reduced-motion: reduce)').matches;
     var el1 = document.getElementById('typewriter-line1');
@@ -713,54 +713,69 @@
     var cur2 = document.getElementById('typewriter-cursor-2');
     if (!el1 || !el2) return;
 
+    // "fast" = apodos/roles: tipeo, borrado y pausa levemente más rápidos.
+    // "hold" fija la pausa exacta para el nombre principal (2.5 s en pantalla).
     var PHRASES = [
-      ['CLAUDIA', 'COILLA'],       // castellano (original)
-      ['クロウディア', 'コイルァ'],   // japonés katakana — Kuroodia Koirua
-      ['CLAUDIA', 'COILLA'],       // francés (el nombre no cambia)
-      ['KLAUDIA', 'KOILLA'],       // polaco / variante fonética
-      ['克劳迪娅', '科利亚']         // chino simplificado — Kèláodíyà Kēlíyà
+      { lines: ['CLAUDIA', 'COILLA'], hold: 2500 },              // nombre principal
+      { lines: ['クロウディア', 'コイルァ'] },                      // japonés — Kuroodia Koirua
+      { lines: ['CLAU', ''], fast: true },                        // apodo
+      { lines: ['MAMÁ &', 'AMOR'], fast: true },                  // rol
+      { lines: ['claud-IA', ''], fast: true },                    // guiño creativo (mayúsculas propias, no de CSS)
+      { lines: ['AMIGA &', 'TOCAYA'], fast: true },               // rol
+      { lines: ['HERMANA E', 'HIJA'], fast: true },               // rol
+      { lines: ['TIA &', 'NIETA'], fast: true }                   // rol
     ];
 
     if (soft) {
-      el1.textContent = PHRASES[0][0];
-      el2.textContent = PHRASES[0][1];
+      el1.textContent = PHRASES[0].lines[0];
+      el2.textContent = PHRASES[0].lines[1];
       return;
     }
 
-    var TYPE_SPEED = 110, DELETE_SPEED = 55, HOLD_MS = 1400, GAP_MS = 350;
+    var DEFAULT = { type: 110, del: 55, hold: 1400, gap: 350 };
+    var FAST = { type: 80, del: 40, hold: 900, gap: 220 };
+    function speeds(p) {
+      var base = p.fast ? FAST : DEFAULT;
+      return { type: base.type, del: base.del, hold: p.hold || base.hold, gap: base.gap };
+    }
+
     var phraseIndex = 0, timer;
 
     function setCursor(row) {
       if (cur1) cur1.style.visibility = row === 1 ? 'visible' : 'hidden';
       if (cur2) cur2.style.visibility = row === 2 ? 'visible' : 'hidden';
     }
-    function typeLine(el, text, i, row, cb) {
+    function typeLine(el, text, i, row, speed, cb) {
       setCursor(row);
       el.textContent = text.slice(0, i);
-      if (i < text.length) { timer = setTimeout(function () { typeLine(el, text, i + 1, row, cb); }, TYPE_SPEED); }
+      if (i < text.length) { timer = setTimeout(function () { typeLine(el, text, i + 1, row, speed, cb); }, speed); }
       else { cb(); }
     }
-    function deleteLine(el, text, i, row, cb) {
+    function deleteLine(el, text, i, row, speed, cb) {
       setCursor(row);
       el.textContent = text.slice(0, i);
-      if (i > 0) { timer = setTimeout(function () { deleteLine(el, text, i - 1, row, cb); }, DELETE_SPEED); }
+      if (i > 0) { timer = setTimeout(function () { deleteLine(el, text, i - 1, row, speed, cb); }, speed); }
       else { cb(); }
     }
     function runPhrase() {
-      var pair = PHRASES[phraseIndex];
-      typeLine(el1, pair[0], 0, 1, function () {
-        timer = setTimeout(function () {
-          typeLine(el2, pair[1], 0, 2, function () {
-            timer = setTimeout(function () {
-              deleteLine(el2, pair[1], pair[1].length, 2, function () {
-                deleteLine(el1, pair[0], pair[0].length, 1, function () {
-                  phraseIndex = (phraseIndex + 1) % PHRASES.length;
-                  timer = setTimeout(runPhrase, GAP_MS);
-                });
-              });
-            }, HOLD_MS);
-          });
-        }, GAP_MS);
+      var p = PHRASES[phraseIndex];
+      var s = speeds(p);
+      var l1 = p.lines[0], l2 = p.lines[1] || '';
+
+      function next() {
+        phraseIndex = (phraseIndex + 1) % PHRASES.length;
+        timer = setTimeout(runPhrase, s.gap);
+      }
+      function deleteAll() {
+        if (l2) { deleteLine(el2, l2, l2.length, 2, s.del, function () { deleteLine(el1, l1, l1.length, 1, s.del, next); }); }
+        else { deleteLine(el1, l1, l1.length, 1, s.del, next); }
+      }
+      function afterType() {
+        timer = setTimeout(deleteAll, s.hold);
+      }
+      typeLine(el1, l1, 0, 1, s.type, function () {
+        if (l2) { timer = setTimeout(function () { typeLine(el2, l2, 0, 2, s.type, afterType); }, s.gap); }
+        else { afterType(); }
       });
     }
     runPhrase();
