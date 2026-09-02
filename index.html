@@ -1,706 +1,704 @@
-<!DOCTYPE html>
-<html lang="es"><head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Claudia Coilla — Comunicadora digital y estratega de contenidos</title>
-<meta name="description" content="Estrategia de contenidos, concepto y voceria de marca. Comunicadora digital con base en Santiago de Chile.">
-<meta name="author" content="Claudia Coilla">
-<meta name="theme-color" content="#FF8A6B">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="es_CL">
-<meta property="og:title" content="Claudia Coilla — Comunicadora digital">
-<meta property="og:description" content="Estrategia de contenidos, concepto y voceria de marca.">
-<meta property="og:image" content="assets/img/retrato-claudia-coilla.webp">
-<meta name="twitter:card" content="summary_large_image">
-<script src="assets/js/react.production.min.js"></script>
-<script src="assets/js/react-dom.production.min.js"></script>
-<script src="assets/js/dc-runtime.js"></script>
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1440">
+  <title>Claudia Coilla | Comunicadora Digital &amp; Diseñadora Gráfica</title>
+  <meta name="description" content="Comunicadora digital y diseñadora gráfica en Santiago de Chile. Posts, tarjetas, flyers, pendones, libretas, brochures, slide decks y piezas a medida con identidad de marca.">
+  <link rel="canonical" href="https://claudiacoilla.vercel.app/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Claudia Coilla | Comunicadora Digital &amp; Diseñadora Gráfica">
+  <meta property="og:description" content="Comunicadora digital y diseñadora gráfica en Santiago de Chile. Posts, tarjetas, flyers, pendones, libretas, brochures, slide decks y piezas a medida con identidad de marca.">
+  <meta property="og:url" content="https://claudiacoilla.vercel.app/">
+  <meta property="og:image" content="https://claudiacoilla.vercel.app/assets/img/claudia.jpg">
+  <meta property="og:locale" content="es_CL">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Claudia Coilla | Comunicadora Digital &amp; Diseñadora Gráfica">
+  <meta name="twitter:description" content="Comunicadora digital y diseñadora gráfica en Santiago de Chile. Portafolio de posts, papelería, flyers, pendones, libretas, brochures y slide decks.">
+  <meta name="twitter:image" content="https://claudiacoilla.vercel.app/assets/img/claudia.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400..900;1,400..900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #FAF9F4; color: #0A0A0A; font-family: 'Hanken Grotesk', sans-serif; }
+    .agenda-chip { transition: transform 160ms ease, box-shadow 160ms ease; box-shadow: 0 0 0 #0A0A0A; }
+    .agenda-chip:hover { transform: translateY(-3px); box-shadow: 3px 3px 0 #0A0A0A; }
 
+    /* cursor parpadeante del efecto typewriter del H1 */
+    .cursor { display: inline-block; font-weight: 300; animation: blink .8s infinite; color: #0A0A0A; }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    a { color: #0A0A0A; text-decoration: none; }
+    a:hover { color: #002FA7; }
+    .disp { font-family: 'Archivo', sans-serif; font-weight: 900; font-variation-settings: 'wdth' 108; }
+
+    /* tarjetas de la colección: efecto de presión neobrutalista + color de acento por tarjeta */
+    .collection-card { cursor: pointer; box-shadow: 4px 4px 0 #0A0A0A; transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease; }
+    .collection-card:hover { transform: translate(2px,2px); box-shadow: 2px 2px 0 #0A0A0A; border-color: var(--accent, #0A0A0A); }
+    .collection-card:hover .card-cta { color: var(--accent, #0A0A0A); }
+    .collection-card:active { transform: translate(4px,4px); box-shadow: 0px 0px 0 #0A0A0A; }
+
+    /* tarjetas informativas (sin pop-up): mismo efecto de presión, solo decorativo */
+    .press-card { cursor: pointer; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+    .press-card:hover { transform: translate(2px,2px); box-shadow: 2px 2px 0 #0A0A0A !important; }
+    .press-card:active { transform: translate(4px,4px); box-shadow: 0px 0px 0 #0A0A0A !important; }
+
+    /* botón cerrar modal: hover en rojo (afordancia de "cerrar/alerta") */
+    .modal-close { transition: transform 120ms cubic-bezier(.16,1,.3,1), background 160ms ease, color 160ms ease, border-color 160ms ease; }
+    .modal-close:hover { background: #E22619; border-color: #E22619; color: #FFFFFF; }
+    .modal-close:active { transform: scale(.92); }
+
+    /* ticker continuo */
+    @keyframes marqueeScroll { to { transform: translateX(-50%); } }
+    .marquee-track { animation: marqueeScroll 25s linear infinite; }
+
+    /* scroll reveal (fade-up) */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    /* micro-interacción neobrutalista: presión de botón */
+    .press { transition: transform 120ms cubic-bezier(.16,1,.3,1), box-shadow 120ms cubic-bezier(.16,1,.3,1); }
+    .press:active { transform: translate(2px,2px); box-shadow: 2px 2px 0 #0A0A0A !important; }
+
+    /* nav flotante: enlaces con estado activo dinámico (scroll spy) */
+    .nav-link { background: transparent; cursor: pointer; transition: background 160ms ease, color 160ms ease; }
+    .nav-link.is-active { background: #002FA7; color: #FFFFFF !important; }
+
+    /* offset de anclaje para que el nav flotante no tape los títulos */
+    #inicio, #sobre-mi, #coleccion, #proyectos, #contacto { scroll-margin-top: 80px; }
+
+    /* tilt 3D de la polaroid */
+    .tilt-photo { transition: transform .5s cubic-bezier(.19,1,.22,1); }
+
+    /* cursor personalizado */
+    [data-cursor] { position: fixed; top: 0; left: 0; width: 32px; height: 32px; border: 2px solid #0A0A0A; border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-100px,-100px) translate(-50%,-50%) scale(.55); transition: background 160ms ease, border-color 160ms ease; background: transparent; }
+    [data-cursor].is-hover { background: rgba(0,47,167,.14); border-color: #002FA7; }
+
+    @media (hover: hover) and (pointer: fine) {
+      * { cursor: none !important; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .marquee-track { animation: none; }
+      .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+      [data-cursor] { display: none; }
+      .agenda-chip:hover { transform: none; }
+      .cursor { animation: none; }
+    }
+  </style>
 </head>
 <body>
-<x-dc>
-<helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<style>/* vietnamese */
-@font-face {
-  font-family: 'Archivo';
-  font-style: normal;
-  font-weight: 400 900;
-  font-stretch: 100% 125%;
-  font-display: swap;
-  src: url("assets/fonts/archivo-vietnamese.woff2") format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Archivo';
-  font-style: normal;
-  font-weight: 400 900;
-  font-stretch: 100% 125%;
-  font-display: swap;
-  src: url("assets/fonts/archivo-latin-ext.woff2") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Archivo';
-  font-style: normal;
-  font-weight: 400 900;
-  font-stretch: 100% 125%;
-  font-display: swap;
-  src: url("assets/fonts/archivo-latin.woff2") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Instrument Sans';
-  font-style: normal;
-  font-weight: 400 700;
-  font-stretch: 100%;
-  font-display: swap;
-  src: url("assets/fonts/instrument-sans-latin-ext.woff2") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Instrument Sans';
-  font-style: normal;
-  font-weight: 400 700;
-  font-stretch: 100%;
-  font-display: swap;
-  src: url("assets/fonts/instrument-sans-latin.woff2") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* cyrillic-ext */
-@font-face {
-  font-family: 'Martian Mono';
-  font-style: normal;
-  font-weight: 300 600;
-  font-stretch: 100%;
-  font-display: swap;
-  src: url("assets/fonts/martian-mono-cyrillic-ext.woff2") format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}
-/* cyrillic */
-@font-face {
-  font-family: 'Martian Mono';
-  font-style: normal;
-  font-weight: 300 600;
-  font-stretch: 100%;
-  font-display: swap;
-  src: url("assets/fonts/martian-mono-cyrillic.woff2") format('woff2');
-  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Martian Mono';
-  font-style: normal;
-  font-weight: 300 600;
-  font-stretch: 100%;
-  font-display: swap;
-  src: url("assets/fonts/martian-mono-latin-ext.woff2") format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Martian Mono';
-  font-style: normal;
-  font-weight: 300 600;
-  font-stretch: 100%;
-  font-display: swap;
-  src: url("assets/fonts/martian-mono-latin.woff2") format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-</style>
-<style>
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{background:#FFFFFF;color:#0C0C0C;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue",Helvetica,sans-serif;letter-spacing:-.011em;font-size:16px;line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-  html{scroll-behavior:smooth}
-  ::selection{background:#D6006E;color:#fff}
-  a{color:#0C0C0C;text-decoration:none;transition:color 160ms ease}
-  a:hover{color:#D6006E}
-  a[href^="mailto:"]{transition:color 160ms ease,transform 140ms cubic-bezier(.23,1,.32,1)}
-  a[href^="mailto:"]:active{transform:scale(.97)}
-  [data-bar]{transition:transform 120ms ease-out}
-  [data-bar]:active{transform:scale(.98)}
-  :focus-visible{outline:2px solid #D6006E;outline-offset:4px}
-  @keyframes blip{0%,100%{opacity:1}50%{opacity:.22}}
-  @keyframes slide{to{transform:translateX(-50%)}}
-  @media (prefers-reduced-motion:reduce){
-    html{scroll-behavior:auto}
-    *{animation:none!important}
-    [data-rv],[data-fade]{transition:opacity .2s ease!important;transform:none!important}
-  }
-  @media (max-width:700px){
-    .grid2{grid-template-columns:1fr!important;gap:14px!important}
-    .row3{grid-template-columns:1fr!important;row-gap:6px!important}
-    .row3 h3{margin-top:2px}
-    nav[aria-hidden],[data-mark]{display:none!important}
-  }
-  @media (max-width:480px){
-    header[data-sec]{padding-top:11vh!important}
-  }
-  .mail-btn{display:inline-flex;align-items:center;gap:9px;background:#0C0C0C;color:#FFF6EA;font-family:'Martian Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding:16px 26px;border:1px solid #0C0C0C;transition:background 180ms ease,color 180ms ease,transform 160ms cubic-bezier(.23,1,.32,1)}
-  .mail-btn:focus-visible{background:#D6006E;color:#fff}
-  @media (hover:hover) and (pointer:fine){
-    .mail-btn:hover{background:#D6006E;color:#fff;transform:translateY(-2px)}
-  }
-  .mail-btn span{font-size:14px;line-height:1}
-</style>
-</helmet>
+<div style="position:relative; width:1440px; background:
+    repeating-linear-gradient(180deg, transparent 0 34px, rgba(10,10,10,.05) 34px 35px);
+    overflow:hidden;">
 
-<div style="position:fixed;inset:0;z-index:95;pointer-events:none;opacity:.2;mix-blend-mode:multiply;background-image:url(&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxNDAnIGhlaWdodD0nMTQwJz48ZmlsdGVyIGlkPSduJz48ZmVUdXJidWxlbmNlIHR5cGU9J2ZyYWN0YWxOb2lzZScgYmFzZUZyZXF1ZW5jeT0nLjg1JyBudW1PY3RhdmVzPSczJy8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9JzE0MCcgaGVpZ2h0PScxNDAnIGZpbHRlcj0ndXJsKCUyM24pJyBvcGFjaXR5PScuNScvPjwvc3ZnPg==&quot;)" aria-hidden="true"></div>
+  <div data-cursor aria-hidden="true"></div>
 
-<div style="position:fixed;inset:12px;border:1px solid rgba(12,12,12,.2);pointer-events:none;z-index:90" aria-hidden="true">
-  <i style="position:absolute;top:-1px;left:-1px;width:9px;height:9px;border:1px solid #0C0C0C;border-right:0;border-bottom:0;opacity:.5"></i>
-  <i style="position:absolute;top:-1px;right:-1px;width:9px;height:9px;border:1px solid #0C0C0C;border-left:0;border-bottom:0;opacity:.5"></i>
-  <i style="position:absolute;bottom:-1px;left:-1px;width:9px;height:9px;border:1px solid #0C0C0C;border-right:0;border-top:0;opacity:.5"></i>
-  <i style="position:absolute;bottom:-1px;right:-1px;width:9px;height:9px;border:1px solid #0C0C0C;border-left:0;border-top:0;opacity:.5"></i>
-</div>
-
-<div style="position:fixed;top:26px;left:28px;z-index:91;display:flex;align-items:center;gap:7px;font-family:'Martian Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;pointer-events:none" aria-hidden="true">
-  <span style="width:6px;height:6px;border-radius:50%;background:#D6006E;animation:blip 1.9s infinite"></span>En línea
-</div>
-<div style="position:fixed;top:26px;right:28px;z-index:91;font-family:'Martian Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;pointer-events:none" aria-hidden="true">
-  <span data-tc="">00:00</span> / 05:28
-</div>
-<nav style="position:fixed;right:28px;top:50%;transform:translateY(-50%);z-index:91;display:grid;gap:16px" aria-hidden="true">
-  <b data-mark="" style="display:block;width:40px;height:1px;background:#0C0C0C;opacity:.3;transform:scaleX(.5);transform-origin:left;transition:transform .4s cubic-bezier(.16,1,.3,1),background .4s,opacity .4s"></b>
-  <b data-mark="" style="display:block;width:40px;height:1px;background:#0C0C0C;opacity:.3;transform:scaleX(.5);transform-origin:left;transition:transform .4s cubic-bezier(.16,1,.3,1),background .4s,opacity .4s"></b>
-  <b data-mark="" style="display:block;width:40px;height:1px;background:#0C0C0C;opacity:.3;transform:scaleX(.5);transform-origin:left;transition:transform .4s cubic-bezier(.16,1,.3,1),background .4s,opacity .4s"></b>
-  <b data-mark="" style="display:block;width:40px;height:1px;background:#0C0C0C;opacity:.3;transform:scaleX(.5);transform-origin:left;transition:transform .4s cubic-bezier(.16,1,.3,1),background .4s,opacity .4s"></b>
-  <b data-mark="" style="display:block;width:40px;height:1px;background:#0C0C0C;opacity:.3;transform:scaleX(.5);transform-origin:left;transition:transform .4s cubic-bezier(.16,1,.3,1),background .4s,opacity .4s"></b>
-  <b data-mark="" style="display:block;width:40px;height:1px;background:#0C0C0C;opacity:.3;transform:scaleX(.5);transform-origin:left;transition:transform .4s cubic-bezier(.16,1,.3,1),background .4s,opacity .4s"></b>
-</nav>
-
-<header data-sec="" style="min-height:100svh;display:flex;flex-direction:column;justify-content:center;position:relative;padding:14vh 0 10vh;overflow:hidden">
-  <div aria-hidden="true" style="position:absolute;inset:0;z-index:0;background:linear-gradient(152deg,#FF8A6B 0%,#F5709B 20%,#FFB070 44%,#FFD84A 64%,#CBD84F 79%,#A97BC9 100%)"></div>
-  <svg aria-hidden="true" sc-camel-view-box="0 0 1200 900" sc-camel-preserve-aspect-ratio="none" style="position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:.55">
-    <g fill="none" stroke="#FFF6EA" stroke-width="2.5" stroke-linecap="round">
-      <path d="M-40 250 C 180 120, 320 420, 540 300 S 900 90, 1240 230"></path>
-      <path d="M-40 430 C 220 330, 340 640, 600 500 S 960 300, 1240 420"></path>
-      <path d="M-40 640 C 200 560, 380 820, 660 690 S 1000 520, 1240 610"></path>
-      <path d="M-40 820 C 240 760, 420 960, 720 860 S 1020 720, 1240 790"></path>
-    </g>
-  </svg>
-  <svg aria-hidden="true" sc-camel-view-box="0 0 1200 60" sc-camel-preserve-aspect-ratio="none" style="position:absolute;left:0;right:0;bottom:-1px;width:100%;height:clamp(34px,5vw,64px);z-index:2;display:block">
-    <path d="M0 60 L0 34 C 150 4, 300 60, 450 34 S 750 4, 900 30 S 1080 56, 1200 26 L1200 60 Z" fill="#FFFFFF"></path>
-  </svg>
-  <div style="max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,54px);width:100%;position:relative;z-index:3">
-    <div style="display:flex;flex-wrap:wrap;gap:clamp(14px,4vw,54px);align-items:flex-start;margin-bottom:clamp(18px,4vh,42px);border-top:1px solid rgba(12,12,12,.2);padding-top:14px">
-      <p style="font-family:'Martian Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;line-height:2;opacity:.8">Comunicadora digital<br>Estratega de contenidos<br>Vocería de marca</p>
-      <p style="font-family:'Martian Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;line-height:2;opacity:.8">Con base en<br>Santiago<br>de Chile</p>
-      <div data-fade="" data-rest="rotate(-2.5deg)" style="opacity:0;transform:translateY(22px) rotate(-2.5deg);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);background:#FFD84A;color:#0C0C0C;padding:7px 13px;font-family:'Martian Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;align-self:flex-start">Agenda abierta 2026</div>
-      <p style="margin-left:auto;font-family:'Martian Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;line-height:2;opacity:.8">2026</p>
-    </div>
-    <h1 style="overflow:hidden;display:block;width:100vw;margin-left:calc(50% - 50vw);padding:0 clamp(18px,4vw,54px)">
-      <span data-rv="" style="display:block;transform:translateY(112%);transition:transform .85s cubic-bezier(.16,1,.3,1);font-family:Archivo,sans-serif;font-variation-settings:'wdth' 125,'wght' 900;font-size:clamp(3.2rem,16.4vw,15rem);line-height:.8;letter-spacing:-.06em;text-transform:uppercase;white-space:nowrap">Claudia</span>
-    </h1>
-    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-top:1px solid rgba(12,12,12,.2);margin-top:clamp(10px,1.6vh,18px);padding-top:9px">
-      <p style="font-family:'Martian Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;opacity:.55">Coilla · Comunicación digital</p>
-      <p style="font-family:'Martian Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;opacity:.55">Santiago · CL</p>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:clamp(14px,2.4vw,26px);align-items:stretch;margin-top:clamp(18px,3.5vh,40px)">
-      <div data-fade="" data-d="200" style="opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)">
-        <span aria-hidden="true" style="font-family:Archivo,sans-serif;font-size:38px;color:#FFF6EA;line-height:.6;margin-bottom:14px;display:block">✱</span>
-        <p style="font-size:clamp(18px,2vw,27px);line-height:1.32;letter-spacing:-.015em;max-width:24ch;font-weight:600">Hago que tu marca diga algo que valga la pena escuchar.</p>
-        <p style="margin-top:14px;font-size:14.5px;opacity:.72;max-width:32ch">Estrategia, contenido y vocería para marcas que están cansadas de publicar sin que pase nada.</p>
+  <!-- ===== NAV (estilo barra de navegador) ===== -->
+  <nav aria-label="Navegación principal" style="display:flex; justify-content:center; padding:28px 0 0;">
+    <div style="display:flex; align-items:center; gap:28px; background:#FFFFFF; border:2px solid #0A0A0A; border-radius:999px; padding:10px 14px 10px 18px; box-shadow:4px 4px 0 #0A0A0A;">
+      <div style="display:flex; gap:6px;">
+        <span style="width:10px; height:10px; border-radius:50%; background:#E22619; display:block;"></span>
+        <span style="width:10px; height:10px; border-radius:50%; background:#FF5A1F; display:block;"></span>
+        <span style="width:10px; height:10px; border-radius:50%; background:#F6C2D6; display:block;"></span>
       </div>
-      <div data-fade="" data-d="280" style="opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden;isolation:isolate;aspect-ratio:3/4;background:#E9E7E4;border:1px solid rgba(12,12,12,.2)">
-        <img src="assets/img/retrato-claudia-coilla.webp" alt="Retrato de Claudia Coilla" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 28%;filter:grayscale(1) contrast(1.06)">
+      <div style="display:flex; gap:6px; font-size:12px; font-weight:600; letter-spacing:.02em;">
+        <a href="#inicio" data-target="inicio" class="cursor-target nav-link is-active" style="padding:8px 16px; border-radius:999px; color:#0A0A0A;">Inicio</a>
+        <a href="#sobre-mi" data-target="sobre-mi" class="cursor-target nav-link" style="padding:8px 16px; border-radius:999px; color:#0A0A0A;">Sobre mí</a>
+        <a href="#coleccion" data-target="coleccion" class="cursor-target nav-link" style="padding:8px 16px; border-radius:999px; color:#0A0A0A;">Colección</a>
+        <a href="#proyectos" data-target="proyectos" class="cursor-target nav-link" style="padding:8px 16px; border-radius:999px; color:#0A0A0A;">Proyectos</a>
       </div>
-      <div data-fade="" data-d="360" data-rest="rotate(1.6deg)" data-spring="1" style="opacity:0;transform:scale(.9) rotate(1.6deg);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .78s cubic-bezier(.2,1.5,.36,1);background:#FFF6EA;color:#0C0C0C;padding:24px 22px;display:flex;flex-direction:column;justify-content:space-between;gap:6px">
-        <p style="font-family:'Martian Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;opacity:.85">Promesa</p>
-        <b style="font-family:Archivo,sans-serif;font-variation-settings:'wdth' 112,'wght' 900;font-size:clamp(1.4rem,3vw,2.5rem);line-height:.94;letter-spacing:-.04em;text-transform:uppercase;display:block">Ideas<br>que se<br>entienden</b>
-        <u style="text-decoration:none;display:block;height:3px;background:linear-gradient(90deg,#FF6B5A 0%,#FFD84A 60%,#A97BC9 100%);width:62%;margin-top:8px"></u>
-      </div>
+      <a href="mailto:claudiacoilla.v@gmail.com?subject=Consulta%20de%20Proyecto%20-%20Portafolio" data-target="contacto" class="cursor-target press nav-link" style="padding:9px 20px; border-radius:999px; background:#002FA7; color:#FFFFFF; font-size:12px; font-weight:700; letter-spacing:.02em; box-shadow:4px 4px 0 #0A0A0A;">Contacto</a>
     </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <div id="inicio" style="max-width:1240px; margin:0 auto; padding:76px 40px 60px; text-align:center; position:relative;">
+
+    <div class="reveal" style="display:flex; justify-content:center; gap:18px; margin-bottom:26px;">
+      <span style="font-size:12px; font-weight:600; letter-spacing:.03em; padding:8px 16px; border:2px dashed #0A0A0A; border-radius:999px; transform:rotate(-3deg); background:#FFFFFF;">Piezas que comunican</span>
+      <span style="font-size:12px; font-weight:600; letter-spacing:.03em; padding:8px 16px; border:2px dashed #0A0A0A; border-radius:999px; transform:rotate(2deg); background:#FFFFFF;">Cuida cada detalle</span>
+    </div>
+
+    <div class="reveal" style="position:relative; display:inline-block; padding:6px 36px; transition-delay:60ms;">
+      <svg aria-hidden="true" viewBox="0 0 420 130" preserveAspectRatio="none" style="position:absolute; inset:-16px -26px; width:calc(100% + 52px); height:calc(100% + 32px); pointer-events:none;">
+        <path d="M18,6 C140,0 300,3 402,8 C412,44 410,84 404,122 C280,128 120,126 14,120 C6,80 8,36 18,6 Z"
+          fill="none" stroke="#0A0A0A" stroke-width="3"/>
+      </svg>
+      <h1 class="disp" aria-label="Claudia Coilla" style="position:relative; margin:0; font-size:136px; line-height:.92; letter-spacing:-.03em; text-transform:uppercase;">
+        <span id="typewriter-line1" aria-hidden="true"></span><br>
+        <span id="typewriter-line2" aria-hidden="true"></span><span class="cursor" aria-hidden="true">|</span>
+      </h1>
+    </div>
+
+    <p class="reveal" style="font-size:18px; font-weight:600; text-transform:lowercase; margin:18px 0 6px; color:#0A0A0A; transition-delay:120ms;">comunicadora digital</p>
+
+    <p class="reveal" style="max-width:58ch; margin:22px auto 30px; font-size:17px; line-height:1.5; color:#0A0A0A; transition-delay:180ms;">Transformo ideas en piezas gráficas con identidad. Estrategia y contenido para que tu marca comunique de forma clara y atractiva.</p>
+
+    <div class="reveal" style="display:flex; justify-content:center; align-items:center; gap:16px; flex-wrap:wrap; transition-delay:240ms;">
+      <a href="#contacto" class="agenda-chip cursor-target" style="display:flex; align-items:center; gap:8px; background:#FFFFFF; border:2px solid #0A0A0A; border-radius:999px; padding:8px 14px 8px 8px; cursor:pointer; color:#0A0A0A;">
+        <svg aria-hidden="true" width="26" height="26" viewBox="0 0 26 26"><circle cx="13" cy="13" r="11" fill="#F6C2D6" stroke="#0A0A0A" stroke-width="2"/><path d="M8 14c1.5 2 3 3 5 3s3.5-1 5-3" stroke="#0A0A0A" stroke-width="1.6" fill="none" stroke-linecap="round"/><circle cx="10" cy="11" r="1.1" fill="#0A0A0A"/><circle cx="16" cy="11" r="1.1" fill="#0A0A0A"/></svg>
+        <span style="font-size:12px; font-weight:600;">Agenda abierta 2026</span>
+      </a>
+      <a href="mailto:claudiacoilla.v@gmail.com?subject=Consulta%20de%20Proyecto%20-%20Portafolio" class="cursor-target press" style="display:inline-block; padding:14px 30px; border-radius:999px; background:#002FA7; color:#FFFFFF; font-size:13px; font-weight:700; letter-spacing:.03em; box-shadow:4px 4px 0 #0A0A0A; cursor:pointer;">Escríbeme por correo</a>
+    </div>
+
+    <svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" style="position:absolute; left:60px; top:120px; transform:rotate(-12deg);"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8Z" fill="#FF5A1F"/></svg>
+    <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="position:absolute; right:70px; top:60px; transform:rotate(10deg);"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8Z" fill="#0A0A0A"/></svg>
   </div>
-</header>
 
-<section style="border-top:1px solid rgba(12,12,12,.2);border-bottom:1px solid rgba(12,12,12,.2);background:#fff">
-  <div style="max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,54px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr))">
-    <p data-fade="" style="opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);padding:24px clamp(10px,2vw,26px) 24px 0;position:relative">
-      <span style="position:absolute;top:16px;right:12px;color:#FF6B5A;font-family:Archivo,sans-serif;font-size:13px;line-height:1">*</span>
-      <s data-count="6" style="display:block;text-decoration:none;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 125,'wght' 900;font-size:clamp(1.7rem,4vw,2.9rem);letter-spacing:-.04em;line-height:1">6</s>
-      <span style="font-family:'Martian Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;opacity:.7;display:block;margin-top:6px">Años de experiencia</span>
-    </p>
-    <p data-fade="" data-d="80" style="opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);padding:24px clamp(10px,2vw,26px);border-left:1px solid rgba(12,12,12,.2);position:relative">
-      <span style="position:absolute;top:16px;right:12px;color:#FF6B5A;font-family:Archivo,sans-serif;font-size:13px;line-height:1">*</span>
-      <s data-count="20" data-suffix="+" style="display:block;text-decoration:none;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 125,'wght' 900;font-size:clamp(1.7rem,4vw,2.9rem);letter-spacing:-.04em;line-height:1">20+</s>
-      <span style="font-family:'Martian Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;opacity:.7;display:block;margin-top:6px">Marcas asesoradas</span>
-    </p>
-    <p data-fade="" data-d="160" style="opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);padding:24px clamp(10px,2vw,26px);border-left:1px solid rgba(12,12,12,.2);position:relative">
-      <span style="position:absolute;top:16px;right:12px;color:#FF6B5A;font-family:Archivo,sans-serif;font-size:13px;line-height:1">*</span>
-      <s data-count="10" data-prefix="+" style="display:block;text-decoration:none;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 125,'wght' 900;font-size:clamp(1.7rem,4vw,2.9rem);letter-spacing:-.04em;line-height:1">+10</s>
-      <span style="font-family:'Martian Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;opacity:.7;display:block;margin-top:6px">Diferentes rubros</span>
-    </p>
-  </div>
-</section>
+  <!-- ===== SOBRE MÍ ===== -->
+  <div id="sobre-mi" style="max-width:1240px; margin:0 auto; padding:40px 40px 80px; display:grid; grid-template-columns:380px 1fr; gap:60px; align-items:center;">
 
-<div data-hinge="" style="height:clamp(280px,58vh,600px);display:grid;place-items:center;overflow:hidden;position:relative">
-  <span style="font-family:Archivo,sans-serif;font-variation-settings:'wdth' 125,'wght' 900;font-size:clamp(2.6rem,12.2vw,10.5rem);line-height:.86;letter-spacing:-.05em;text-transform:uppercase;white-space:nowrap;background:linear-gradient(168deg,#FF6B5A 0%,#F5709B 26%,#FFB070 52%,#FFD84A 74%,#A97BC9 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;will-change:transform">Método</span>
-</div>
+    <div class="reveal" style="position:relative;">
+      <div style="position:absolute; top:-16px; left:50%; transform:translateX(-50%) rotate(-4deg); width:90px; height:28px; background:rgba(246,194,214,.75); border:1px solid rgba(10,10,10,.15); z-index:2;"></div>
+      <div data-tilt class="tilt-photo cursor-target" style="background:#FFFFFF; border:2px solid #0A0A0A; padding:14px 14px 46px; transform:rotate(-2deg); box-shadow:6px 6px 0 #0A0A0A;">
+        <img src="assets/img/claudia.jpg" alt="Retrato de Claudia Coilla" style="width:100%; display:block; filter:grayscale(1) contrast(1.05); aspect-ratio:4/5; object-fit:cover; object-position:50% 22%;">
+        <p style="text-align:center; font-size:20px; margin:14px 0 0;">— Claudia —</p>
+      </div>
+    </div>
 
-<section data-sec="" style="padding:clamp(56px,10vh,120px) 0;position:relative;overflow:hidden;isolation:isolate">
-  <div aria-hidden="true" style="position:absolute;left:-14%;top:-30%;width:min(760px,80vw);aspect-ratio:1.3/1;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,rgba(255,138,107,.42) 0%,rgba(255,216,74,.22) 45%,transparent 74%)"></div>
-  <div aria-hidden="true" style="position:absolute;right:-10%;bottom:-24%;width:min(620px,70vw);aspect-ratio:1.4/1;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,rgba(169,123,201,.3) 0%,rgba(245,112,155,.16) 46%,transparent 74%)"></div>
-  <div class="grid2" style="max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,54px);display:grid;grid-template-columns:minmax(140px,20%) minmax(0,1fr);gap:clamp(24px,6vw,90px);align-items:start">
-    <p style="overflow:hidden"><span data-rv="" style="display:block;transform:translateY(112%);transition:transform .85s cubic-bezier(.16,1,.3,1);font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.65">01 — Cómo trabajo</span></p>
     <div>
-      <p style="overflow:hidden"><span data-rv="" data-d="60" style="display:block;transform:translateY(112%);transition:transform .85s cubic-bezier(.16,1,.3,1);font-size:clamp(17px,1.7vw,23px);line-height:1.42;letter-spacing:-.012em;max-width:32ch">Publicar todos los días no es una estrategia.</span></p>
-      <p style="overflow:hidden;margin-top:1.1em"><span data-rv="" data-d="140" style="display:block;transform:translateY(112%);transition:transform .85s cubic-bezier(.16,1,.3,1);font-size:clamp(17px,1.7vw,23px);line-height:1.42;letter-spacing:-.012em;max-width:32ch">Antes de escribir un solo post definimos a quién le hablas, qué te hace distinta y cuál es la única cosa que necesitas que esa persona recuerde.</span></p>
-      <p style="overflow:hidden;margin-top:1.1em"><span data-rv="" data-d="220" style="display:block;transform:translateY(112%);transition:transform .85s cubic-bezier(.16,1,.3,1);font-size:clamp(17px,1.7vw,23px);line-height:1.42;letter-spacing:-.012em;max-width:32ch">Después viene el calendario. Nunca antes.</span></p>
+      <span class="reveal" style="display:inline-block; font-size:12px; font-weight:700; letter-spacing:.03em; padding:7px 16px; border-radius:999px; background:#FF5A1F; color:#FFFFFF; transform:rotate(-2deg); margin-bottom:18px;">¿Qué hay de nuevo?</span>
+      <h2 class="disp reveal" style="font-size:42px; text-transform:uppercase; line-height:.95; letter-spacing:-.02em; margin:0 0 20px; transition-delay:60ms;">Sobre mí</h2>
+      <p class="reveal" style="font-size:16px; line-height:1.6; max-width:52ch; margin:0 0 26px; color:#0A0A0A; transition-delay:120ms;">Llevo 6 años trabajando en comunicación digital y diseño gráfico, ayudando a marcas a ordenar su estrategia y a que cada pieza — un post, un impreso, una presentación — cuente la misma idea. Con base en Santiago de Chile.</p>
+
+      <div style="display:flex; gap:14px; flex-wrap:wrap; margin-bottom:30px;">
+        <span class="reveal" style="padding:9px 18px; border-radius:999px; background:#FFFFFF; border:2px solid #0A0A0A; color:#0A0A0A; font-size:13px; font-weight:600; transition-delay:0ms;">Diseño gráfico</span>
+        <span class="reveal" style="padding:9px 18px; border-radius:999px; background:#F6C2D6; color:#0A0A0A; font-size:13px; font-weight:600; transition-delay:60ms;">Estrategia de contenidos</span>
+        <span class="reveal" style="padding:9px 18px; border-radius:999px; background:#FF5A1F; color:#fff; font-size:13px; font-weight:600; transition-delay:120ms;">Vocería de marca</span>
+        <span class="reveal" style="padding:9px 18px; border-radius:999px; background:#FFFFFF; border:2px solid #0A0A0A; color:#0A0A0A; font-size:13px; font-weight:600; transition-delay:180ms;">Dirección de arte</span>
+      </div>
+
+      <div class="reveal" style="display:grid; grid-template-columns:repeat(3,auto); gap:34px; border-top:2px solid #0A0A0A; padding-top:20px; transition-delay:180ms;">
+        <div><p class="disp" style="font-size:30px; margin:0;">6</p><p style="font-size:12px; opacity:.65; margin:4px 0 0;">años de experiencia</p></div>
+        <div><p class="disp" style="font-size:30px; margin:0;">20+</p><p style="font-size:12px; opacity:.65; margin:4px 0 0;">marcas asesoradas</p></div>
+        <div><p class="disp" style="font-size:30px; margin:0;">+10</p><p style="font-size:12px; opacity:.65; margin:4px 0 0;">rubros distintos</p></div>
+      </div>
+
+      <a href="mailto:claudiacoilla.v@gmail.com?subject=Consulta%20de%20Proyecto%20-%20Portafolio" class="cursor-target press" style="display:inline-block; margin-top:30px; padding:14px 30px; border-radius:999px; background:#002FA7; color:#FFFFFF; font-size:13px; font-weight:700; letter-spacing:.03em; box-shadow:4px 4px 0 #0A0A0A; cursor:pointer;">Contáctame</a>
     </div>
   </div>
-</section>
 
-<div data-hinge="" style="height:clamp(280px,58vh,600px);display:grid;place-items:center;overflow:hidden;position:relative">
-  <span style="font-family:Archivo,sans-serif;font-variation-settings:'wdth' 125,'wght' 900;font-size:clamp(2.6rem,12.2vw,10.5rem);line-height:.86;letter-spacing:-.05em;text-transform:uppercase;white-space:nowrap;color:transparent;-webkit-text-stroke:1.5px #0C0C0C;will-change:transform">Valores</span>
+  <!-- ===== LA COLECCIÓN ===== -->
+  <div id="coleccion" style="max-width:1240px; margin:0 auto; padding:20px 40px 90px;">
+    <p class="reveal" style="font-size:22px; color:#0A0A0A; margin:0 0 2px;">lo que puedes encargar</p>
+    <h2 class="disp reveal" style="font-size:56px; text-transform:uppercase; letter-spacing:-.02em; margin:0 0 34px; transition-delay:60ms;">La colección</h2>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px;">
+
+      <div class="collection-card cursor-target reveal" data-modal="1" data-open-modal="1" style="--accent:#002FA7; position:relative; background:#FFFFFF; border:2px solid #0A0A0A; padding:28px; overflow:hidden;">
+        <div style="position:absolute; top:0; left:0; width:0; height:0; border-style:solid; border-width:56px 56px 0 0; border-color:#002FA7 transparent transparent transparent;"></div>
+        <span style="position:absolute; top:10px; left:10px; color:#fff; font-size:12px; font-weight:700;">01</span>
+        <h3 class="disp" style="font-size:26px; text-transform:uppercase; margin:26px 0 10px; letter-spacing:-.01em;">Posts</h3>
+        <p style="font-size:14px; line-height:1.5; opacity:.75; max-width:34ch; margin:0 0 20px;">Piezas gráficas de alto impacto visual adaptadas a tu identidad de marca.</p>
+        <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(10,10,10,.15); padding-top:14px; font-size:12px; font-weight:600;">
+          <span>1 a 2 días hábiles</span>
+          <span>$15.000 – $30.000 CLP c/u</span>
+        </div>
+        <p class="card-cta" style="font-size:11px; font-weight:700; letter-spacing:.03em; margin:12px 0 0; transition:color 160ms ease;">[ Ver ejemplos → ]</p>
+      </div>
+
+      <div class="collection-card cursor-target reveal" data-modal="2" data-open-modal="2" style="--accent:#FF5A1F; position:relative; background:#FFFFFF; border:2px solid #0A0A0A; padding:28px; overflow:hidden; transition-delay:60ms;">
+        <div style="position:absolute; top:0; left:0; width:0; height:0; border-style:solid; border-width:56px 56px 0 0; border-color:#FF5A1F transparent transparent transparent;"></div>
+        <span style="position:absolute; top:10px; left:10px; color:#fff; font-size:12px; font-weight:700;">02</span>
+        <h3 class="disp" style="font-size:26px; text-transform:uppercase; margin:26px 0 10px; letter-spacing:-.01em;">Tarjetas y chapitas</h3>
+        <p style="font-size:14px; line-height:1.5; opacity:.75; max-width:34ch; margin:0 0 20px;">Papelería e insumos corporativos en formato pequeño con especificaciones de imprenta.</p>
+        <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(10,10,10,.15); padding-top:14px; font-size:12px; font-weight:600;">
+          <span>1 a 2 días hábiles</span>
+          <span>$25.000 – $45.000 CLP</span>
+        </div>
+        <p class="card-cta" style="font-size:11px; font-weight:700; letter-spacing:.03em; margin:12px 0 0; transition:color 160ms ease;">[ Ver ejemplos → ]</p>
+      </div>
+
+      <div class="collection-card cursor-target reveal" data-modal="3" data-open-modal="3" style="--accent:#E22619; position:relative; background:#FFFFFF; border:2px solid #0A0A0A; padding:28px; overflow:hidden; transition-delay:120ms;">
+        <div style="position:absolute; top:0; left:0; width:0; height:0; border-style:solid; border-width:56px 56px 0 0; border-color:#E22619 transparent transparent transparent;"></div>
+        <span style="position:absolute; top:10px; left:10px; color:#fff; font-size:12px; font-weight:700;">03</span>
+        <h3 class="disp" style="font-size:26px; text-transform:uppercase; margin:26px 0 10px; letter-spacing:-.01em;">Flyers</h3>
+        <p style="font-size:14px; line-height:1.5; opacity:.75; max-width:34ch; margin:0 0 20px;">Piezas promocionales de 1 o 2 caras para canal físico o digital.</p>
+        <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(10,10,10,.15); padding-top:14px; font-size:12px; font-weight:600;">
+          <span>2 a 3 días hábiles</span>
+          <span>$30.000 – $60.000 CLP</span>
+        </div>
+        <p class="card-cta" style="font-size:11px; font-weight:700; letter-spacing:.03em; margin:12px 0 0; transition:color 160ms ease;">[ Ver ejemplos → ]</p>
+      </div>
+
+      <div class="collection-card cursor-target reveal" data-modal="4" data-open-modal="4" style="--accent:#F6C2D6; position:relative; background:#FFFFFF; border:2px solid #0A0A0A; padding:28px; overflow:hidden; transition-delay:180ms;">
+        <div style="position:absolute; top:0; left:0; width:0; height:0; border-style:solid; border-width:56px 56px 0 0; border-color:#F6C2D6 transparent transparent transparent;"></div>
+        <span style="position:absolute; top:10px; left:10px; color:#0A0A0A; font-size:12px; font-weight:700;">04</span>
+        <h3 class="disp" style="font-size:26px; text-transform:uppercase; margin:26px 0 10px; letter-spacing:-.01em;">Pendones y banners</h3>
+        <p style="font-size:14px; line-height:1.5; opacity:.75; max-width:34ch; margin:0 0 20px;">Gráfica publicitaria a gran escala para eventos y puntos de venta.</p>
+        <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(10,10,10,.15); padding-top:14px; font-size:12px; font-weight:600;">
+          <span>2 a 3 días hábiles</span>
+          <span>$45.000 – $80.000 CLP</span>
+        </div>
+        <p class="card-cta" style="font-size:11px; font-weight:700; letter-spacing:.03em; margin:12px 0 0; transition:color 160ms ease;">[ Ver ejemplos → ]</p>
+      </div>
+
+      <div class="collection-card cursor-target reveal" data-modal="5" data-open-modal="5" style="--accent:#002FA7; position:relative; background:#FFFFFF; border:2px solid #0A0A0A; padding:28px; overflow:hidden; transition-delay:240ms;">
+        <div style="position:absolute; top:0; left:0; width:0; height:0; border-style:solid; border-width:56px 56px 0 0; border-color:#002FA7 transparent transparent transparent;"></div>
+        <span style="position:absolute; top:10px; left:10px; color:#fff; font-size:12px; font-weight:700;">05</span>
+        <h3 class="disp" style="font-size:26px; text-transform:uppercase; margin:26px 0 10px; letter-spacing:-.01em;">Booklets</h3>
+        <p style="font-size:14px; line-height:1.5; opacity:.75; max-width:34ch; margin:0 0 20px;">Maquetación editorial de papelería corporativa personalizada.</p>
+        <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(10,10,10,.15); padding-top:14px; font-size:12px; font-weight:600;">
+          <span>3 a 5 días hábiles</span>
+          <span>$50.000 – $90.000 CLP</span>
+        </div>
+        <p class="card-cta" style="font-size:11px; font-weight:700; letter-spacing:.03em; margin:12px 0 0; transition:color 160ms ease;">[ Ver ejemplos → ]</p>
+      </div>
+
+      <div class="collection-card cursor-target reveal" data-modal="6" data-open-modal="6" style="--accent:#FF5A1F; position:relative; background:#FFFFFF; border:2px solid #0A0A0A; padding:28px; overflow:hidden; transition-delay:300ms;">
+        <div style="position:absolute; top:0; left:0; width:0; height:0; border-style:solid; border-width:56px 56px 0 0; border-color:#FF5A1F transparent transparent transparent;"></div>
+        <span style="position:absolute; top:10px; left:10px; color:#fff; font-size:12px; font-weight:700;">06</span>
+        <h3 class="disp" style="font-size:26px; text-transform:uppercase; margin:26px 0 10px; letter-spacing:-.01em;">Brochures</h3>
+        <p style="font-size:14px; line-height:1.5; opacity:.75; max-width:34ch; margin:0 0 20px;">Dípticos y trípticos de diseño corporativo sofisticado.</p>
+        <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(10,10,10,.15); padding-top:14px; font-size:12px; font-weight:600;">
+          <span>3 a 5 días hábiles</span>
+          <span>$65.000 – $130.000 CLP</span>
+        </div>
+        <p class="card-cta" style="font-size:11px; font-weight:700; letter-spacing:.03em; margin:12px 0 0; transition:color 160ms ease;">[ Ver ejemplos → ]</p>
+      </div>
+
+      <div class="collection-card cursor-target reveal" data-modal="7" data-open-modal="7" style="--accent:#E22619; position:relative; background:#FFFFFF; border:2px solid #0A0A0A; padding:28px; overflow:hidden; transition-delay:360ms;">
+        <div style="position:absolute; top:0; left:0; width:0; height:0; border-style:solid; border-width:56px 56px 0 0; border-color:#E22619 transparent transparent transparent;"></div>
+        <span style="position:absolute; top:10px; left:10px; color:#fff; font-size:12px; font-weight:700;">07</span>
+        <h3 class="disp" style="font-size:26px; text-transform:uppercase; margin:26px 0 10px; letter-spacing:-.01em;">Slide Deck</h3>
+        <p style="font-size:14px; line-height:1.5; opacity:.75; max-width:34ch; margin:0 0 20px;">Diapositivas de alto nivel visual para pitch de ventas o directorio.</p>
+        <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(10,10,10,.15); padding-top:14px; font-size:12px; font-weight:600;">
+          <span>4 a 6 días hábiles</span>
+          <span>$100.000 – $220.000 CLP</span>
+        </div>
+        <p class="card-cta" style="font-size:11px; font-weight:700; letter-spacing:.03em; margin:12px 0 0; transition:color 160ms ease;">[ Ver ejemplos → ]</p>
+      </div>
+
+      <div class="collection-card cursor-target reveal" data-modal="8" data-open-modal="8" style="--accent:#FF5A1F; position:relative; background:#FFFFFF; border:2px solid #0A0A0A; padding:28px; overflow:hidden; transition-delay:420ms;">
+        <div style="position:absolute; top:0; left:0; width:0; height:0; border-style:solid; border-width:56px 56px 0 0; border-color:#FF5A1F transparent transparent transparent;"></div>
+        <span style="position:absolute; top:10px; left:10px; color:#fff; font-size:12px; font-weight:700;">08</span>
+        <h3 class="disp" style="font-size:26px; text-transform:uppercase; margin:26px 0 10px; letter-spacing:-.01em;">Todo lo que imagines</h3>
+        <p style="font-size:14px; line-height:1.5; opacity:.75; max-width:34ch; margin:0 0 20px;">Soluciones de diseño a la medida para proyectos especiales, branding e ilustración.</p>
+        <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(10,10,10,.15); padding-top:14px; font-size:12px; font-weight:600;">
+          <span>Plazo a medida</span>
+          <span>Cotización personalizada</span>
+        </div>
+        <p class="card-cta" style="font-size:11px; font-weight:700; letter-spacing:.03em; margin:12px 0 0; transition:color 160ms ease;">[ Ver opciones → ]</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== CONFIARON EN MÍ (marquee) ===== -->
+  <div id="proyectos" style="width:100%; overflow:hidden; padding:32px 0; border-top:2px solid #0A0A0A; border-bottom:2px solid #0A0A0A; background:#F6C2D6; margin:0 0 90px;">
+    <p class="reveal" style="text-align:center; font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; margin:0 0 20px; color:#0A0A0A;">Confiaron en mí</p>
+
+    <div class="marquee-track" style="display:flex; width:max-content; gap:12px; align-items:center;">
+      <span style="font-size:15px; font-weight:800; padding:10px 20px; border:2px solid #0A0A0A; border-radius:999px; background:#E22619; color:#FFFFFF; box-shadow:3px 3px 0 #0A0A0A; white-space:nowrap; text-transform:uppercase;">Fundación Summer</span>
+      <span style="font-size:15px; font-weight:800; padding:10px 20px; border:2px solid #0A0A0A; border-radius:999px; background:#E22619; color:#FFFFFF; box-shadow:3px 3px 0 #0A0A0A; white-space:nowrap; text-transform:uppercase;">Max Ramírez <span style="font-weight:400; font-size:13px; text-transform:none;">(cantante)</span></span>
+      <span style="font-size:15px; font-weight:800; padding:10px 20px; border:2px solid #0A0A0A; border-radius:999px; background:#E22619; color:#FFFFFF; box-shadow:3px 3px 0 #0A0A0A; white-space:nowrap; text-transform:uppercase;">María Jesús <span style="font-weight:400; font-size:13px; text-transform:none;">(profesora de arte y lengua francesa)</span></span>
+      <span style="font-size:15px; font-weight:800; padding:10px 20px; border:2px solid #0A0A0A; border-radius:999px; background:#E22619; color:#FFFFFF; box-shadow:3px 3px 0 #0A0A0A; white-space:nowrap; text-transform:uppercase;">Iglesia Mosaico</span>
+      <span style="font-size:15px; font-weight:800; padding:10px 20px; border:2px solid #0A0A0A; border-radius:999px; background:#E22619; color:#FFFFFF; box-shadow:3px 3px 0 #0A0A0A; white-space:nowrap; text-transform:uppercase;">Youth Ancora</span>
+      <span style="font-size:15px; font-weight:800; padding:10px 20px; border:2px solid #0A0A0A; border-radius:999px; background:#E22619; color:#FFFFFF; box-shadow:3px 3px 0 #0A0A0A; white-space:nowrap; text-transform:uppercase;">Karen Producciones <span style="font-weight:400; font-size:13px; text-transform:none;">(wedding planner)</span></span>
+      <span style="font-size:15px; font-weight:800; padding:10px 20px; border:2px solid #0A0A0A; border-radius:999px; background:#E22619; color:#FFFFFF; box-shadow:3px 3px 0 #0A0A0A; white-space:nowrap; text-transform:uppercase;">JVL</span>
+      <span style="font-size:15px; font-weight:800; padding:10px 20px; border:2px solid #0A0A0A; border-radius:999px; background:#E22619; color:#FFFFFF; box-shadow:3px 3px 0 #0A0A0A; white-space:nowrap; text-transform:uppercase;">Papapeña</span>
+      <span style="font-size:15px; font-weight:800; padding:10px 20px; border:2px solid #0A0A0A; border-radius:999px; background:#E22619; color:#FFFFFF; box-shadow:3px 3px 0 #0A0A0A; white-space:nowrap; text-transform:uppercase;">Litro de Luz <span style="font-weight:400; font-size:13px; text-transform:none;">(campaña)</span></span>
+      <span style="font-size:15px; font-weight:800; padding:10px 20px; border:2px solid #0A0A0A; border-radius:999px; background:#E22619; color:#FFFFFF; box-shadow:3px 3px 0 #0A0A0A; white-space:nowrap; text-transform:uppercase;">Oashisu Coffee</span>
+      <span style="font-size:14px; font-weight:600; opacity:.7; padding:10px 14px; white-space:nowrap;">...entre otros</span>
+
+      <div aria-hidden="true" style="display:contents;">
+        <span style="font-size:15px; font-weight:800; padding:10px 20px; border:2px solid #0A0A0A; border-radius:999px; background:#E22619; color:#FFFFFF; box-shadow:3px 3px 0 #0A0A0A; white-space:nowrap; text-transform:uppercase;">Fundación Summer</span>
+        <span style="font-size:15px; font-weight:800; padding:10px 20px; border:2px solid #0A0A0A; border-radius:999px; background:#E22619; color:#FFFFFF; box-shadow:3px 3px 0 #0A0A0A; white-space:nowrap; text-transform:uppercase;">Max Ramírez <span style="font-weight:400; font-size:13px; text-transform:none;">(cantante)</span></span>
+        <span style="font-size:15px; font-weight:800; padding:10px 20px; border:2px solid #0A0A0A; border-radius:999px; background:#E22619; color:#FFFFFF; box-shadow:3px 3px 0 #0A0A0A; white-space:nowrap; text-transform:uppercase;">María Jesús <span style="font-weight:400; font-size:13px; text-transform:none;">(profesora de arte y lengua francesa)</span></span>
+        <span style="font-size:15px; font-weight:800; padding:10px 20px; border:2px solid #0A0A0A; border-radius:999px; background:#E22619; color:#FFFFFF; box-shadow:3px 3px 0 #0A0A0A; white-space:nowrap; text-transform:uppercase;">Iglesia Mosaico</span>
+        <span style="font-size:15px; font-weight:800; padding:10px 20px; border:2px solid #0A0A0A; border-radius:999px; background:#E22619; color:#FFFFFF; box-shadow:3px 3px 0 #0A0A0A; white-space:nowrap; text-transform:uppercase;">Youth Ancora</span>
+        <span style="font-size:15px; font-weight:800; padding:10px 20px; border:2px solid #0A0A0A; border-radius:999px; background:#E22619; color:#FFFFFF; box-shadow:3px 3px 0 #0A0A0A; white-space:nowrap; text-transform:uppercase;">Karen Producciones <span style="font-weight:400; font-size:13px; text-transform:none;">(wedding planner)</span></span>
+        <span style="font-size:15px; font-weight:800; padding:10px 20px; border:2px solid #0A0A0A; border-radius:999px; background:#E22619; color:#FFFFFF; box-shadow:3px 3px 0 #0A0A0A; white-space:nowrap; text-transform:uppercase;">JVL</span>
+        <span style="font-size:15px; font-weight:800; padding:10px 20px; border:2px solid #0A0A0A; border-radius:999px; background:#E22619; color:#FFFFFF; box-shadow:3px 3px 0 #0A0A0A; white-space:nowrap; text-transform:uppercase;">Papapeña</span>
+        <span style="font-size:15px; font-weight:800; padding:10px 20px; border:2px solid #0A0A0A; border-radius:999px; background:#E22619; color:#FFFFFF; box-shadow:3px 3px 0 #0A0A0A; white-space:nowrap; text-transform:uppercase;">Litro de Luz <span style="font-weight:400; font-size:13px; text-transform:none;">(campaña)</span></span>
+        <span style="font-size:15px; font-weight:800; padding:10px 20px; border:2px solid #0A0A0A; border-radius:999px; background:#E22619; color:#FFFFFF; box-shadow:3px 3px 0 #0A0A0A; white-space:nowrap; text-transform:uppercase;">Oashisu Coffee</span>
+        <span style="font-size:14px; font-weight:600; opacity:.7; padding:10px 14px; white-space:nowrap;">...entre otros</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ¿QUÉ NECESITO DE TI? (brief de entrada) ===== -->
+  <div style="max-width:1240px; margin:0 auto; padding:70px 40px;">
+    <p class="reveal" style="font-size:22px; color:#0A0A0A; margin:0 0 2px;">antes de empezar</p>
+    <h2 class="disp reveal" style="font-size:44px; text-transform:uppercase; letter-spacing:-.02em; margin:0 0 34px; transition-delay:60ms; max-width:16ch;">¿Qué necesito del cliente para empezar?</h2>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px;">
+      <div class="reveal press-card cursor-target" style="border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; padding:22px; background:#FFFFFF;">
+        <p class="disp" style="font-size:26px; color:#002FA7; margin:0 0 12px;">01</p>
+        <h3 style="font-size:16px; font-weight:800; text-transform:uppercase; letter-spacing:-.01em; margin:0 0 8px;">Identidad visual</h3>
+        <p style="font-size:13.5px; line-height:1.5; opacity:.75; margin:0;">Logo vectorial (.AI, .EPS, .SVG) o PNG sin fondo, paleta de colores y fuentes tipográficas.</p>
+      </div>
+      <div class="reveal press-card cursor-target" style="border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; padding:22px; background:#FFFFFF; transition-delay:80ms;">
+        <p class="disp" style="font-size:26px; color:#FF5A1F; margin:0 0 12px;">02</p>
+        <h3 style="font-size:16px; font-weight:800; text-transform:uppercase; letter-spacing:-.01em; margin:0 0 8px;">Contenidos y textos</h3>
+        <p style="font-size:13.5px; line-height:1.5; opacity:.75; margin:0;">Textos definitivos ya redactados y corregidos ortográficamente.</p>
+      </div>
+      <div class="reveal press-card cursor-target" style="border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; padding:22px; background:#FFFFFF; transition-delay:160ms;">
+        <p class="disp" style="font-size:26px; color:#E22619; margin:0 0 12px;">03</p>
+        <h3 style="font-size:16px; font-weight:800; text-transform:uppercase; letter-spacing:-.01em; margin:0 0 8px;">Material fotográfico</h3>
+        <p style="font-size:13.5px; line-height:1.5; opacity:.75; margin:0;">Imágenes e ilustraciones en alta resolución.</p>
+      </div>
+      <div class="reveal press-card cursor-target" style="border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; padding:22px; background:#F6C2D6; transition-delay:240ms;">
+        <p class="disp" style="font-size:26px; color:#0A0A0A; margin:0 0 12px;">04</p>
+        <h3 style="font-size:16px; font-weight:800; text-transform:uppercase; letter-spacing:-.01em; margin:0 0 8px;">Especificaciones técnicas</h3>
+        <p style="font-size:13.5px; line-height:1.5; opacity:.75; margin:0;">Medidas exactas del formato, tipo de pliegue o requerimientos específicos de tu imprenta.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CONDICIONES DEL SERVICIO ===== -->
+  <div style="background:#002FA7; color:#FFFFFF; padding:70px 40px;">
+    <div style="max-width:1240px; margin:0 auto;">
+      <p class="reveal" style="font-size:22px; color:#FFFFFF; opacity:.75; margin:0 0 2px;">reglas claras</p>
+      <h2 class="disp reveal" style="font-size:44px; text-transform:uppercase; letter-spacing:-.02em; margin:0 0 34px; color:#FFFFFF; transition-delay:60ms;">Condiciones del servicio</h2>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px;">
+        <div class="reveal press-card cursor-target" style="background:#FF5A1F; color:#0A0A0A; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; padding:22px;">
+          <p style="font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; color:#0A0A0A; margin:0 0 10px;">Metodología de pago</p>
+          <p style="font-size:14px; line-height:1.5; color:#0A0A0A; opacity:.85; margin:0;">50% de anticipo para iniciar el proyecto y 50% contra entrega final aprobada.</p>
+        </div>
+        <div class="reveal press-card cursor-target" style="background:#F6C2D6; color:#0A0A0A; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; padding:22px; transition-delay:80ms;">
+          <p style="font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; color:#0A0A0A; margin:0 0 10px;">Rondas de revisión</p>
+          <p style="font-size:14px; line-height:1.5; color:#0A0A0A; opacity:.85; margin:0;">Se incluyen 2 rondas de correcciones leves por encargo. Cambios estructurales adicionales tendrán un recargo del 10% al 15%.</p>
+        </div>
+        <div class="reveal press-card cursor-target" style="background:#E22619; color:#FFFFFF; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; padding:22px; transition-delay:160ms;">
+          <p style="font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; color:#FFFFFF; margin:0 0 10px;">Plazos de entrega</p>
+          <p style="font-size:14px; line-height:1.5; color:#FFFFFF; opacity:.9; margin:0;">Los días hábiles se cuentan a partir de la recepción del 100% de los insumos (textos/logos) y la confirmación del pago inicial.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CONTACTO ===== -->
+  <div id="contacto" style="text-align:center; padding:40px 40px 100px; position:relative;">
+    <svg aria-hidden="true" width="34" height="34" viewBox="0 0 24 24" style="position:absolute; left:22%; top:24px; transform:rotate(-8deg);"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8Z" fill="#0A0A0A"/></svg>
+    <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" style="position:absolute; right:23%; top:70px; transform:rotate(14deg);"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8Z" fill="#FF5A1F"/></svg>
+
+    <p class="reveal" style="font-size:24px; color:#0A0A0A; margin:0 0 6px;">¿hablamos?</p>
+    <h2 class="disp reveal" style="font-size:88px; text-transform:uppercase; letter-spacing:-.03em; margin:0 0 26px; transition-delay:60ms;">Hablemos</h2>
+    <a href="mailto:claudiacoilla.v@gmail.com?subject=Consulta%20de%20Proyecto%20-%20Portafolio" class="cursor-target press reveal" style="display:inline-block; text-decoration:none; padding:16px 34px; border-radius:999px; background:#002FA7; color:#FFFFFF; font-size:14px; font-weight:700; box-shadow:5px 5px 0 #0A0A0A; transition-delay:120ms;">claudiacoilla.v@gmail.com</a>
+    <p class="reveal" style="font-size:12px; opacity:.55; margin-top:22px; transition-delay:180ms;">Respuesta en 24 h hábiles · Agenda abierta 2026</p>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <div style="border-top:2px solid #0A0A0A; padding:26px 40px; display:flex; justify-content:space-between; align-items:center; font-size:12px; font-weight:600;">
+    <span>© 2026 Claudia Coilla</span>
+    <span style="opacity:.6;">Santiago · Chile</span>
+  </div>
+
+  <!-- ===== MODAL DE OBRA (reutilizable) ===== -->
+  <div id="modal-backdrop" data-close-modal hidden style="position:fixed; inset:0; background:rgba(10,10,10,.5); z-index:100; align-items:center; justify-content:center; padding:24px;">
+    <div style="position:relative; background:#FFFFFF; border:2px solid #0A0A0A; box-shadow:6px 6px 0 #0A0A0A; max-width:640px; width:100%; max-height:86vh; overflow-y:auto; padding:40px 36px 36px;">
+
+      <span class="modal-close cursor-target" data-close-modal style="position:absolute; top:16px; right:16px; width:34px; height:34px; border:2px solid #0A0A0A; border-radius:999px; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700; cursor:pointer; background:#FFFFFF;">✕</span>
+
+      <div class="modal-panel" data-panel="1" hidden>
+        <p style="font-size:12px; font-weight:700; letter-spacing:.03em; opacity:.5; margin:0 0 6px;">Obra Nº 01</p>
+        <h3 class="disp" style="font-size:30px; text-transform:uppercase; letter-spacing:-.02em; margin:0 0 18px; max-width:22ch;">Post para redes sociales</h3>
+        <div style="border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; padding:18px; margin-bottom:18px; background:#FFFFFF;">
+          <p style="font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; margin:0 0 8px;">Grupo 1 — Diseño esencial / simple</p>
+          <p style="font-size:13.5px; line-height:1.5; opacity:.8; margin:0 0 12px;">Piezas gráficas enfocadas en comunicación directa, plantillas limpias, tipografía y composición rápida.</p>
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:12px;">
+            <img src="assets/img/posts/simple-01.jpg" alt="Post Fundación Summer: 'El acoso escolar no se detiene solo con reglas, se detiene con comunidad'" style="width:100%; aspect-ratio:4/5; object-fit:cover; border:2px solid #0A0A0A;">
+            <img src="assets/img/posts/simple-02.jpg" alt="Post Fundación Summer explicando qué es ser un 'upstander' ante el acoso escolar" style="width:100%; aspect-ratio:4/5; object-fit:cover; border:2px solid #0A0A0A;">
+            <img src="assets/img/posts/simple-03.jpg" alt="Post Fundación Summer: 'Siete años celebrando la vida', llamada a etiquetar a quien cuida a los demás" style="width:100%; aspect-ratio:4/5; object-fit:cover; border:2px solid #0A0A0A;">
+          </div>
+          <p style="font-family:'Hanken Grotesk',sans-serif; font-size:15px; font-weight:800; margin:0;">$15.000 – $20.000 CLP <span style="font-weight:400; opacity:.6; font-size:12px;">por pieza</span></p>
+        </div>
+
+        <div style="border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; padding:18px; margin-bottom:18px; background:#FFFFFF;">
+          <p style="font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; margin:0 0 8px;">Grupo 2 — Diseño complejo / avanzado</p>
+          <p style="font-size:13.5px; line-height:1.5; opacity:.8; margin:0 0 12px;">Piezas con fotomontaje, retoque digital avanzado, manipulación de imagen, dirección creativa personalizada o carruseles informativos con alto nivel de detalle.</p>
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:12px;">
+            <img src="assets/img/posts/post-01.jpg" alt="Moodboard de redes sociales para boda, Karen Producciones — ejemplo 1" style="width:100%; aspect-ratio:1/1; object-fit:cover; border:2px solid #0A0A0A;">
+            <img src="assets/img/posts/post-02.jpg" alt="Moodboard de redes sociales para boda, Karen Producciones — ejemplo 2" style="width:100%; aspect-ratio:1/1; object-fit:cover; border:2px solid #0A0A0A;">
+            <img src="assets/img/posts/post-03.jpg" alt="Moodboard de redes sociales para boda, Karen Producciones — ejemplo 3" style="width:100%; aspect-ratio:1/1; object-fit:cover; border:2px solid #0A0A0A;">
+          </div>
+          <p style="font-family:'Hanken Grotesk',sans-serif; font-size:15px; font-weight:800; margin:0;">$25.000 – $30.000 CLP <span style="font-weight:400; opacity:.6; font-size:12px;">por pieza</span></p>
+        </div>
+
+        <p style="font-size:14px; line-height:1.55; margin:0; background:#F6C2D6; padding:16px 18px; border-radius:8px;">Entregable: archivos PNG / JPG en alta resolución (1080×1080 px / 1080×1350 px), listos para publicar. Plazo de 1 a 2 días hábiles (diseños complejos pueden requerir días adicionales).</p>
+      </div>
+
+      <div class="modal-panel" data-panel="2" hidden>
+        <p style="font-size:12px; font-weight:700; letter-spacing:.03em; opacity:.5; margin:0 0 6px;">Obra Nº 02</p>
+        <h3 class="disp" style="font-size:30px; text-transform:uppercase; letter-spacing:-.02em; margin:0 0 18px; max-width:22ch;">Tarjetas de presentación y chapitas</h3>
+        <div style="border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; padding:18px; margin-bottom:18px; background:#FFFFFF;">
+          <p style="font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; margin:0 0 8px;">Grupo 1 — Tarjetas de presentación</p>
+          <p style="font-size:13.5px; line-height:1.5; opacity:.8; margin:0 0 12px;">Diseño de papelería corporativa de pequeño formato, optimizado con marcas de corte, sangrado y preparación de color para imprenta.</p>
+          <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:8px;">
+            <img src="assets/img/tarjetas/tarjeta-01.jpg" alt="Frente de la credencial 'Soy Oasis' con código QR, Fundación Summer" style="width:100%; aspect-ratio:2/3; object-fit:cover; border:2px solid #0A0A0A;">
+            <img src="assets/img/tarjetas/tarjeta-02.jpg" alt="Reverso de la credencial 'Soy Oasis' con guía de los 5 pasos del método" style="width:100%; aspect-ratio:2/3; object-fit:cover; border:2px solid #0A0A0A;">
+          </div>
+        </div>
+
+        <div style="border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; padding:18px; margin-bottom:18px; background:#F6C2D6;">
+          <p style="font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; margin:0 0 8px;">Grupo 2 — Chapitas / merchandising</p>
+          <p style="font-size:13.5px; line-height:1.5; opacity:.8; margin:0 0 12px;">Diseño gráfico adaptado a troqueles circulares y artículos promocionales para chapitas corporativas o de campaña.</p>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:16px;">
+            <img src="assets/img/chapitas/chapita-01.jpg" alt="Chapita circular '#YoElijoSalvar' en amarillo flúor, Fundación Summer" style="width:100%; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; object-fit:cover; aspect-ratio:1/1;">
+            <img src="assets/img/chapitas/chapita-02.jpg" alt="Chapita circular '#YoElijoSalvar' en negro y rosa, Fundación Summer" style="width:100%; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; object-fit:cover; aspect-ratio:1/1;">
+            <img src="assets/img/chapitas/chapita-03.jpg" alt="Chapita circular 'Observar', campaña YES &amp; OASIS, Fundación Summer" style="width:100%; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; object-fit:cover; aspect-ratio:1/1;">
+          </div>
+        </div>
+
+        <p style="font-size:14px; line-height:1.55; margin:0; background:#F6C2D6; padding:16px 18px; border-radius:8px;">Plazo: 1 a 2 días hábiles · Valor: $25.000 – $45.000 CLP · Entregables: PDF preparado con marcas de corte e ilustración final.</p>
+      </div>
+
+      <div class="modal-panel" data-panel="3" hidden>
+        <p style="font-size:12px; font-weight:700; letter-spacing:.03em; opacity:.5; margin:0 0 6px;">Obra Nº 03</p>
+        <h3 class="disp" style="font-size:30px; text-transform:uppercase; letter-spacing:-.02em; margin:0 0 18px; max-width:22ch;">Flyers y volantes</h3>
+        <p style="font-size:13.5px; line-height:1.5; opacity:.8; margin:0 0 14px;">Piezas promocionales de 1 o 2 caras diseñadas para difusión en canales digitales o impresión física.</p>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:14px; margin-bottom:18px;">
+          <img src="assets/img/flyers/flyer-01.jpg" alt="Flyer 'Pronto' anunciando el single 'Mientras espero' de Max Ramírez" style="width:100%; aspect-ratio:9/16; object-fit:cover; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A;">
+          <img src="assets/img/flyers/flyer-02.jpg" alt="Flyer del curso de matrimonios 'Libres para amar', Iglesia Mosaico" style="width:100%; aspect-ratio:9/16; object-fit:cover; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A;">
+          <img src="assets/img/flyers/flyer-03.jpg" alt="Flyer 'Netflix Party' para Áncora Youth" style="width:100%; aspect-ratio:9/16; object-fit:cover; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A;">
+        </div>
+        <p style="font-size:14px; line-height:1.55; margin:0; background:#F6C2D6; padding:16px 18px; border-radius:8px;">Entregable: PDF 300 DPI en modo CMYK con marcas de sangrado. Tiempo estimado: 2 a 3 días hábiles · Valor: $30.000 – $60.000 CLP.</p>
+      </div>
+
+      <div class="modal-panel" data-panel="4" hidden>
+        <p style="font-size:12px; font-weight:700; letter-spacing:.03em; opacity:.5; margin:0 0 6px;">Obra Nº 04</p>
+        <h3 class="disp" style="font-size:30px; text-transform:uppercase; letter-spacing:-.02em; margin:0 0 18px; max-width:22ch;">Pendones y banners</h3>
+        <p style="font-size:13.5px; line-height:1.5; opacity:.8; margin:0 0 14px;">Gráfica publicitaria a gran escala diseñada y optimizada para eventos, ferias, exposiciones y puntos de venta.</p>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:18px;">
+          <img src="assets/img/pendones/pendon-01.jpg" alt="Pendón de bienvenida 'Mosaico', Iglesia Mosaico" style="width:100%; aspect-ratio:3/5; object-fit:cover; object-position:top; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A;">
+          <img src="assets/img/pendones/pendon-02.jpg" alt="Pendón 'Mientras espero', single de Max Ramírez" style="width:100%; aspect-ratio:3/5; object-fit:cover; object-position:top; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A;">
+          <img src="assets/img/pendones/pendon-03.jpg" alt="Propuesta de pendón roller 80x200cm, Taller Oasis · Fundación Summer" style="width:100%; aspect-ratio:3/5; object-fit:cover; object-position:top; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A;">
+        </div>
+        <p style="font-size:14px; line-height:1.55; margin:0; background:#F6C2D6; padding:16px 18px; border-radius:8px;">Plazo: 2 a 3 días hábiles · Valor referencial: $45.000 – $80.000 CLP · Entregable: PDF vectorial / TIFF en alta resolución listo para imprenta.</p>
+      </div>
+
+      <div class="modal-panel" data-panel="5" hidden>
+        <p style="font-size:12px; font-weight:700; letter-spacing:.03em; opacity:.5; margin:0 0 6px;">Obra Nº 05</p>
+        <h3 class="disp" style="font-size:30px; text-transform:uppercase; letter-spacing:-.02em; margin:0 0 18px; max-width:22ch;">Libretas y cuadernos</h3>
+        <p style="font-size:13.5px; line-height:1.5; opacity:.8; margin:0 0 14px;">Maquetación editorial de papelería corporativa personalizada. Diseño de portada, contraportada e interiores.</p>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:14px; margin-bottom:18px;">
+          <img src="assets/img/libretas/booklet-01.jpg" alt="Portada de la libreta 'Soy Oasis', Fundación Summer" style="width:100%; aspect-ratio:2/3; object-fit:cover; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A;">
+          <img src="assets/img/libretas/booklet-02.jpg" alt="Página interior '¿Qué es Oasis?' con los 5 íconos del método" style="width:100%; aspect-ratio:2/3; object-fit:cover; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A;">
+          <img src="assets/img/libretas/booklet-03.jpg" alt="Página de cierre 'Conoce más' con el acróstico O-A-S-I-S" style="width:100%; aspect-ratio:2/3; object-fit:cover; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A;">
+        </div>
+        <p style="font-size:14px; line-height:1.55; margin:0; background:#F6C2D6; padding:16px 18px; border-radius:8px;">Plazo: 3 a 5 días hábiles · Valor: $50.000 – $90.000 CLP.</p>
+      </div>
+
+      <div class="modal-panel" data-panel="6" hidden>
+        <p style="font-size:12px; font-weight:700; letter-spacing:.03em; opacity:.5; margin:0 0 6px;">Obra Nº 06</p>
+        <h3 class="disp" style="font-size:30px; text-transform:uppercase; letter-spacing:-.02em; margin:0 0 18px; max-width:22ch;">Brochures</h3>
+        <div style="border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; padding:18px; margin-bottom:18px; background:#FFFFFF;">
+          <p style="font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; margin:0 0 8px;">Grupo 1 — Formato vertical</p>
+          <p style="font-size:13.5px; line-height:1.5; opacity:.8; margin:0 0 12px;">Trípticos, dípticos y folletos editoriales en orientación vertical, ideales para impresión en papel, entrega física en eventos o formato PDF imprimible.</p>
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:4px;">
+            <img src="assets/img/brochures/vert-01.jpg" alt="Portada del brochure 'Educación emocional para elegir salvar', Fundación Summer" style="width:100%; aspect-ratio:1/1.414; object-fit:cover; border:2px solid #0A0A0A;">
+            <img src="assets/img/brochures/vert-02.jpg" alt="Página interior con infografía 'El problema de la salud mental en Chile', Fundación Summer" style="width:100%; aspect-ratio:1/1.414; object-fit:cover; border:2px solid #0A0A0A;">
+            <img src="assets/img/brochures/vert-03.jpg" alt="Página de cierre del brochure con la frase 'El amor, cuando se convierte en acción, salva vidas'" style="width:100%; aspect-ratio:1/1.414; object-fit:cover; border:2px solid #0A0A0A;">
+          </div>
+        </div>
+
+        <div style="border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; padding:18px; margin-bottom:18px; background:#F6C2D6;">
+          <p style="font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; margin:0 0 8px;">Grupo 2 — Formato horizontal · Oasis Academy Live Experience</p>
+          <p style="font-size:13.5px; line-height:1.5; opacity:.8; margin:0 0 12px;">Brochures y catálogos digitales en orientación horizontal, diseñados especialmente para navegación fluida en pantallas, lecturas corporativas en PDF o presentaciones en laptop/tablet.</p>
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:4px;">
+            <img src="assets/img/brochures/oasis-01.jpg" alt="Portada del dossier 'Oasis Academy Live Experience', certificación de relatores Oasis" style="width:100%; aspect-ratio:16/9; object-fit:cover; border:2px solid #0A0A0A;">
+            <img src="assets/img/brochures/oasis-02.jpg" alt="Página 'El valor de llegar a tiempo' con cuatro bloques de datos a color" style="width:100%; aspect-ratio:16/9; object-fit:cover; border:2px solid #0A0A0A;">
+            <img src="assets/img/brochures/oasis-03.jpg" alt="Caso de éxito 'Comunidad preparada GAPE Chimbarongo' con fotografías del programa" style="width:100%; aspect-ratio:16/9; object-fit:cover; border:2px solid #0A0A0A;">
+          </div>
+        </div>
+
+        <p style="font-size:14px; line-height:1.55; margin:0; background:#F6C2D6; padding:16px 18px; border-radius:8px;">Entregable: PDF trazado a curvas para imprenta con guías de doblez. Plazo de 3 a 5 días hábiles.</p>
+      </div>
+
+      <div class="modal-panel" data-panel="7" hidden>
+        <p style="font-size:12px; font-weight:700; letter-spacing:.03em; opacity:.5; margin:0 0 6px;">Obra Nº 07</p>
+        <h3 class="disp" style="font-size:30px; text-transform:uppercase; letter-spacing:-.02em; margin:0 0 18px; max-width:22ch;">Slide Deck</h3>
+        <div style="border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; padding:18px; margin-bottom:18px; background:#FFFFFF;">
+          <p style="font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; margin:0 0 8px;">Grupo 1 — Formato "Charla TED" · alto impacto visual</p>
+          <p style="font-size:13.5px; line-height:1.5; opacity:.8; margin:0 0 12px;">Diapositivas dinámicas orientadas a ponencias, eventos y pitch de alto impacto. Prima el soporte visual, frases fuerza, conceptos clave y mínimo texto en pantalla para no distraer a la audiencia.</p>
+          <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin-bottom:12px;">
+            <img src="assets/img/presentaciones/ted-01.jpg" alt="Slide de campaña 'Sé testigo salvador', Fundación Summer" style="width:100%; aspect-ratio:16/9; object-fit:cover; border:2px solid #0A0A0A;">
+            <img src="assets/img/presentaciones/ted-02.jpg" alt="Slide del encuentro anual de Fundación Summer, con frase 'Hablamos para inspirar'" style="width:100%; aspect-ratio:16/9; object-fit:cover; border:2px solid #0A0A0A;">
+          </div>
+          <p style="font-size:12px; font-weight:600; opacity:.6; margin:0;">Ideal para: charlas de speaker, lanzamientos o webinars.</p>
+        </div>
+
+        <div style="border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; padding:18px; margin-bottom:18px; background:#FFFFFF;">
+          <p style="font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; margin:0 0 8px;">Grupo 2 — Formato corporativo explicativo · documento / lectura</p>
+          <p style="font-size:13.5px; line-height:1.5; opacity:.8; margin:0 0 12px;">Presentaciones estructuradas para reportes directivos, dossier comerciales o entregables de lectura independiente. Incluye diagramación de datos complejos, tablas, infografías e información explicativa detallada.</p>
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:4px;">
+            <img src="assets/img/presentaciones/ldl-01.jpg" alt="Slide 'Cultura organizacional' (Misión, Visión, Propósitos) de la campaña Litro de Luz" style="width:100%; aspect-ratio:16/9; object-fit:cover; border:2px solid #0A0A0A;">
+            <img src="assets/img/presentaciones/ldl-02.jpg" alt="Slide de infografía de stakeholders de la campaña Litro de Luz" style="width:100%; aspect-ratio:16/9; object-fit:cover; border:2px solid #0A0A0A;">
+            <img src="assets/img/presentaciones/ldl-03.jpg" alt="Slide 'Objetivos SMART' a tres columnas de la campaña Litro de Luz" style="width:100%; aspect-ratio:16/9; object-fit:cover; border:2px solid #0A0A0A;">
+          </div>
+          <p style="font-size:12px; font-weight:600; opacity:.6; margin:0;">Ejemplo: campaña digital "Litro de Luz" — diagramación de stakeholders, objetivos y cultura organizacional.</p>
+        </div>
+
+        <p style="font-size:14px; line-height:1.55; margin:0; background:#F6C2D6; padding:16px 18px; border-radius:8px;">Entregable: archivo PPTX editable + versión en PDF. Plazo de 4 a 6 días hábiles.</p>
+      </div>
+
+      <div class="modal-panel" data-panel="8" hidden>
+        <p style="font-size:12px; font-weight:700; letter-spacing:.03em; opacity:.5; margin:0 0 6px;">Obra Nº 08</p>
+        <h3 class="disp" style="font-size:30px; text-transform:uppercase; letter-spacing:-.02em; margin:0 0 18px; max-width:22ch;">08 — Todo lo que imagines</h3>
+        <div style="border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; padding:18px; margin-bottom:18px; background:#FFFFFF;">
+          <p style="font-size:13.5px; line-height:1.5; opacity:.8; margin:0 0 14px;">¿Tienes un proyecto que no calza en ninguna de las categorías anteriores? Desarrollo piezas gráficas personalizadas según los requerimientos específicos de tu marca.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <span style="font-size:12px; font-weight:700; padding:8px 14px; border-radius:999px; border:2px solid #0A0A0A; background:#F6C2D6; color:#0A0A0A;">Logos &amp; identidad visual</span>
+            <span style="font-size:12px; font-weight:700; padding:8px 14px; border-radius:999px; border:2px solid #0A0A0A; background:#F6C2D6; color:#0A0A0A;">Brandbook / manual de marca</span>
+            <span style="font-size:12px; font-weight:700; padding:8px 14px; border-radius:999px; border:2px solid #0A0A0A; background:#F6C2D6; color:#0A0A0A;">Merchandising personalizado</span>
+            <span style="font-size:12px; font-weight:700; padding:8px 14px; border-radius:999px; border:2px solid #0A0A0A; background:#F6C2D6; color:#0A0A0A;">Ilustración digital</span>
+            <span style="font-size:12px; font-weight:700; padding:8px 14px; border-radius:999px; border:2px solid #0A0A0A; background:#F6C2D6; color:#0A0A0A;">Piezas especiales &amp; campañas</span>
+          </div>
+        </div>
+        <a href="mailto:claudiacoilla.v@gmail.com?subject=Consulta%20de%20Proyecto%20-%20Portafolio" data-close-modal class="cursor-target press" style="display:block; text-align:center; text-decoration:none; font-size:14px; font-weight:800; letter-spacing:.02em; background:#002FA7; color:#FFFFFF; padding:16px 18px; border-radius:8px; box-shadow:4px 4px 0 #0A0A0A;">[ Cotizar proyecto personalizado → ]</a>
+      </div>
+
+    </div>
+  </div>
+
 </div>
+<script>
+(function () {
+  var openId = null;
+  var backdrop = document.getElementById('modal-backdrop');
+  var panels = document.querySelectorAll('.modal-panel');
 
-<section data-sec="" style="padding:clamp(56px,10vh,120px) 0;position:relative;overflow:hidden;isolation:isolate">
-  <div aria-hidden="true" style="position:absolute;right:-16%;top:6%;width:min(820px,86vw);aspect-ratio:1/1;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,rgba(255,216,74,.4) 0%,rgba(203,216,79,.2) 44%,transparent 72%)"></div>
-  <div aria-hidden="true" style="position:absolute;left:-12%;bottom:-18%;width:min(700px,78vw);aspect-ratio:1.2/1;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,rgba(245,112,155,.34) 0%,rgba(169,123,201,.18) 48%,transparent 74%)"></div>
-  <div style="max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,54px)">
-    <p style="overflow:hidden"><span data-rv="" style="display:block;transform:translateY(112%);transition:transform .85s cubic-bezier(.16,1,.3,1);font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.65">02 — Las reglas de la casa</span></p>
-  </div>
-  <div style="margin-top:clamp(20px,4vh,44px)">
-    <div style="border-top:1px solid rgba(12,12,12,.2);padding:clamp(24px,4.6vh,50px) 0">
-      <div class="row3" style="max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,54px);display:grid;grid-template-columns:auto minmax(0,1fr) minmax(0,.9fr);gap:clamp(14px,4vw,56px);align-items:baseline">
-        <p style="font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.18em;color:#D6006E">V/01</p>
-        <h3 style="overflow:hidden"><span data-rv="" style="display:block;transform:translateY(112%);transition:transform .85s cubic-bezier(.16,1,.3,1);font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 900;font-size:clamp(1.4rem,4vw,3.4rem);line-height:.94;letter-spacing:-.04em;text-transform:uppercase;overflow-wrap:break-word;hyphens:auto">Claridad antes que ingenio</span></h3>
-        <p data-fade="" data-d="120" style="opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);font-size:15.5px;line-height:1.48;max-width:34ch">Si hay que explicar el chiste, no era el chiste. Primero que se entienda; después, que brille.</p>
-      </div>
-    </div>
-    <div style="border-top:1px solid rgba(12,12,12,.2);padding:clamp(24px,4.6vh,50px) 0">
-      <div class="row3" style="max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,54px);display:grid;grid-template-columns:auto minmax(0,1fr) minmax(0,.9fr);gap:clamp(14px,4vw,56px);align-items:baseline">
-        <p style="font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.18em;color:#D6006E">V/02</p>
-        <h3 style="overflow:hidden"><span data-rv="" data-d="60" style="display:block;transform:translateY(112%);transition:transform .85s cubic-bezier(.16,1,.3,1);font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 900;font-size:clamp(1.4rem,4vw,3.4rem);line-height:.94;letter-spacing:-.04em;text-transform:uppercase;overflow-wrap:break-word;hyphens:auto">Datos, no corazonadas</span></h3>
-        <p data-fade="" data-d="180" style="opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);font-size:15.5px;line-height:1.48;max-width:34ch">Cada decisión de contenido sale de algo que medimos. Cuando no hay dato, lo digo y probamos.</p>
-      </div>
-    </div>
-    <div style="border-top:1px solid rgba(12,12,12,.2);padding:clamp(24px,4.6vh,50px) 0">
-      <div class="row3" style="max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,54px);display:grid;grid-template-columns:auto minmax(0,1fr) minmax(0,.9fr);gap:clamp(14px,4vw,56px);align-items:baseline">
-        <p style="font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.18em;color:#D6006E">V/03</p>
-        <h3 style="overflow:hidden"><span data-rv="" data-d="120" style="display:block;transform:translateY(112%);transition:transform .85s cubic-bezier(.16,1,.3,1);font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 900;font-size:clamp(1.4rem,4vw,3.4rem);line-height:.94;letter-spacing:-.04em;text-transform:uppercase;overflow-wrap:break-word;hyphens:auto">Menos, pero sostenible</span></h3>
-        <p data-fade="" data-d="240" style="opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);font-size:15.5px;line-height:1.48;max-width:34ch">Prefiero tres publicaciones al mes que puedas mantener un año, antes que un plan diario que abandones en marzo.</p>
-      </div>
-    </div>
-    <div style="border-top:1px solid rgba(12,12,12,.2);border-bottom:1px solid rgba(12,12,12,.2);padding:clamp(24px,4.6vh,50px) 0">
-      <div class="row3" style="max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,54px);display:grid;grid-template-columns:auto minmax(0,1fr) minmax(0,.9fr);gap:clamp(14px,4vw,56px);align-items:baseline">
-        <p style="font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.18em;color:#D6006E">V/04</p>
-        <h3 style="overflow:hidden"><span data-rv="" data-d="180" style="display:block;transform:translateY(112%);transition:transform .85s cubic-bezier(.16,1,.3,1);font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 900;font-size:clamp(1.4rem,4vw,3.4rem);line-height:.94;letter-spacing:-.04em;text-transform:uppercase;overflow-wrap:break-word;hyphens:auto">Tu voz, no la mía</span></h3>
-        <p data-fade="" data-d="300" style="opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);font-size:15.5px;line-height:1.48;max-width:34ch">Mi trabajo es que suenes más a ti, no a la agencia que te asesoró. Si tus clientes notan el cambio de voz, algo salió mal.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div data-hinge="" style="height:clamp(280px,58vh,600px);display:grid;place-items:center;overflow:hidden;position:relative">
-  <span style="font-family:Archivo,sans-serif;font-variation-settings:'wdth' 125,'wght' 900;font-size:clamp(2.6rem,12.2vw,10.5rem);line-height:.86;letter-spacing:-.05em;text-transform:uppercase;white-space:nowrap;background:linear-gradient(168deg,#FF6B5A 0%,#F5709B 26%,#FFB070 52%,#FFD84A 74%,#A97BC9 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;will-change:transform">Servicios</span>
-</div>
-
-<section data-sec="" style="padding:clamp(56px,10vh,120px) 0;position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(180deg,rgba(255,246,234,0) 0%,#FFF6EA 22%,#FFF6EA 78%,rgba(255,246,234,0) 100%)">
-  <svg aria-hidden="true" sc-camel-view-box="0 0 1200 520" sc-camel-preserve-aspect-ratio="none" style="position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:.4">
-    <g fill="none" stroke="#FF8A6B" stroke-width="1.5" stroke-linecap="round">
-      <path d="M-40 120 C 240 30, 400 300, 660 190 S 1000 60, 1240 150"></path>
-      <path d="M-40 300 C 260 210, 440 470, 720 360 S 1040 240, 1240 320"></path>
-    </g>
-  </svg>
-  <div aria-hidden="true" style="position:absolute;left:-8%;bottom:-20%;width:min(680px,74vw);aspect-ratio:1.3/1;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,rgba(255,216,74,.42) 0%,rgba(255,138,107,.2) 46%,transparent 74%)"></div>
-  <div style="max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,54px)">
-    <p style="overflow:hidden"><span data-rv="" style="display:block;transform:translateY(112%);transition:transform .85s cubic-bezier(.16,1,.3,1);font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.65">03 — Qué puedes contratar</span></p>
-    <div data-cards="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px;margin-top:clamp(24px,5vh,54px)">
-      <article data-card="" data-fade="" tabindex="0" style="opacity:0;transform:translateY(22px);transition:opacity .45s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1),color .35s;position:relative;isolation:isolate;padding:24px 22px 26px;min-height:clamp(300px,42vh,420px);border:1px solid rgba(12,12,12,.2);background:#FFFDF7;display:flex;flex-direction:column;justify-content:space-between;transform-origin:center bottom;cursor:pointer">
-        <span data-fill="" style="position:absolute;inset:0;z-index:-1;background:linear-gradient(158deg,#0C0C0C 0%,#3B1226 58%,#6B2350 100%);transform:scaleY(0);transform-origin:bottom;transition:transform .42s cubic-bezier(.77,0,.175,1)"></span>
-        <p data-cn="" style="font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.2em;transition:color .35s">S/01</p>
-        <h3 style="font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 900;font-size:clamp(1.45rem,2.5vw,2.4rem);line-height:.92;letter-spacing:-.035em;text-transform:uppercase;margin:auto 0 14px">Estrategia de contenidos</h3>
-        <div>
-          <p style="font-size:14.5px;line-height:1.45;max-width:26ch;opacity:.8">El mapa completo: quién es tu audiencia, qué le importa y qué vas a publicar los próximos seis meses.</p>
-          <ul style="list-style:none;margin-top:16px;display:grid;gap:5px;font-family:'Martian Mono',monospace;font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;opacity:.6">
-            <li style="border-top:1px solid rgba(12,12,12,.14);padding-top:5px">Diagnóstico de marca</li>
-            <li style="border-top:1px solid rgba(12,12,12,.14);padding-top:5px">Calendario editorial</li>
-            <li style="border-top:1px solid rgba(12,12,12,.14);padding-top:5px">Tono de voz</li>
-          </ul>
-        </div>
-      </article>
-      <article data-card="" data-fade="" data-d="90" tabindex="0" style="opacity:0;transform:translateY(22px);transition:opacity .45s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1),color .35s;position:relative;isolation:isolate;padding:24px 22px 26px;min-height:clamp(300px,42vh,420px);border:1px solid rgba(12,12,12,.2);background:#FFFDF7;display:flex;flex-direction:column;justify-content:space-between;transform-origin:center bottom;cursor:pointer">
-        <span data-fill="" style="position:absolute;inset:0;z-index:-1;background:linear-gradient(158deg,#0C0C0C 0%,#3B1226 58%,#6B2350 100%);transform:scaleY(0);transform-origin:bottom;transition:transform .42s cubic-bezier(.77,0,.175,1)"></span>
-        <p data-cn="" style="font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.2em;transition:color .35s">S/02</p>
-        <h3 style="font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 900;font-size:clamp(1.45rem,2.5vw,2.4rem);line-height:.92;letter-spacing:-.035em;text-transform:uppercase;margin:auto 0 14px">Gestión de redes</h3>
-        <div>
-          <p style="font-size:14.5px;line-height:1.45;max-width:26ch;opacity:.8">Yo me encargo de la operación mensual para que tú vuelvas a tu negocio.</p>
-          <ul style="list-style:none;margin-top:16px;display:grid;gap:5px;font-family:'Martian Mono',monospace;font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;opacity:.6">
-            <li style="border-top:1px solid rgba(12,12,12,.14);padding-top:5px">Producción y diseño</li>
-            <li style="border-top:1px solid rgba(12,12,12,.14);padding-top:5px">Programación</li>
-            <li style="border-top:1px solid rgba(12,12,12,.14);padding-top:5px">Comunidad</li>
-          </ul>
-        </div>
-      </article>
-      <article data-card="" data-fade="" data-d="180" tabindex="0" style="opacity:0;transform:translateY(22px);transition:opacity .45s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1),color .35s;position:relative;isolation:isolate;padding:24px 22px 26px;min-height:clamp(300px,42vh,420px);border:1px solid rgba(12,12,12,.2);background:#FFFDF7;display:flex;flex-direction:column;justify-content:space-between;transform-origin:center bottom;cursor:pointer">
-        <span data-fill="" style="position:absolute;inset:0;z-index:-1;background:linear-gradient(158deg,#0C0C0C 0%,#3B1226 58%,#6B2350 100%);transform:scaleY(0);transform-origin:bottom;transition:transform .42s cubic-bezier(.77,0,.175,1)"></span>
-        <p data-cn="" style="font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.2em;transition:color .35s">S/03</p>
-        <h3 style="font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 900;font-size:clamp(1.45rem,2.5vw,2.4rem);line-height:.92;letter-spacing:-.035em;text-transform:uppercase;margin:auto 0 14px">Marca personal</h3>
-        <div>
-          <p style="font-size:14.5px;line-height:1.45;max-width:26ch;opacity:.8">Para fundadoras y profesionales que necesitan ser reconocidas en su rubro.</p>
-          <ul style="list-style:none;margin-top:16px;display:grid;gap:5px;font-family:'Martian Mono',monospace;font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;opacity:.6">
-            <li style="border-top:1px solid rgba(12,12,12,.14);padding-top:5px">Posicionamiento</li>
-            <li style="border-top:1px solid rgba(12,12,12,.14);padding-top:5px">Guion y vocería</li>
-            <li style="border-top:1px solid rgba(12,12,12,.14);padding-top:5px">Plan en LinkedIn</li>
-          </ul>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<div data-hinge="" style="height:clamp(280px,58vh,600px);display:grid;place-items:center;overflow:hidden;position:relative">
-  <span style="font-family:Archivo,sans-serif;font-variation-settings:'wdth' 125,'wght' 900;font-size:clamp(2.6rem,12.2vw,10.5rem);line-height:.86;letter-spacing:-.05em;text-transform:uppercase;white-space:nowrap;color:transparent;-webkit-text-stroke:1.5px #0C0C0C;will-change:transform">Proceso</span>
-</div>
-
-<section data-sec="" style="padding:clamp(56px,10vh,120px) 0;position:relative;overflow:hidden;isolation:isolate">
-  <div aria-hidden="true" style="position:absolute;right:-14%;top:-16%;width:min(760px,80vw);aspect-ratio:1.2/1;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,rgba(169,123,201,.36) 0%,rgba(245,112,155,.18) 46%,transparent 74%)"></div>
-  <div aria-hidden="true" style="position:absolute;left:-10%;bottom:-22%;width:min(640px,72vw);aspect-ratio:1.4/1;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,rgba(255,176,112,.36) 0%,rgba(255,216,74,.18) 46%,transparent 74%)"></div>
-  <div style="max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,54px)">
-    <p style="overflow:hidden"><span data-rv="" style="display:block;transform:translateY(112%);transition:transform .85s cubic-bezier(.16,1,.3,1);font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.65">04 — Cuatro etapas, ocho semanas</span></p>
-    <div style="border-top:1px solid rgba(12,12,12,.2);margin-top:clamp(20px,4vh,44px)">
-      <div data-row="" data-open="1" style="border-bottom:1px solid rgba(12,12,12,.2);position:relative;isolation:isolate;color:#fff">
-        <span data-fill="" style="position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#0C0C0C 0%,#0C0C0C 52%,#5B1B3C 82%,#8A4A7A 100%);transform:scaleX(1);transform-origin:left;transition:transform .38s cubic-bezier(.77,0,.175,1)"></span>
-        <button data-bar="" aria-expanded="true" style="width:100%;background:none;border:0;font:inherit;color:inherit;text-align:left;cursor:pointer;display:flex;align-items:baseline;gap:clamp(12px,3vw,40px);padding:20px 4px">
-          <span style="font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.18em;opacity:.6;flex:0 0 auto">01</span>
-          <span style="font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 900;font-size:clamp(1.2rem,3vw,2.4rem);line-height:1;letter-spacing:-.035em;text-transform:uppercase;flex:1">Diagnóstico</span>
-          <span data-x="" style="font-family:'Martian Mono',monospace;font-size:14px;transition:transform .42s cubic-bezier(.16,1,.3,1),color .3s;flex:0 0 auto;color:#FFD84A;transform:rotate(45deg)">+</span>
-        </button>
-        <div data-body="" style="display:grid;grid-template-rows:1fr;transition:grid-template-rows .38s cubic-bezier(.77,0,.175,1)">
-          <div style="overflow:hidden"><p style="padding:0 4px 24px;max-width:52ch;font-size:15.5px;line-height:1.5">Reviso lo que ya publicaste, hablo con tu equipo y mido de dónde llega tu audiencia hoy. Al final tienes un documento con lo que funciona, lo que no y por qué.</p></div>
-        </div>
-      </div>
-      <div data-row="" style="border-bottom:1px solid rgba(12,12,12,.2);position:relative;isolation:isolate">
-        <span data-fill="" style="position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#0C0C0C 0%,#0C0C0C 52%,#5B1B3C 82%,#8A4A7A 100%);transform:scaleX(0);transform-origin:left;transition:transform .38s cubic-bezier(.77,0,.175,1)"></span>
-        <button data-bar="" aria-expanded="false" style="width:100%;background:none;border:0;font:inherit;color:inherit;text-align:left;cursor:pointer;display:flex;align-items:baseline;gap:clamp(12px,3vw,40px);padding:20px 4px">
-          <span style="font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.18em;opacity:.6;flex:0 0 auto">02</span>
-          <span style="font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 900;font-size:clamp(1.2rem,3vw,2.4rem);line-height:1;letter-spacing:-.035em;text-transform:uppercase;flex:1">Estrategia</span>
-          <span data-x="" style="font-family:'Martian Mono',monospace;font-size:14px;transition:transform .42s cubic-bezier(.16,1,.3,1),color .3s;flex:0 0 auto">+</span>
-        </button>
-        <div data-body="" style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .38s cubic-bezier(.77,0,.175,1)">
-          <div style="overflow:hidden"><p style="padding:0 4px 24px;max-width:52ch;font-size:15.5px;line-height:1.5">Definimos audiencia, mensaje central y los tres ejes de contenido que vas a sostener. Sin esto, todo lo que venga después es ruido ordenado.</p></div>
-        </div>
-      </div>
-      <div data-row="" style="border-bottom:1px solid rgba(12,12,12,.2);position:relative;isolation:isolate">
-        <span data-fill="" style="position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#0C0C0C 0%,#0C0C0C 52%,#5B1B3C 82%,#8A4A7A 100%);transform:scaleX(0);transform-origin:left;transition:transform .38s cubic-bezier(.77,0,.175,1)"></span>
-        <button data-bar="" aria-expanded="false" style="width:100%;background:none;border:0;font:inherit;color:inherit;text-align:left;cursor:pointer;display:flex;align-items:baseline;gap:clamp(12px,3vw,40px);padding:20px 4px">
-          <span style="font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.18em;opacity:.6;flex:0 0 auto">03</span>
-          <span style="font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 900;font-size:clamp(1.2rem,3vw,2.4rem);line-height:1;letter-spacing:-.035em;text-transform:uppercase;flex:1">Producción</span>
-          <span data-x="" style="font-family:'Martian Mono',monospace;font-size:14px;transition:transform .42s cubic-bezier(.16,1,.3,1),color .3s;flex:0 0 auto">+</span>
-        </button>
-        <div data-body="" style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .38s cubic-bezier(.77,0,.175,1)">
-          <div style="overflow:hidden"><p style="padding:0 4px 24px;max-width:52ch;font-size:15.5px;line-height:1.5">Guiones, piezas y calendario cargado. Trabajamos con dos semanas de adelanto para que nunca publiques con apuro.</p></div>
-        </div>
-      </div>
-      <div data-row="" style="border-bottom:1px solid rgba(12,12,12,.2);position:relative;isolation:isolate">
-        <span data-fill="" style="position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#0C0C0C 0%,#0C0C0C 52%,#5B1B3C 82%,#8A4A7A 100%);transform:scaleX(0);transform-origin:left;transition:transform .38s cubic-bezier(.77,0,.175,1)"></span>
-        <button data-bar="" aria-expanded="false" style="width:100%;background:none;border:0;font:inherit;color:inherit;text-align:left;cursor:pointer;display:flex;align-items:baseline;gap:clamp(12px,3vw,40px);padding:20px 4px">
-          <span style="font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.18em;opacity:.6;flex:0 0 auto">04</span>
-          <span style="font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 900;font-size:clamp(1.2rem,3vw,2.4rem);line-height:1;letter-spacing:-.035em;text-transform:uppercase;flex:1">Medición</span>
-          <span data-x="" style="font-family:'Martian Mono',monospace;font-size:14px;transition:transform .42s cubic-bezier(.16,1,.3,1),color .3s;flex:0 0 auto">+</span>
-        </button>
-        <div data-body="" style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .38s cubic-bezier(.77,0,.175,1)">
-          <div style="overflow:hidden"><p style="padding:0 4px 24px;max-width:52ch;font-size:15.5px;line-height:1.5">Reporte mensual con las métricas que importan para tu objetivo, no las que se ven bonitas. Ajustamos el plan con esos datos.</p></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div data-hinge="" style="height:clamp(280px,58vh,600px);display:grid;place-items:center;overflow:hidden;position:relative">
-  <span style="font-family:Archivo,sans-serif;font-variation-settings:'wdth' 125,'wght' 900;font-size:clamp(2.6rem,12.2vw,10.5rem);line-height:.86;letter-spacing:-.05em;text-transform:uppercase;white-space:nowrap;background:linear-gradient(168deg,#FF6B5A 0%,#F5709B 26%,#FFB070 52%,#FFD84A 74%,#A97BC9 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;will-change:transform">Casos</span>
-</div>
-
-<section data-sec="" style="padding:clamp(56px,10vh,120px) 0;position:relative;overflow:hidden;isolation:isolate">
-  <div aria-hidden="true" style="position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(160deg,rgba(255,138,107,.24) 0%,rgba(245,112,155,.14) 32%,rgba(255,216,74,.16) 62%,rgba(169,123,201,.24) 100%)"></div>
-  <svg aria-hidden="true" sc-camel-view-box="0 0 1200 600" sc-camel-preserve-aspect-ratio="none" style="position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:.45">
-    <g fill="none" stroke="#FFF6EA" stroke-width="2" stroke-linecap="round">
-      <path d="M-40 160 C 260 60, 420 340, 700 230 S 1020 100, 1240 190"></path>
-      <path d="M-40 380 C 240 300, 460 560, 740 450 S 1040 330, 1240 410"></path>
-    </g>
-  </svg>
-  <div style="max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,54px)">
-    <p style="overflow:hidden"><span data-rv="" style="display:block;transform:translateY(112%);transition:transform .85s cubic-bezier(.16,1,.3,1);font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.65">05 — Trabajo reciente</span></p>
-    <figure data-fade="" style="opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);margin-top:clamp(24px,5vh,54px);border:1px solid rgba(12,12,12,.2);background:#FFFDF7;display:flex;flex-wrap:wrap;align-items:stretch">
-      <div style="position:relative;background:#0C0C0C;overflow:hidden;flex:1 1 280px;max-width:360px;aspect-ratio:9/16">
-        <video data-video="" src="assets/video/reel-vertical.mp4" autoplay="autoplay" muted="muted" loop="loop" playsinline="playsinline" controls="controls" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></video>
-      </div>
-      <figcaption style="flex:5 1 300px;padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:20px">
-        <p style="font-family:'Martian Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;opacity:.6">Video</p>
-        <b style="font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 900;font-size:clamp(1.8rem,4.4vw,3.4rem);line-height:.94;letter-spacing:-.04em;text-transform:uppercase">Trabajos</b>
-        <span style="display:block;height:3px;width:min(220px,50%);background:linear-gradient(90deg,#FF6B5A 0%,#FFD84A 60%,#A97BC9 100%)"></span>
-      </figcaption>
-    </figure>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px;margin-top:14px;align-items:start">
-      <figure data-fade="" style="opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);border:1px solid rgba(12,12,12,.2);overflow:hidden;background:#FFFDF7">
-        <div style="position:relative;overflow:hidden;aspect-ratio:5/7;background:#E9E7E4">
-          <img src="assets/img/afiche-yo-elijo-salvar.webp" alt="Afiche #Yo elijo salvar, Fundación Summer" style="width:100%;height:100%;object-fit:cover">
-        </div>
-        <figcaption style="padding:14px 16px 18px;display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-top:1px solid rgba(12,12,12,.14)">
-          <b style="font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 900;font-size:15px;letter-spacing:-.02em;text-transform:uppercase">#Yo elijo salvar</b>
-          <i style="font-family:'Martian Mono',monospace;font-style:normal;font-size:9.5px;letter-spacing:.14em;color:#D6006E">Afiche de charla</i>
-        </figcaption>
-      </figure>
-      <figure data-fade="" data-d="90" style="opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);border:1px solid rgba(12,12,12,.2);overflow:hidden;background:#FFFDF7">
-        <div style="position:relative;overflow:hidden;aspect-ratio:5/7;background:#E9E7E4">
-          <img src="assets/img/afiche-oasis.webp" alt="Afiche Oasis, Fundación Summer" style="width:100%;height:100%;object-fit:cover">
-        </div>
-        <figcaption style="padding:14px 16px 18px;display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-top:1px solid rgba(12,12,12,.14)">
-          <b style="font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 900;font-size:15px;letter-spacing:-.02em;text-transform:uppercase">Oasis</b>
-          <i style="font-family:'Martian Mono',monospace;font-style:normal;font-size:9.5px;letter-spacing:.14em;color:#D6006E">Identidad de programa</i>
-        </figcaption>
-      </figure>
-      <figure data-fade="" data-d="180" style="grid-column:1/-1;max-width:min(100%,640px);opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);border:1px solid rgba(12,12,12,.2);overflow:hidden;background:#FFFDF7">
-        <div style="position:relative;overflow:hidden;aspect-ratio:16/9;background:#0C0C0C">
-          <img src="assets/img/encuentro-fundacion-summer.webp" alt="Encuentro Fundación Summer" style="width:100%;height:100%;object-fit:cover">
-        </div>
-        <figcaption style="padding:14px 16px 18px;display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-top:1px solid rgba(12,12,12,.14)">
-          <b style="font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 900;font-size:15px;letter-spacing:-.02em;text-transform:uppercase">Fundación Summer</b>
-          <i style="font-family:'Martian Mono',monospace;font-style:normal;font-size:9.5px;letter-spacing:.14em;color:#D6006E">Registro de encuentro</i>
-        </figcaption>
-      </figure>
-      <figure data-fade="" data-d="270" style="grid-column:1/-1;max-width:min(100%,640px);opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);border:1px solid rgba(12,12,12,.2);overflow:hidden;background:#FFFDF7">
-        <div style="position:relative;overflow:hidden;aspect-ratio:16/9;background:#0C0C0C">
-          <img src="assets/img/campana-se-testigo-salvador.webp" alt="Campaña Sé testigo salvador" style="width:100%;height:100%;object-fit:cover">
-        </div>
-        <figcaption style="padding:14px 16px 18px;display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-top:1px solid rgba(12,12,12,.14)">
-          <b style="font-family:Archivo,sans-serif;font-variation-settings:'wdth' 118,'wght' 900;font-size:15px;letter-spacing:-.02em;text-transform:uppercase">Sé testigo salvador</b>
-          <i style="font-family:'Martian Mono',monospace;font-style:normal;font-size:9.5px;letter-spacing:.14em;color:#D6006E">Campaña en redes</i>
-        </figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<section data-sec="" style="padding:clamp(60px,12vh,140px) 0 clamp(40px,8vh,90px);text-align:center;position:relative;isolation:isolate">
-  <div style="position:absolute;left:50%;bottom:-6%;transform:translateX(-50%);width:min(1100px,120vw);aspect-ratio:2/1;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 100%,rgba(245,112,155,.34) 0%,rgba(255,216,74,.2) 40%,rgba(169,123,201,.12) 62%,transparent 78%)"></div>
-  <svg aria-hidden="true" sc-camel-view-box="0 0 1200 420" sc-camel-preserve-aspect-ratio="none" style="position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:.5">
-    <g fill="none" stroke="#0C0C0C" stroke-width="1" stroke-linecap="round" opacity=".35">
-      <path d="M-40 140 C 220 40, 380 300, 640 190 S 980 60, 1240 160"></path>
-      <path d="M-40 260 C 240 180, 420 400, 700 300 S 1020 190, 1240 270"></path>
-    </g>
-  </svg>
-  <div style="max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,54px)">
-    <p style="overflow:hidden"><span data-rv="" style="display:block;transform:translateY(112%);transition:transform .85s cubic-bezier(.16,1,.3,1);font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.65">Conversemos</span></p>
-    <a href="mailto:Claudiacoilla.v@gmail.com" data-fade="" data-d="80" style="opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),color .3s;display:inline-block;font-family:Archivo,sans-serif;font-variation-settings:'wdth' 125,'wght' 900;font-size:clamp(2.3rem,8.5vw,7rem);line-height:.86;letter-spacing:-.05em;text-transform:uppercase;margin-top:8px">Hablemos</a>
-    <div data-fade="" data-d="140" style="opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)">
-      <a href="mailto:Claudiacoilla.v@gmail.com" class="mail-btn"><span aria-hidden="true">✉</span>Escríbeme por correo</a>
-    </div>
-    <div style="display:flex;justify-content:center;gap:clamp(14px,4vw,44px);flex-wrap:wrap;margin-top:clamp(18px,3vh,32px);font-family:'Martian Mono',monospace;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;opacity:.7">
-      <p>Claudiacoilla.v@gmail.com</p>
-      <p>Respuesta en 24 h hábiles</p>
-      <p>Agenda abierta 2026</p>
-    </div>
-  </div>
-</section>
-
-<div aria-hidden="true" style="overflow:hidden;border-top:1px solid rgba(12,12,12,.2);border-bottom:1px solid rgba(12,12,12,.2);padding:11px 0;background:linear-gradient(90deg,#FF6B5A 0%,#F5709B 28%,#FFB070 52%,#FFD84A 72%,#A97BC9 100%)">
-  <div style="display:flex;gap:44px;width:max-content;animation:slide 26s linear infinite;font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#0C0C0C;white-space:nowrap" <span="">Estrategia de contenidos<span>·</span><span>Marca personal</span><span>·</span><span>Vocería</span><span>·</span><span>Redes sociales</span><span>·</span>
-    <span>Estrategia de contenidos</span><span>·</span><span>Marca personal</span><span>·</span><span>Vocería</span><span>·</span><span>Redes sociales</span><span>·</span>
-  </div>
-</div>
-
-<footer style="max-width:1240px;margin:0 auto;padding:26px clamp(18px,4vw,54px) 34px;position:relative;isolation:isolate;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:'Martian Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.65">
-  <p><a href="mailto:Claudiacoilla.v@gmail.com">Claudiacoilla.v@gmail.com</a></p>
-  <p>Instagram · LinkedIn</p>
-</footer>
-
-</x-dc>
-<script type="text/x-dc" data-dc-script="">
-class Component extends DCLogic {
-  componentDidMount(){
-    const root = document;
-    const soft = matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    // cuenta de 0 al valor final con ease-out; respeta reduced-motion mostrando el número final directo
-    const countUp = (el) => {
-      const target = parseInt(el.dataset.count, 10);
-      const prefix = el.dataset.prefix || "";
-      const suffix = el.dataset.suffix || "";
-      if (soft || !window.requestAnimationFrame) { el.textContent = prefix + target + suffix; return; }
-      const dur = 900;
-      const t0 = performance.now();
-      const ease = (t) => 1 - Math.pow(1 - t, 3);
-      const step = (now) => {
-        const p = Math.min(1, (now - t0) / dur);
-        el.textContent = prefix + Math.round(ease(p) * target) + suffix;
-        if (p < 1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
-    };
-
-    const reveal = (n) => {
-      const d = parseInt(n.dataset.d || "0", 10);
-      setTimeout(() => {
-        if (n.hasAttribute("data-rv")) n.style.transform = "translateY(0)";
-        else { n.style.opacity = "1"; n.style.transform = n.dataset.rest || "none"; }
-        const counter = n.querySelector("[data-count]");
-        if (counter) countUp(counter);
-      }, soft ? 0 : d);
-    };
-
-    // los [data-rv] están desplazados fuera del clip de su contenedor, así que
-    // el disparo se calcula sobre el contenedor visible, no sobre el span
-    const pending = [].slice.call(root.querySelectorAll("[data-rv],[data-fade]")).map((n) => ({
-      n,
-      box: n.hasAttribute("data-rv")
-        ? (n.parentElement && n.parentElement.parentElement) || n.parentElement
-        : n,
-      done: false
-    }));
-    this.revealPass = () => {
-      if (this._allRevealed) return 0;
-      const vh = innerHeight;
-      let left = 0;
-      pending.forEach((it) => {
-        if (it.done) return;
-        const r = it.box.getBoundingClientRect();
-        if (r.top < vh * 0.95 && r.bottom > 0) { it.done = true; reveal(it.n); }
-        else left++;
-      });
-      if (!left) this._allRevealed = true;
-      return left;
-    };
-    if (soft) { pending.forEach((it) => { it.done = true; reveal(it.n); }); }
-    else {
-      this.revealPass();
-      // red de seguridad: nada queda invisible si el scroll no se puede observar
-      this._safety = setTimeout(() => {
-        pending.forEach((it) => { if (!it.done) { it.done = true; reveal(it.n); } });
-      }, 1600);
+  function render() {
+    if (openId === null) {
+      backdrop.hidden = true;
+      backdrop.style.display = '';
+    } else {
+      backdrop.hidden = false;
+      backdrop.style.display = 'flex';
     }
-
-    const vid = root.querySelector("[data-video]");
-    if (vid) {
-      vid.muted = true; vid.loop = true; vid.controls = true; vid.playsInline = true;
-      const go = () => { const p = vid.play(); if (p && p.catch) p.catch(() => {}); };
-      go();
-      vid.addEventListener("ended", go);
-    }
-
-    // acordeón
-    const rows = [].slice.call(root.querySelectorAll("[data-row]"));
-    const setRow = (r, on) => {
-      r.dataset.open = on ? "1" : "";
-      r.style.color = on ? "#fff" : "";
-      const bar = r.querySelector("[data-bar]");
-      bar.setAttribute("aria-expanded", on ? "true" : "false");
-      r.querySelector("[data-body]").style.gridTemplateRows = on ? "1fr" : "0fr";
-      const x = r.querySelector("[data-x]");
-      x.style.transform = on ? "rotate(45deg)" : "rotate(0deg)";
-      x.style.color = on ? "#FFD84A" : "";
-      r.querySelector("[data-fill]").style.transform = on ? "scaleX(1)" : "scaleX(0)";
-      r.setAttribute("data-open", on ? "1" : "0");
-    };
-    rows.forEach((r) => {
-      r.querySelector("[data-bar]").addEventListener("click", () => {
-        const wasOpen = r.getAttribute("data-open") === "1";
-        rows.forEach((o) => setRow(o, false));
-        if (!wasOpen) setRow(r, true);
-      });
+    panels.forEach(function (p) {
+      p.hidden = String(openId) !== p.dataset.panel;
     });
+  }
 
-    // hover de cards (transform + opacity)
-    const cardWrap = root.querySelector("[data-cards]");
-    if (cardWrap && matchMedia("(hover:hover)").matches) {
-      const cards = [].slice.call(cardWrap.querySelectorAll("[data-card]"));
-      cards.forEach((c) => {
-        const on = () => {
-          cards.forEach((o) => { o.style.opacity = o === c ? "1" : "0.4"; });
-          c.style.transform = "scale(1.035)";
-          c.style.color = "#FFFFFF";
-          c.querySelector("[data-fill]").style.transform = "scaleY(1)";
-          const n = c.querySelector("[data-cn]"); if (n) n.style.color = "#FFD84A";
-          c.querySelectorAll("p:not([data-cn]),ul").forEach((e) => { e.style.opacity = "1"; });
-        };
-        const off = () => {
-          cards.forEach((o) => { o.style.opacity = "1"; });
-          c.style.transform = "none";
-          c.style.color = "";
-          c.querySelector("[data-fill]").style.transform = "scaleY(0)";
-          const n = c.querySelector("[data-cn]"); if (n) n.style.color = "";
-          c.querySelectorAll("p:not([data-cn]),ul").forEach((e) => { e.style.opacity = ""; });
-        };
-        c.addEventListener("mouseenter", on);
-        c.addEventListener("mouseleave", off);
-        c.addEventListener("focus", on);
-        c.addEventListener("blur", off);
+  document.querySelectorAll('[data-open-modal]').forEach(function (card) {
+    card.addEventListener('click', function () {
+      openId = card.dataset.openModal;
+      render();
+    });
+  });
+  document.querySelectorAll('[data-close-modal]').forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      if (el === backdrop && e.target !== backdrop) return; // click landed on the panel, not the backdrop itself
+      openId = null;
+      render();
+    });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && openId !== null) { openId = null; render(); }
+  });
+
+  // resalta en azul Klein el enlace del nav que corresponde a la sección visible
+  function setupNavSpy() {
+    var links = document.querySelectorAll('.nav-link[data-target]');
+    var sections = Array.prototype.slice.call(document.querySelectorAll('#inicio, #sobre-mi, #coleccion, #proyectos, #contacto'));
+    if (!links.length || !sections.length || !('IntersectionObserver' in window)) return;
+    function setActive(id) {
+      links.forEach(function (link) {
+        link.classList.toggle('is-active', link.dataset.target === id && link.dataset.target !== 'contacto');
       });
     }
-
-    if (soft) return;
-
-    // scroll: bisagras, timecode, regleta
-    const hinges = [].slice.call(root.querySelectorAll("[data-hinge] span"));
-    const marks = [].slice.call(root.querySelectorAll("[data-mark]"));
-    const secs = [].slice.call(root.querySelectorAll("[data-sec]"));
-    const tc = root.querySelector("[data-tc]");
-    // el scroller real puede no ser window: se detecta el ancestro desplazable
-    const scroller = (() => {
-      let el = secs[0];
-      while (el && el !== document.body) {
-        const s = getComputedStyle(el);
-        if (/(auto|scroll|overlay)/.test(s.overflowY) && el.scrollHeight > el.clientHeight + 4) return el;
-        el = el.parentElement;
-      }
-      return null;
-    })();
-    const metrics = () => {
-      if (scroller) return { top: scroller.scrollTop, max: scroller.scrollHeight - scroller.clientHeight };
-      const doc = document.documentElement;
-      const top = doc.scrollTop || document.body.scrollTop || 0;
-      return { top, max: doc.scrollHeight - innerHeight };
-    };
-    const frame = () => {
-      const vh = innerHeight;
-      this.revealPass();
-      hinges.forEach((w) => {
-        const r = w.parentElement.getBoundingClientRect();
-        const p = Math.max(0, Math.min(1, (vh - r.top) / (vh + r.height)));
-        w.style.transform = "translate3d(0," + (34 - p * 68).toFixed(2) + "vh,0)";
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) setActive(entry.target.id);
       });
-      const m = metrics();
-      let prog = m.max > 0 ? m.top / m.max : 0;
-      if (m.max <= 0 || m.top === 0) {
-        // sin scroller reportando: el progreso sale de la geometría real
-        const first = secs[0], last = secs[secs.length - 1];
-        if (first && last) {
-          const travel = last.getBoundingClientRect().bottom - first.getBoundingClientRect().top - vh;
-          prog = travel > 0 ? -first.getBoundingClientRect().top / travel : 0;
-        }
-      }
-      prog = Math.max(0, Math.min(1, prog));
-      const t = Math.round(prog * 328);
-      if (tc) tc.textContent = String(Math.floor(t / 60)).padStart(2, "0") + ":" + String(t % 60).padStart(2, "0");
-      let cur = 0;
-      secs.forEach((s, i) => { if (s.getBoundingClientRect().top < vh * 0.5) cur = i; });
-      marks.forEach((m, i) => {
-        const on = i === cur;
-        m.style.transform = on ? "scaleX(1)" : "scaleX(.5)";
-        m.style.background = on ? "#D6006E" : "#0C0C0C";
-        m.style.opacity = on ? "1" : "0.3";
-      });
-    };
-    // bucle continuo: no depende de qué elemento emita el evento scroll
-    let raf = 0;
-    const loop = () => { frame(); raf = requestAnimationFrame(loop); };
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+    sections.forEach(function (el) { io.observe(el); });
+  }
+
+  // cursor personalizado: sigue el mouse con suavizado (lerp), crece y se
+  // tiñe de azul Klein sobre elementos marcados .cursor-target
+  function setupCursor() {
+    var soft = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+    var dot = document.querySelector('[data-cursor]');
+    if (!dot || soft || !fine) return;
+    var tx = -100, ty = -100, cx = -100, cy = -100, hover = false;
+    function onMove(e) { tx = e.clientX; ty = e.clientY; }
+    document.addEventListener('mouseover', function (e) { if (e.target.closest && e.target.closest('.cursor-target')) { hover = true; dot.classList.add('is-hover'); } });
+    document.addEventListener('mouseout', function (e) { if (e.target.closest && e.target.closest('.cursor-target')) { hover = false; dot.classList.remove('is-hover'); } });
+    window.addEventListener('pointermove', onMove);
+    function loop() {
+      cx += (tx - cx) * 0.28;
+      cy += (ty - cy) * 0.28;
+      dot.style.transform = 'translate(' + cx.toFixed(1) + 'px,' + cy.toFixed(1) + 'px) translate(-50%,-50%) scale(' + (hover ? 1 : .55) + ')';
+      requestAnimationFrame(loop);
+    }
     loop();
-    this._stop = () => cancelAnimationFrame(raf);
   }
-  componentWillUnmount(){
-    if (this._stop) this._stop();
-    if (this._safety) clearTimeout(this._safety);
+
+  // aparición al hacer scroll (fade-up), respeta reduced-motion
+  function setupReveal() {
+    var soft = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var els = document.querySelectorAll('.reveal');
+    if (soft || !('IntersectionObserver' in window)) {
+      els.forEach(function (el) { el.classList.add('is-visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .15, rootMargin: '0px 0px -60px 0px' });
+    els.forEach(function (el) { io.observe(el); });
   }
-  renderVals(){ return {}; }
-}
+
+  // tilt 3D de la polaroid, solo con mouse real
+  function setupTilt() {
+    var fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+    var card = document.querySelector('[data-tilt]');
+    if (!card || !fine) return;
+    card.addEventListener('mousemove', function (e) {
+      var r = card.getBoundingClientRect();
+      var px = (e.clientX - r.left) / r.width;
+      var py = (e.clientY - r.top) / r.height;
+      var rx = (0.5 - py) * 14;
+      var ry = (px - 0.5) * 16;
+      card.style.transform = 'perspective(900px) rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg) rotate(-2deg)';
+    });
+    card.addEventListener('mouseleave', function () {
+      card.style.transition = 'transform .5s cubic-bezier(.19,1,.22,1)';
+      card.style.transform = 'rotate(-2deg)';
+      setTimeout(function () { card.style.transition = ''; }, 500);
+    });
+    card.addEventListener('mouseenter', function () { card.style.transition = ''; });
+  }
+
+  // efecto typewriter del nombre en el H1: escribe letra por letra al montar
+  function setupTypewriter() {
+    var soft = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var el1 = document.getElementById('typewriter-line1');
+    var el2 = document.getElementById('typewriter-line2');
+    if (!el1 || !el2) return;
+    var line1 = 'Claudia', line2 = 'Coilla';
+    if (soft) { el1.textContent = line1; el2.textContent = line2; return; }
+    var i = 0, j = 0, speed = 120;
+    function typeLine1() {
+      if (i < line1.length) { el1.textContent += line1.charAt(i); i++; setTimeout(typeLine1, speed); }
+      else { setTimeout(typeLine2, speed); }
+    }
+    function typeLine2() {
+      if (j < line2.length) { el2.textContent += line2.charAt(j); j++; setTimeout(typeLine2, speed); }
+    }
+    typeLine1();
+  }
+
+  render();
+  setupNavSpy();
+  setupCursor();
+  setupReveal();
+  setupTilt();
+  setupTypewriter();
+})();
 </script>
-
-
-</body></html>
+</body>
+</html>
