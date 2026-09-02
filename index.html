@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=1440">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Claudia Coilla | Comunicadora Digital &amp; Diseñadora Gráfica</title>
   <meta name="description" content="Comunicadora digital y diseñadora gráfica en Santiago de Chile. Posts, tarjetas, flyers, pendones, libretas, brochures, slide decks y piezas a medida con identidad de marca.">
   <link rel="canonical" href="https://claudiacoilla.vercel.app/">
@@ -22,7 +22,7 @@
   <style>
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { margin: 0; background: #FAF9F4; color: #0A0A0A; font-family: 'Hanken Grotesk', sans-serif; }
+    body { margin: 0; background: #FAF9F4; color: #0A0A0A; font-family: 'Hanken Grotesk', sans-serif; overflow-x: hidden; }
     .agenda-chip { transition: transform 160ms ease, box-shadow 160ms ease; box-shadow: 0 0 0 #0A0A0A; }
     .agenda-chip:hover { transform: translateY(-3px); box-shadow: 3px 3px 0 #0A0A0A; }
 
@@ -91,19 +91,42 @@
       .agenda-chip:hover { transform: none; }
       .cursor { animation: none; }
     }
+
+    /* ===== responsive ===== */
+    /* todas las secciones comparten 40px de padding lateral en desktop;
+       aquí solo se reduce ese lateral, sin tocar el ritmo vertical de cada una */
+    @media (max-width: 1024px) {
+      #sobre-mi { grid-template-columns: 1fr !important; gap: 32px !important; }
+      #sobre-mi > div:first-child { max-width: 320px; margin: 0 auto; }
+      #hero-title { font-size: 100px !important; }
+    }
+
+    @media (max-width: 640px) {
+      .section { padding-left: 20px !important; padding-right: 20px !important; }
+      #hero-title { font-size: 56px !important; }
+      .h2-xl { font-size: 48px !important; }
+      .h2-lg { font-size: 36px !important; }
+      .h2-md { font-size: 30px !important; }
+      .h2-sm { font-size: 28px !important; }
+      .hero-decor { display: none !important; }
+      .nav-dots { display: none !important; }
+      .nav-pill { gap: 2px !important; padding: 6px 8px !important; }
+      .nav-link { padding: 6px 8px !important; font-size: 10.5px !important; white-space: nowrap; }
+      .nav-pill a[data-target="contacto"] { padding: 7px 12px !important; }
+    }
   </style>
 </head>
 <body>
-<div style="position:relative; width:1440px; background:
+<div style="position:relative; width:100%; max-width:1440px; margin:0 auto; background:
     repeating-linear-gradient(180deg, transparent 0 34px, rgba(10,10,10,.05) 34px 35px);
     overflow:hidden;">
 
   <div data-cursor aria-hidden="true"></div>
 
   <!-- ===== NAV (estilo barra de navegador) ===== -->
-  <nav aria-label="Navegación principal" style="display:flex; justify-content:center; padding:28px 0 0;">
-    <div style="display:flex; align-items:center; gap:28px; background:#FFFFFF; border:2px solid #0A0A0A; border-radius:999px; padding:10px 14px 10px 18px; box-shadow:4px 4px 0 #0A0A0A;">
-      <div style="display:flex; gap:6px;">
+  <nav aria-label="Navegación principal" style="display:flex; justify-content:center; padding:28px 12px 0;">
+    <div class="nav-pill" style="display:flex; align-items:center; gap:28px; background:#FFFFFF; border:2px solid #0A0A0A; border-radius:999px; padding:10px 14px 10px 18px; box-shadow:4px 4px 0 #0A0A0A; max-width:100%; overflow-x:auto;">
+      <div class="nav-dots" style="display:flex; gap:6px;">
         <span style="width:10px; height:10px; border-radius:50%; background:#E22619; display:block;"></span>
         <span style="width:10px; height:10px; border-radius:50%; background:#FF5A1F; display:block;"></span>
         <span style="width:10px; height:10px; border-radius:50%; background:#F6C2D6; display:block;"></span>
@@ -119,21 +142,21 @@
   </nav>
 
   <!-- ===== HERO ===== -->
-  <div id="inicio" style="max-width:1240px; margin:0 auto; padding:76px 40px 60px; text-align:center; position:relative;">
+  <div id="inicio" class="section" style="max-width:1240px; margin:0 auto; padding:76px 40px 60px; text-align:center; position:relative;">
 
     <div class="reveal" style="display:flex; justify-content:center; gap:18px; margin-bottom:26px;">
       <span style="font-size:12px; font-weight:600; letter-spacing:.03em; padding:8px 16px; border:2px dashed #0A0A0A; border-radius:999px; transform:rotate(-3deg); background:#FFFFFF;">Piezas que comunican</span>
       <span style="font-size:12px; font-weight:600; letter-spacing:.03em; padding:8px 16px; border:2px dashed #0A0A0A; border-radius:999px; transform:rotate(2deg); background:#FFFFFF;">Cuida cada detalle</span>
     </div>
 
-    <div class="reveal" style="position:relative; display:inline-block; padding:6px 36px; min-height:263px; transition-delay:60ms;">
+    <div class="reveal" style="position:relative; display:inline-flex; flex-direction:column; justify-content:center; align-items:center; padding:6px 36px; min-height:263px; transition-delay:60ms;">
       <svg aria-hidden="true" viewBox="0 0 420 130" preserveAspectRatio="none" style="position:absolute; inset:-16px -26px; width:calc(100% + 52px); height:calc(100% + 32px); pointer-events:none;">
         <path d="M18,6 C140,0 300,3 402,8 C412,44 410,84 404,122 C280,128 120,126 14,120 C6,80 8,36 18,6 Z"
           fill="none" stroke="#0A0A0A" stroke-width="3"/>
       </svg>
-      <h1 class="disp" aria-label="Claudia Coilla" style="position:relative; margin:0; font-size:136px; line-height:.92; letter-spacing:-.03em;">
-        <span id="typewriter-line1" aria-hidden="true"></span><span id="typewriter-cursor-1" class="cursor" aria-hidden="true" style="visibility:hidden;">|</span><br>
-        <span id="typewriter-line2" aria-hidden="true"></span><span id="typewriter-cursor-2" class="cursor" aria-hidden="true" style="visibility:hidden;">|</span>
+      <h1 id="hero-title" class="disp" aria-label="Claudia Coilla" style="display:contents; font-size:136px; line-height:.92; letter-spacing:-.03em;">
+        <div class="tw-line"><span id="typewriter-line1" aria-hidden="true"></span><span id="typewriter-cursor-1" class="cursor" aria-hidden="true" style="visibility:hidden;">|</span></div>
+        <div class="tw-line" id="typewriter-line2-wrap"><span id="typewriter-line2" aria-hidden="true"></span><span id="typewriter-cursor-2" class="cursor" aria-hidden="true" style="visibility:hidden;">|</span></div>
       </h1>
     </div>
 
@@ -149,12 +172,12 @@
       <a href="#contacto" class="cursor-target press" style="display:inline-block; padding:14px 30px; border-radius:999px; background:#002FA7; color:#FFFFFF; font-size:13px; font-weight:700; letter-spacing:.03em; box-shadow:4px 4px 0 #0A0A0A; cursor:pointer;">Escríbeme</a>
     </div>
 
-    <svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" style="position:absolute; left:60px; top:120px; transform:rotate(-12deg);"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8Z" fill="#FF5A1F"/></svg>
-    <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="position:absolute; right:70px; top:60px; transform:rotate(10deg);"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8Z" fill="#0A0A0A"/></svg>
+    <svg class="hero-decor" aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" style="position:absolute; left:60px; top:120px; transform:rotate(-12deg);"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8Z" fill="#FF5A1F"/></svg>
+    <svg class="hero-decor" aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="position:absolute; right:70px; top:60px; transform:rotate(10deg);"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8Z" fill="#0A0A0A"/></svg>
   </div>
 
   <!-- ===== SOBRE MÍ ===== -->
-  <div id="sobre-mi" style="max-width:1240px; margin:0 auto; padding:40px 40px 80px; display:grid; grid-template-columns:380px 1fr; gap:60px; align-items:center;">
+  <div id="sobre-mi" class="section" style="max-width:1240px; margin:0 auto; padding:40px 40px 80px; display:grid; grid-template-columns:380px 1fr; gap:60px; align-items:center;">
 
     <div class="reveal" style="position:relative;">
       <div style="position:absolute; top:-16px; left:50%; transform:translateX(-50%) rotate(-4deg); width:90px; height:28px; background:rgba(246,194,214,.75); border:1px solid rgba(10,10,10,.15); z-index:2;"></div>
@@ -166,7 +189,7 @@
 
     <div>
       <span class="reveal" style="display:inline-block; font-size:12px; font-weight:700; letter-spacing:.03em; padding:7px 16px; border-radius:999px; background:#FF5A1F; color:#FFFFFF; transform:rotate(-2deg); margin-bottom:18px;">¿Qué hay de nuevo?</span>
-      <h2 class="disp reveal" style="font-size:42px; text-transform:uppercase; line-height:.95; letter-spacing:-.02em; margin:0 0 20px; transition-delay:60ms;">Sobre mí</h2>
+      <h2 class="disp reveal h2-md" style="font-size:42px; text-transform:uppercase; line-height:.95; letter-spacing:-.02em; margin:0 0 20px; transition-delay:60ms;">Sobre mí</h2>
       <p class="reveal" style="font-size:16px; line-height:1.6; max-width:52ch; margin:0 0 26px; color:#0A0A0A; transition-delay:120ms;">Llevo 6 años trabajando en comunicación digital y diseño gráfico, ayudando a marcas a ordenar su estrategia y a que cada pieza — un post, un impreso, una presentación — cuente la misma idea. Con base en Santiago de Chile, pero lo digital no tiene fronteras — así que hablemos.</p>
 
       <div style="display:flex; gap:14px; flex-wrap:wrap; margin-bottom:30px;">
@@ -187,9 +210,9 @@
   </div>
 
   <!-- ===== LA COLECCIÓN ===== -->
-  <div id="coleccion" style="max-width:1240px; margin:0 auto; padding:20px 40px 90px;">
+  <div id="coleccion" class="section" style="max-width:1240px; margin:0 auto; padding:20px 40px 90px;">
     <p class="reveal" style="font-size:22px; color:#0A0A0A; margin:0 0 2px;">lo que puedes encargar</p>
-    <h2 class="disp reveal" style="font-size:56px; text-transform:uppercase; letter-spacing:-.02em; margin:0 0 34px; transition-delay:60ms;">La colección</h2>
+    <h2 class="disp reveal h2-lg" style="font-size:56px; text-transform:uppercase; letter-spacing:-.02em; margin:0 0 34px; transition-delay:60ms;">La colección</h2>
 
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px;">
 
@@ -293,8 +316,8 @@
   </div>
 
   <!-- ===== CONFIARON EN MÍ (título) ===== -->
-  <div style="max-width:1240px; margin:0 auto; padding:0 40px 24px;">
-    <h2 class="disp reveal" style="font-size:56px; text-transform:uppercase; letter-spacing:-.02em; margin:0; color:#0A0A0A;">Confiaron en mí</h2>
+  <div class="section" style="max-width:1240px; margin:0 auto; padding:0 40px 24px;">
+    <h2 class="disp reveal h2-lg" style="font-size:56px; text-transform:uppercase; letter-spacing:-.02em; margin:0; color:#0A0A0A;">Confiaron en mí</h2>
   </div>
 
   <!-- ===== CONFIARON EN MÍ (marquee) ===== -->
@@ -329,9 +352,9 @@
   </div>
 
   <!-- ===== ¿QUÉ NECESITO DE TI? (brief de entrada) ===== -->
-  <div style="max-width:1240px; margin:0 auto; padding:70px 40px;">
+  <div class="section" style="max-width:1240px; margin:0 auto; padding:70px 40px;">
     <p class="reveal" style="font-size:22px; color:#0A0A0A; margin:0 0 2px;">antes de empezar</p>
-    <h2 class="disp reveal" style="font-size:44px; text-transform:uppercase; letter-spacing:-.02em; margin:0 0 34px; transition-delay:60ms; max-width:16ch;">¿Qué necesito del cliente para empezar?</h2>
+    <h2 class="disp reveal h2-sm" style="font-size:44px; text-transform:uppercase; letter-spacing:-.02em; margin:0 0 34px; transition-delay:60ms; max-width:16ch;">¿Qué necesito del cliente para empezar?</h2>
 
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px;">
       <div class="reveal press-card cursor-target" style="border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; padding:22px; background:#FFFFFF;">
@@ -358,10 +381,10 @@
   </div>
 
   <!-- ===== CONDICIONES DEL SERVICIO ===== -->
-  <div style="background:#002FA7; color:#FFFFFF; padding:70px 40px;">
+  <div class="section" style="background:#002FA7; color:#FFFFFF; padding:70px 40px;">
     <div style="max-width:1240px; margin:0 auto;">
       <p class="reveal" style="font-size:22px; color:#FFFFFF; opacity:.75; margin:0 0 2px;">reglas claras</p>
-      <h2 class="disp reveal" style="font-size:44px; text-transform:uppercase; letter-spacing:-.02em; margin:0 0 34px; color:#FFFFFF; transition-delay:60ms;">Condiciones del servicio</h2>
+      <h2 class="disp reveal h2-sm" style="font-size:44px; text-transform:uppercase; letter-spacing:-.02em; margin:0 0 34px; color:#FFFFFF; transition-delay:60ms;">Condiciones del servicio</h2>
 
       <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px;">
         <div class="reveal press-card cursor-target" style="background:#FF5A1F; color:#0A0A0A; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; padding:22px;">
@@ -381,12 +404,12 @@
   </div>
 
   <!-- ===== CONTACTO ===== -->
-  <div id="contacto" style="text-align:center; padding:40px 40px 70px; position:relative;">
+  <div id="contacto" class="section" style="text-align:center; padding:40px 40px 70px; position:relative;">
     <svg aria-hidden="true" width="34" height="34" viewBox="0 0 24 24" style="position:absolute; left:22%; top:24px; transform:rotate(-8deg);"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8Z" fill="#0A0A0A"/></svg>
     <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" style="position:absolute; right:23%; top:70px; transform:rotate(14deg);"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8Z" fill="#FF5A1F"/></svg>
 
     <p class="reveal" style="font-size:24px; color:#0A0A0A; margin:0 0 6px;">¿hablamos?</p>
-    <h2 class="disp reveal" style="font-size:88px; text-transform:uppercase; letter-spacing:-.03em; margin:0 0 26px; transition-delay:60ms;">Hablemos</h2>
+    <h2 class="disp reveal h2-xl" style="font-size:88px; text-transform:uppercase; letter-spacing:-.03em; margin:0 0 26px; transition-delay:60ms;">Hablemos</h2>
     <p class="reveal" style="font-size:16px; line-height:1.5; margin:0 auto 30px; max-width:44ch; color:#0A0A0A; transition-delay:100ms;">Cuéntame tu proyecto y te respondo dentro de 24 h hábiles.</p>
 
     <form id="contact-form" class="reveal" style="text-align:left; margin:0 auto; max-width:480px; display:grid; gap:14px; transition-delay:140ms;">
@@ -415,7 +438,7 @@
   </div>
 
   <!-- ===== FOOTER ===== -->
-  <div style="border-top:2px solid #0A0A0A; padding:26px 40px; display:flex; justify-content:space-between; align-items:center; font-size:12px; font-weight:600;">
+  <div class="section" style="border-top:2px solid #0A0A0A; padding:26px 40px; display:flex; justify-content:space-between; align-items:center; font-size:12px; font-weight:600;">
     <span>© 2026 Claudia Coilla</span>
     <span style="opacity:.6;">Santiago · Chile</span>
   </div>
@@ -709,6 +732,7 @@
     var soft = matchMedia('(prefers-reduced-motion: reduce)').matches;
     var el1 = document.getElementById('typewriter-line1');
     var el2 = document.getElementById('typewriter-line2');
+    var line2Wrap = document.getElementById('typewriter-line2-wrap');
     var cur1 = document.getElementById('typewriter-cursor-1');
     var cur2 = document.getElementById('typewriter-cursor-2');
     if (!el1 || !el2) return;
@@ -722,7 +746,7 @@
       { lines: ['MAMÁ &', 'AMOR'], fast: true },                  // rol
       { lines: ['claud-IA', ''], fast: true },                    // guiño creativo (mayúsculas propias, no de CSS)
       { lines: ['AMIGA &', 'TOCAYA'], fast: true },               // rol
-      { lines: ['HERMANA E', 'HIJA'], fast: true },               // rol
+      { lines: ['HERMANA', 'E HIJA'], fast: true },               // rol
       { lines: ['TIA &', 'NIETA'], fast: true }                   // rol
     ];
 
@@ -761,6 +785,7 @@
       var p = PHRASES[phraseIndex];
       var s = speeds(p);
       var l1 = p.lines[0], l2 = p.lines[1] || '';
+      if (line2Wrap) line2Wrap.style.display = l2 ? '' : 'none';
 
       function next() {
         phraseIndex = (phraseIndex + 1) % PHRASES.length;
