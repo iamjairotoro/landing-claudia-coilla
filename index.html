@@ -110,7 +110,7 @@
         <a href="#coleccion" data-target="coleccion" class="cursor-target nav-link" style="padding:8px 16px; border-radius:999px; color:#0A0A0A;">Colección</a>
         <a href="#proyectos" data-target="proyectos" class="cursor-target nav-link" style="padding:8px 16px; border-radius:999px; color:#0A0A0A;">Proyectos</a>
       </div>
-      <a href="mailto:claudiacoilla.v@gmail.com?subject=Consulta%20de%20Proyecto%20-%20Portafolio" data-target="contacto" class="cursor-target press nav-link" style="padding:9px 20px; border-radius:999px; background:#002FA7; color:#FFFFFF; font-size:12px; font-weight:700; letter-spacing:.02em; box-shadow:4px 4px 0 #0A0A0A;">Contacto</a>
+      <a href="#contacto" data-target="contacto" class="cursor-target press nav-link" style="padding:9px 20px; border-radius:999px; background:#002FA7; color:#FFFFFF; font-size:12px; font-weight:700; letter-spacing:.02em; box-shadow:4px 4px 0 #0A0A0A;">Contacto</a>
     </div>
   </nav>
 
@@ -142,7 +142,7 @@
         <svg aria-hidden="true" width="26" height="26" viewBox="0 0 26 26"><circle cx="13" cy="13" r="11" fill="#F6C2D6" stroke="#0A0A0A" stroke-width="2"/><path d="M8 14c1.5 2 3 3 5 3s3.5-1 5-3" stroke="#0A0A0A" stroke-width="1.6" fill="none" stroke-linecap="round"/><circle cx="10" cy="11" r="1.1" fill="#0A0A0A"/><circle cx="16" cy="11" r="1.1" fill="#0A0A0A"/></svg>
         <span style="font-size:12px; font-weight:600;">Agenda abierta 2026</span>
       </a>
-      <a href="mailto:claudiacoilla.v@gmail.com?subject=Consulta%20de%20Proyecto%20-%20Portafolio" class="cursor-target press" style="display:inline-block; padding:14px 30px; border-radius:999px; background:#002FA7; color:#FFFFFF; font-size:13px; font-weight:700; letter-spacing:.03em; box-shadow:4px 4px 0 #0A0A0A; cursor:pointer;">Escríbeme por correo</a>
+      <a href="#contacto" class="cursor-target press" style="display:inline-block; padding:14px 30px; border-radius:999px; background:#002FA7; color:#FFFFFF; font-size:13px; font-weight:700; letter-spacing:.03em; box-shadow:4px 4px 0 #0A0A0A; cursor:pointer;">Escríbeme</a>
     </div>
 
     <svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" style="position:absolute; left:60px; top:120px; transform:rotate(-12deg);"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8Z" fill="#FF5A1F"/></svg>
@@ -178,7 +178,7 @@
         <div><p class="disp" style="font-size:30px; margin:0;">+10</p><p style="font-size:12px; opacity:.65; margin:4px 0 0;">rubros distintos</p></div>
       </div>
 
-      <a href="mailto:claudiacoilla.v@gmail.com?subject=Consulta%20de%20Proyecto%20-%20Portafolio" class="cursor-target press" style="display:inline-block; margin-top:30px; padding:14px 30px; border-radius:999px; background:#002FA7; color:#FFFFFF; font-size:13px; font-weight:700; letter-spacing:.03em; box-shadow:4px 4px 0 #0A0A0A; cursor:pointer;">Contáctame</a>
+      <a href="#contacto" class="cursor-target press" style="display:inline-block; margin-top:30px; padding:14px 30px; border-radius:999px; background:#002FA7; color:#FFFFFF; font-size:13px; font-weight:700; letter-spacing:.03em; box-shadow:4px 4px 0 #0A0A0A; cursor:pointer;">Contáctame</a>
     </div>
   </div>
 
@@ -380,8 +380,33 @@
 
     <p class="reveal" style="font-size:24px; color:#0A0A0A; margin:0 0 6px;">¿hablamos?</p>
     <h2 class="disp reveal" style="font-size:88px; text-transform:uppercase; letter-spacing:-.03em; margin:0 0 26px; transition-delay:60ms;">Hablemos</h2>
-    <a href="mailto:claudiacoilla.v@gmail.com?subject=Consulta%20de%20Proyecto%20-%20Portafolio" class="cursor-target press reveal" style="display:inline-block; text-decoration:none; padding:16px 34px; border-radius:999px; background:#002FA7; color:#FFFFFF; font-size:14px; font-weight:700; box-shadow:5px 5px 0 #0A0A0A; transition-delay:120ms;">claudiacoilla.v@gmail.com</a>
-    <p class="reveal" style="font-size:12px; opacity:.55; margin-top:22px; transition-delay:180ms;">Respuesta en 24 h hábiles · Agenda abierta 2026</p>
+    <p class="reveal" style="font-size:16px; line-height:1.5; margin:0 auto 30px; max-width:44ch; color:#0A0A0A; transition-delay:100ms;">Cuéntame tu proyecto y te respondo dentro de 24 h hábiles.</p>
+
+    <form id="contact-form" class="reveal" style="text-align:left; margin:0 auto; max-width:480px; display:grid; gap:14px; transition-delay:140ms;">
+      <div>
+        <label for="cf-name" style="display:block; font-size:12px; font-weight:700; letter-spacing:.02em; margin-bottom:6px;">Nombre</label>
+        <input id="cf-name" name="name" type="text" required style="width:100%; padding:12px 14px; border:2px solid #0A0A0A; border-radius:8px; font-family:'Hanken Grotesk',sans-serif; font-size:14px; background:#FFFFFF; color:#0A0A0A;">
+      </div>
+      <div>
+        <label for="cf-email" style="display:block; font-size:12px; font-weight:700; letter-spacing:.02em; margin-bottom:6px;">Correo</label>
+        <input id="cf-email" name="email" type="email" required style="width:100%; padding:12px 14px; border:2px solid #0A0A0A; border-radius:8px; font-family:'Hanken Grotesk',sans-serif; font-size:14px; background:#FFFFFF; color:#0A0A0A;">
+      </div>
+      <div>
+        <label for="cf-message" style="display:block; font-size:12px; font-weight:700; letter-spacing:.02em; margin-bottom:6px;">Mensaje</label>
+        <textarea id="cf-message" name="message" rows="4" required style="width:100%; padding:12px 14px; border:2px solid #0A0A0A; border-radius:8px; font-family:'Hanken Grotesk',sans-serif; font-size:14px; background:#FFFFFF; color:#0A0A0A; resize:vertical;"></textarea>
+      </div>
+      <button type="submit" class="cursor-target press" style="justify-self:start; padding:14px 30px; border-radius:999px; background:#002FA7; color:#FFFFFF; font-size:13px; font-weight:700; letter-spacing:.03em; box-shadow:4px 4px 0 #0A0A0A; border:none; cursor:pointer; font-family:'Hanken Grotesk',sans-serif;">Enviar mensaje</button>
+      <p id="cf-status" role="status" style="font-size:13px; font-weight:600; margin:0; min-height:1.2em;"></p>
+    </form>
+
+    <div class="reveal" style="margin-top:26px; display:flex; justify-content:center; transition-delay:180ms;">
+      <a href="https://wa.me/56933068324" target="_blank" rel="noopener" class="cursor-target press" style="display:inline-flex; align-items:center; gap:8px; text-decoration:none; padding:12px 26px; border-radius:999px; background:#FF5A1F; color:#FFFFFF; font-size:13px; font-weight:700; box-shadow:4px 4px 0 #0A0A0A;">
+        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.3 0-2.5-.3-3.6-.9L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5Z"/></svg>
+        Escríbeme por WhatsApp
+      </a>
+    </div>
+
+    <p class="reveal" style="font-size:12px; opacity:.55; margin-top:22px; transition-delay:220ms;">¿Prefieres correo directo? <a href="mailto:claudiacoilla.v@gmail.com?subject=Consulta%20de%20Proyecto%20-%20Portafolio" style="text-decoration:underline;">claudiacoilla.v@gmail.com</a> · Respuesta en 24 h hábiles</p>
   </div>
 
   <!-- ===== FOOTER ===== -->
@@ -551,7 +576,7 @@
             <span style="font-size:12px; font-weight:700; padding:8px 14px; border-radius:999px; border:2px solid #0A0A0A; background:#F6C2D6; color:#0A0A0A;">Piezas especiales &amp; campañas</span>
           </div>
         </div>
-        <a href="mailto:claudiacoilla.v@gmail.com?subject=Consulta%20de%20Proyecto%20-%20Portafolio" data-close-modal class="cursor-target press" style="display:block; text-align:center; text-decoration:none; font-size:14px; font-weight:800; letter-spacing:.02em; background:#002FA7; color:#FFFFFF; padding:16px 18px; border-radius:8px; box-shadow:4px 4px 0 #0A0A0A;">[ Cotizar proyecto personalizado → ]</a>
+        <a href="#contacto" data-close-modal class="cursor-target press" style="display:block; text-align:center; text-decoration:none; font-size:14px; font-weight:800; letter-spacing:.02em; background:#002FA7; color:#FFFFFF; padding:16px 18px; border-radius:8px; box-shadow:4px 4px 0 #0A0A0A;">[ Cotizar proyecto personalizado → ]</a>
       </div>
 
     </div>
@@ -692,12 +717,51 @@
     typeLine1();
   }
 
+  // formulario de contacto: envía a Web3Forms (llega directo al Gmail de Claudia,
+  // sin depender de que quien escribe tenga un cliente de correo instalado)
+  function setupContactForm() {
+    var form = document.getElementById('contact-form');
+    if (!form) return;
+    var status = document.getElementById('cf-status');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      status.style.color = '#0A0A0A';
+      status.textContent = 'Enviando…';
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: '644414c7-d8e0-40ed-8b74-aa201d66fbae',
+          subject: 'Nuevo mensaje desde el portafolio',
+          name: form.name.value,
+          email: form.email.value,
+          message: form.message.value
+        })
+      }).then(function (r) { return r.json(); }).then(function (data) {
+        if (data.success) {
+          status.style.color = '#002FA7';
+          status.textContent = '¡Listo! Tu mensaje fue enviado, te responderé pronto.';
+          form.reset();
+        } else {
+          status.style.color = '#E22619';
+          status.textContent = 'No se pudo enviar. Escríbeme directo a claudiacoilla.v@gmail.com.';
+        }
+      }).catch(function () {
+        status.style.color = '#E22619';
+        status.textContent = 'No se pudo enviar. Escríbeme directo a claudiacoilla.v@gmail.com.';
+      }).finally(function () { btn.disabled = false; });
+    });
+  }
+
   render();
   setupNavSpy();
   setupCursor();
   setupReveal();
   setupTilt();
   setupTypewriter();
+  setupContactForm();
 })();
 </script>
 </body>
