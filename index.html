@@ -49,6 +49,12 @@
     .modal-close:hover { background: #E22619; border-color: #E22619; color: #FFFFFF; }
     .modal-close:active { transform: scale(.92); }
 
+    /* lightbox: imágenes de los modales son cliqueables, botones con hover sutil */
+    .lightbox-img { cursor: pointer; }
+    .lightbox-btn { transition: background 160ms ease, transform 120ms ease; }
+    .lightbox-btn:hover { background: rgba(255,255,255,.18) !important; }
+    .lightbox-btn:active { transform: scale(.92); }
+
     /* ticker continuo */
     @keyframes marqueeScroll { to { transform: translateX(-50%); } }
     .marquee-track { animation: marqueeScroll 25s linear infinite; }
@@ -455,10 +461,10 @@
         <div style="border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; padding:18px; margin-bottom:18px; background:#FFFFFF;">
           <p style="font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; margin:0 0 8px;">Grupo 1 — Diseño esencial / simple</p>
           <p style="font-size:13.5px; line-height:1.5; opacity:.8; margin:0 0 12px;">Piezas gráficas enfocadas en comunicación directa, plantillas limpias, tipografía y composición rápida.</p>
-          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:12px;">
-            <img src="assets/img/posts/simple-01.jpg" alt="Post Fundación Summer: 'El acoso escolar no se detiene solo con reglas, se detiene con comunidad'" style="width:100%; aspect-ratio:4/5; object-fit:cover; border:2px solid #0A0A0A;">
-            <img src="assets/img/posts/simple-02.jpg" alt="Post Fundación Summer explicando qué es ser un 'upstander' ante el acoso escolar" style="width:100%; aspect-ratio:4/5; object-fit:cover; border:2px solid #0A0A0A;">
-            <img src="assets/img/posts/simple-03.jpg" alt="Post Fundación Summer: 'Siete años celebrando la vida', llamada a etiquetar a quien cuida a los demás" style="width:100%; aspect-ratio:4/5; object-fit:cover; border:2px solid #0A0A0A;">
+          <div data-gallery style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:12px;">
+            <img src="assets/img/posts/simple-01.jpg" alt="Post Fundación Summer: 'El acoso escolar no se detiene solo con reglas, se detiene con comunidad'" class="lightbox-img cursor-target" style="width:100%; aspect-ratio:4/5; object-fit:cover; border:2px solid #0A0A0A;">
+            <img src="assets/img/posts/simple-02.jpg" alt="Post Fundación Summer explicando qué es ser un 'upstander' ante el acoso escolar" class="lightbox-img cursor-target" style="width:100%; aspect-ratio:4/5; object-fit:cover; border:2px solid #0A0A0A;">
+            <img src="assets/img/posts/simple-03.jpg" alt="Post Fundación Summer: 'Siete años celebrando la vida', llamada a etiquetar a quien cuida a los demás" class="lightbox-img cursor-target" style="width:100%; aspect-ratio:4/5; object-fit:cover; border:2px solid #0A0A0A;">
           </div>
           <p style="font-family:'Hanken Grotesk',sans-serif; font-size:15px; font-weight:800; margin:0;">$15.000 – $20.000 CLP <span style="font-weight:400; opacity:.6; font-size:12px;">por pieza</span></p>
         </div>
@@ -466,10 +472,10 @@
         <div style="border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; padding:18px; margin-bottom:18px; background:#FFFFFF;">
           <p style="font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; margin:0 0 8px;">Grupo 2 — Diseño complejo / avanzado</p>
           <p style="font-size:13.5px; line-height:1.5; opacity:.8; margin:0 0 12px;">Piezas con fotomontaje, retoque digital avanzado, manipulación de imagen, dirección creativa personalizada o carruseles informativos con alto nivel de detalle.</p>
-          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:12px;">
-            <img src="assets/img/posts/post-01.jpg" alt="Moodboard de redes sociales para boda, Karen Producciones — ejemplo 1" style="width:100%; aspect-ratio:1/1; object-fit:cover; border:2px solid #0A0A0A;">
-            <img src="assets/img/posts/post-02.jpg" alt="Moodboard de redes sociales para boda, Karen Producciones — ejemplo 2" style="width:100%; aspect-ratio:1/1; object-fit:cover; border:2px solid #0A0A0A;">
-            <img src="assets/img/posts/post-03.jpg" alt="Moodboard de redes sociales para boda, Karen Producciones — ejemplo 3" style="width:100%; aspect-ratio:1/1; object-fit:cover; border:2px solid #0A0A0A;">
+          <div data-gallery style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:12px;">
+            <img src="assets/img/posts/post-01.jpg" alt="Moodboard de redes sociales para boda, Karen Producciones — ejemplo 1" class="lightbox-img cursor-target" style="width:100%; aspect-ratio:1/1; object-fit:cover; border:2px solid #0A0A0A;">
+            <img src="assets/img/posts/post-02.jpg" alt="Moodboard de redes sociales para boda, Karen Producciones — ejemplo 2" class="lightbox-img cursor-target" style="width:100%; aspect-ratio:1/1; object-fit:cover; border:2px solid #0A0A0A;">
+            <img src="assets/img/posts/post-03.jpg" alt="Moodboard de redes sociales para boda, Karen Producciones — ejemplo 3" class="lightbox-img cursor-target" style="width:100%; aspect-ratio:1/1; object-fit:cover; border:2px solid #0A0A0A;">
           </div>
           <p style="font-family:'Hanken Grotesk',sans-serif; font-size:15px; font-weight:800; margin:0;">$25.000 – $30.000 CLP <span style="font-weight:400; opacity:.6; font-size:12px;">por pieza</span></p>
         </div>
@@ -483,19 +489,19 @@
         <div style="border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; padding:18px; margin-bottom:18px; background:#FFFFFF;">
           <p style="font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; margin:0 0 8px;">Grupo 1 — Tarjetas de presentación</p>
           <p style="font-size:13.5px; line-height:1.5; opacity:.8; margin:0 0 12px;">Diseño de papelería corporativa de pequeño formato, optimizado con marcas de corte, sangrado y preparación de color para imprenta.</p>
-          <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:8px;">
-            <img src="assets/img/tarjetas/tarjeta-01.jpg" alt="Frente de la credencial 'Soy Oasis' con código QR, Fundación Summer" style="width:100%; aspect-ratio:2/3; object-fit:cover; border:2px solid #0A0A0A;">
-            <img src="assets/img/tarjetas/tarjeta-02.jpg" alt="Reverso de la credencial 'Soy Oasis' con guía de los 5 pasos del método" style="width:100%; aspect-ratio:2/3; object-fit:cover; border:2px solid #0A0A0A;">
+          <div data-gallery style="display:grid; grid-template-columns:repeat(2,1fr); gap:8px;">
+            <img src="assets/img/tarjetas/tarjeta-01.jpg" alt="Frente de la credencial 'Soy Oasis' con código QR, Fundación Summer" class="lightbox-img cursor-target" style="width:100%; aspect-ratio:2/3; object-fit:cover; border:2px solid #0A0A0A;">
+            <img src="assets/img/tarjetas/tarjeta-02.jpg" alt="Reverso de la credencial 'Soy Oasis' con guía de los 5 pasos del método" class="lightbox-img cursor-target" style="width:100%; aspect-ratio:2/3; object-fit:cover; border:2px solid #0A0A0A;">
           </div>
         </div>
 
         <div style="border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; padding:18px; margin-bottom:18px; background:#F6C2D6;">
           <p style="font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; margin:0 0 8px;">Grupo 2 — Chapitas / merchandising</p>
           <p style="font-size:13.5px; line-height:1.5; opacity:.8; margin:0 0 12px;">Diseño gráfico adaptado a troqueles circulares y artículos promocionales para chapitas corporativas o de campaña.</p>
-          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:16px;">
-            <img src="assets/img/chapitas/chapita-01.jpg" alt="Chapita circular '#YoElijoSalvar' en amarillo flúor, Fundación Summer" style="width:100%; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; object-fit:cover; aspect-ratio:1/1;">
-            <img src="assets/img/chapitas/chapita-02.jpg" alt="Chapita circular '#YoElijoSalvar' en negro y rosa, Fundación Summer" style="width:100%; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; object-fit:cover; aspect-ratio:1/1;">
-            <img src="assets/img/chapitas/chapita-03.jpg" alt="Chapita circular 'Observar', campaña YES &amp; OASIS, Fundación Summer" style="width:100%; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; object-fit:cover; aspect-ratio:1/1;">
+          <div data-gallery style="display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:16px;">
+            <img src="assets/img/chapitas/chapita-01.jpg" alt="Chapita circular '#YoElijoSalvar' en amarillo flúor, Fundación Summer" class="lightbox-img cursor-target" style="width:100%; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; object-fit:cover; aspect-ratio:1/1;">
+            <img src="assets/img/chapitas/chapita-02.jpg" alt="Chapita circular '#YoElijoSalvar' en negro y rosa, Fundación Summer" class="lightbox-img cursor-target" style="width:100%; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; object-fit:cover; aspect-ratio:1/1;">
+            <img src="assets/img/chapitas/chapita-03.jpg" alt="Chapita circular 'Observar', campaña YES &amp; OASIS, Fundación Summer" class="lightbox-img cursor-target" style="width:100%; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; object-fit:cover; aspect-ratio:1/1;">
           </div>
         </div>
 
@@ -506,10 +512,10 @@
         <p style="font-size:12px; font-weight:700; letter-spacing:.03em; opacity:.5; margin:0 0 6px;">Obra Nº 03</p>
         <h3 class="disp" style="font-size:30px; text-transform:uppercase; letter-spacing:-.02em; margin:0 0 18px; max-width:22ch;">Flyers</h3>
         <p style="font-size:13.5px; line-height:1.5; opacity:.8; margin:0 0 14px;">Piezas promocionales de 1 o 2 caras diseñadas para difusión en canales digitales o impresión física.</p>
-        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:14px; margin-bottom:18px;">
-          <img src="assets/img/flyers/flyer-01.jpg" alt="Flyer 'Pronto' anunciando el single 'Mientras espero' de Max Ramírez" style="width:100%; aspect-ratio:9/16; object-fit:cover; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A;">
-          <img src="assets/img/flyers/flyer-02.jpg" alt="Flyer del curso de matrimonios 'Libres para amar', Iglesia Mosaico" style="width:100%; aspect-ratio:9/16; object-fit:cover; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A;">
-          <img src="assets/img/flyers/flyer-03.jpg" alt="Flyer 'Netflix Party' para Áncora Youth" style="width:100%; aspect-ratio:9/16; object-fit:cover; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A;">
+        <div data-gallery style="display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:14px; margin-bottom:18px;">
+          <img src="assets/img/flyers/flyer-01.jpg" alt="Flyer 'Pronto' anunciando el single 'Mientras espero' de Max Ramírez" class="lightbox-img cursor-target" style="width:100%; aspect-ratio:9/16; object-fit:cover; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A;">
+          <img src="assets/img/flyers/flyer-02.jpg" alt="Flyer del curso de matrimonios 'Libres para amar', Iglesia Mosaico" class="lightbox-img cursor-target" style="width:100%; aspect-ratio:9/16; object-fit:cover; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A;">
+          <img src="assets/img/flyers/flyer-03.jpg" alt="Flyer 'Netflix Party' para Áncora Youth" class="lightbox-img cursor-target" style="width:100%; aspect-ratio:9/16; object-fit:cover; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A;">
         </div>
         <p style="font-size:14px; line-height:1.55; margin:0; background:#F6C2D6; padding:16px 18px; border-radius:8px;">Entregable: PDF 300 DPI en modo CMYK con marcas de sangrado. Tiempo estimado: 2 a 3 días hábiles · Valor: $30.000 – $60.000 CLP.</p>
       </div>
@@ -518,10 +524,10 @@
         <p style="font-size:12px; font-weight:700; letter-spacing:.03em; opacity:.5; margin:0 0 6px;">Obra Nº 04</p>
         <h3 class="disp" style="font-size:30px; text-transform:uppercase; letter-spacing:-.02em; margin:0 0 18px; max-width:22ch;">Pendones y banners</h3>
         <p style="font-size:13.5px; line-height:1.5; opacity:.8; margin:0 0 14px;">Gráfica publicitaria a gran escala diseñada y optimizada para eventos, ferias, exposiciones y puntos de venta.</p>
-        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:18px;">
-          <img src="assets/img/pendones/pendon-01.jpg" alt="Pendón de bienvenida 'Mosaico', Iglesia Mosaico" style="width:100%; aspect-ratio:3/5; object-fit:cover; object-position:top; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A;">
-          <img src="assets/img/pendones/pendon-02.jpg" alt="Pendón 'Mientras espero', single de Max Ramírez" style="width:100%; aspect-ratio:3/5; object-fit:cover; object-position:top; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A;">
-          <img src="assets/img/pendones/pendon-03.jpg" alt="Propuesta de pendón roller 80x200cm, Taller Oasis · Fundación Summer" style="width:100%; aspect-ratio:3/5; object-fit:cover; object-position:top; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A;">
+        <div data-gallery style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:18px;">
+          <img src="assets/img/pendones/pendon-01.jpg" alt="Pendón de bienvenida 'Mosaico', Iglesia Mosaico" class="lightbox-img cursor-target" style="width:100%; aspect-ratio:3/5; object-fit:cover; object-position:top; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A;">
+          <img src="assets/img/pendones/pendon-02.jpg" alt="Pendón 'Mientras espero', single de Max Ramírez" class="lightbox-img cursor-target" style="width:100%; aspect-ratio:3/5; object-fit:cover; object-position:top; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A;">
+          <img src="assets/img/pendones/pendon-03.jpg" alt="Propuesta de pendón roller 80x200cm, Taller Oasis · Fundación Summer" class="lightbox-img cursor-target" style="width:100%; aspect-ratio:3/5; object-fit:cover; object-position:top; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A;">
         </div>
         <p style="font-size:14px; line-height:1.55; margin:0; background:#F6C2D6; padding:16px 18px; border-radius:8px;">Plazo: 2 a 3 días hábiles · Valor referencial: $45.000 – $80.000 CLP · Entregable: PDF vectorial / TIFF en alta resolución listo para imprenta.</p>
       </div>
@@ -530,10 +536,10 @@
         <p style="font-size:12px; font-weight:700; letter-spacing:.03em; opacity:.5; margin:0 0 6px;">Obra Nº 05</p>
         <h3 class="disp" style="font-size:30px; text-transform:uppercase; letter-spacing:-.02em; margin:0 0 18px; max-width:22ch;">Booklets</h3>
         <p style="font-size:13.5px; line-height:1.5; opacity:.8; margin:0 0 14px;">Maquetación editorial de papelería corporativa personalizada. Diseño de portada, contraportada e interiores.</p>
-        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:14px; margin-bottom:18px;">
-          <img src="assets/img/libretas/booklet-01.jpg" alt="Portada de la libreta 'Soy Oasis', Fundación Summer" style="width:100%; aspect-ratio:2/3; object-fit:cover; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A;">
-          <img src="assets/img/libretas/booklet-02.jpg" alt="Página interior '¿Qué es Oasis?' con los 5 íconos del método" style="width:100%; aspect-ratio:2/3; object-fit:cover; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A;">
-          <img src="assets/img/libretas/booklet-03.jpg" alt="Página de cierre 'Conoce más' con el acróstico O-A-S-I-S" style="width:100%; aspect-ratio:2/3; object-fit:cover; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A;">
+        <div data-gallery style="display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:14px; margin-bottom:18px;">
+          <img src="assets/img/libretas/booklet-01.jpg" alt="Portada de la libreta 'Soy Oasis', Fundación Summer" class="lightbox-img cursor-target" style="width:100%; aspect-ratio:2/3; object-fit:cover; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A;">
+          <img src="assets/img/libretas/booklet-02.jpg" alt="Página interior '¿Qué es Oasis?' con los 5 íconos del método" class="lightbox-img cursor-target" style="width:100%; aspect-ratio:2/3; object-fit:cover; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A;">
+          <img src="assets/img/libretas/booklet-03.jpg" alt="Página de cierre 'Conoce más' con el acróstico O-A-S-I-S" class="lightbox-img cursor-target" style="width:100%; aspect-ratio:2/3; object-fit:cover; border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A;">
         </div>
         <p style="font-size:14px; line-height:1.55; margin:0; background:#F6C2D6; padding:16px 18px; border-radius:8px;">Plazo: 3 a 5 días hábiles · Valor: $50.000 – $90.000 CLP.</p>
       </div>
@@ -544,20 +550,20 @@
         <div style="border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; padding:18px; margin-bottom:18px; background:#FFFFFF;">
           <p style="font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; margin:0 0 8px;">Grupo 1 — Formato vertical</p>
           <p style="font-size:13.5px; line-height:1.5; opacity:.8; margin:0 0 12px;">Trípticos, dípticos y folletos editoriales en orientación vertical, ideales para impresión en papel, entrega física en eventos o formato PDF imprimible.</p>
-          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:4px;">
-            <img src="assets/img/brochures/vert-01.jpg" alt="Portada del brochure 'Educación emocional para elegir salvar', Fundación Summer" style="width:100%; aspect-ratio:1/1.414; object-fit:cover; border:2px solid #0A0A0A;">
-            <img src="assets/img/brochures/vert-02.jpg" alt="Página interior con infografía 'El problema de la salud mental en Chile', Fundación Summer" style="width:100%; aspect-ratio:1/1.414; object-fit:cover; border:2px solid #0A0A0A;">
-            <img src="assets/img/brochures/vert-03.jpg" alt="Página de cierre del brochure con la frase 'El amor, cuando se convierte en acción, salva vidas'" style="width:100%; aspect-ratio:1/1.414; object-fit:cover; border:2px solid #0A0A0A;">
+          <div data-gallery style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:4px;">
+            <img src="assets/img/brochures/vert-01.jpg" alt="Portada del brochure 'Educación emocional para elegir salvar', Fundación Summer" class="lightbox-img cursor-target" style="width:100%; aspect-ratio:1/1.414; object-fit:cover; border:2px solid #0A0A0A;">
+            <img src="assets/img/brochures/vert-02.jpg" alt="Página interior con infografía 'El problema de la salud mental en Chile', Fundación Summer" class="lightbox-img cursor-target" style="width:100%; aspect-ratio:1/1.414; object-fit:cover; border:2px solid #0A0A0A;">
+            <img src="assets/img/brochures/vert-03.jpg" alt="Página de cierre del brochure con la frase 'El amor, cuando se convierte en acción, salva vidas'" class="lightbox-img cursor-target" style="width:100%; aspect-ratio:1/1.414; object-fit:cover; border:2px solid #0A0A0A;">
           </div>
         </div>
 
         <div style="border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; padding:18px; margin-bottom:18px; background:#F6C2D6;">
-          <p style="font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; margin:0 0 8px;">Grupo 2 — Formato horizontal · Oasis Academy Live Experience</p>
+          <p style="font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; margin:0 0 8px;">Grupo 2 — Formato horizontal</p>
           <p style="font-size:13.5px; line-height:1.5; opacity:.8; margin:0 0 12px;">Brochures y catálogos digitales en orientación horizontal, diseñados especialmente para navegación fluida en pantallas, lecturas corporativas en PDF o presentaciones en laptop/tablet.</p>
-          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:4px;">
-            <img src="assets/img/brochures/oasis-01.jpg" alt="Portada del dossier 'Oasis Academy Live Experience', certificación de relatores Oasis" style="width:100%; aspect-ratio:16/9; object-fit:cover; border:2px solid #0A0A0A;">
-            <img src="assets/img/brochures/oasis-02.jpg" alt="Página 'El valor de llegar a tiempo' con cuatro bloques de datos a color" style="width:100%; aspect-ratio:16/9; object-fit:cover; border:2px solid #0A0A0A;">
-            <img src="assets/img/brochures/oasis-03.jpg" alt="Caso de éxito 'Comunidad preparada GAPE Chimbarongo' con fotografías del programa" style="width:100%; aspect-ratio:16/9; object-fit:cover; border:2px solid #0A0A0A;">
+          <div data-gallery style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:4px;">
+            <img src="assets/img/brochures/oasis-01.jpg" alt="Portada del dossier 'Oasis Academy Live Experience', certificación de relatores Oasis" class="lightbox-img cursor-target" style="width:100%; aspect-ratio:16/9; object-fit:cover; border:2px solid #0A0A0A;">
+            <img src="assets/img/brochures/oasis-02.jpg" alt="Página 'El valor de llegar a tiempo' con cuatro bloques de datos a color" class="lightbox-img cursor-target" style="width:100%; aspect-ratio:16/9; object-fit:cover; border:2px solid #0A0A0A;">
+            <img src="assets/img/brochures/oasis-03.jpg" alt="Caso de éxito 'Comunidad preparada GAPE Chimbarongo' con fotografías del programa" class="lightbox-img cursor-target" style="width:100%; aspect-ratio:16/9; object-fit:cover; border:2px solid #0A0A0A;">
           </div>
         </div>
 
@@ -570,9 +576,9 @@
         <div style="border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; padding:18px; margin-bottom:18px; background:#FFFFFF;">
           <p style="font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; margin:0 0 8px;">Grupo 1 — Formato "Charla TED" · alto impacto visual</p>
           <p style="font-size:13.5px; line-height:1.5; opacity:.8; margin:0 0 12px;">Diapositivas dinámicas orientadas a ponencias, eventos y pitch de alto impacto. Prima el soporte visual, frases fuerza, conceptos clave y mínimo texto en pantalla para no distraer a la audiencia.</p>
-          <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin-bottom:12px;">
-            <img src="assets/img/presentaciones/ted-01.jpg" alt="Slide de campaña 'Sé testigo salvador', Fundación Summer" style="width:100%; aspect-ratio:16/9; object-fit:cover; border:2px solid #0A0A0A;">
-            <img src="assets/img/presentaciones/ted-02.jpg" alt="Slide del encuentro anual de Fundación Summer, con frase 'Hablamos para inspirar'" style="width:100%; aspect-ratio:16/9; object-fit:cover; border:2px solid #0A0A0A;">
+          <div data-gallery style="display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin-bottom:12px;">
+            <img src="assets/img/presentaciones/ted-01.jpg" alt="Slide de campaña 'Sé testigo salvador', Fundación Summer" class="lightbox-img cursor-target" style="width:100%; aspect-ratio:16/9; object-fit:cover; border:2px solid #0A0A0A;">
+            <img src="assets/img/presentaciones/ted-02.jpg" alt="Slide del encuentro anual de Fundación Summer, con frase 'Hablamos para inspirar'" class="lightbox-img cursor-target" style="width:100%; aspect-ratio:16/9; object-fit:cover; border:2px solid #0A0A0A;">
           </div>
           <p style="font-size:12px; font-weight:600; opacity:.6; margin:0;">Ideal para: charlas tipo speaker, lanzamientos o webinars.</p>
         </div>
@@ -580,10 +586,10 @@
         <div style="border:2px solid #0A0A0A; box-shadow:4px 4px 0 #0A0A0A; padding:18px; margin-bottom:18px; background:#FFFFFF;">
           <p style="font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; margin:0 0 8px;">Grupo 2 — Formato corporativo explicativo · documento / lectura</p>
           <p style="font-size:13.5px; line-height:1.5; opacity:.8; margin:0 0 12px;">Presentaciones estructuradas para reportes directivos, dossiers comerciales o entregables de lectura independiente. Incluye diagramación de datos complejos, tablas, infografías e información explicativa detallada.</p>
-          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:4px;">
-            <img src="assets/img/presentaciones/ldl-01.jpg" alt="Slide 'Cultura organizacional' (Misión, Visión, Propósitos) de la campaña Litro de Luz" style="width:100%; aspect-ratio:16/9; object-fit:cover; border:2px solid #0A0A0A;">
-            <img src="assets/img/presentaciones/ldl-02.jpg" alt="Slide de infografía de stakeholders de la campaña Litro de Luz" style="width:100%; aspect-ratio:16/9; object-fit:cover; border:2px solid #0A0A0A;">
-            <img src="assets/img/presentaciones/ldl-03.jpg" alt="Slide 'Objetivos SMART' a tres columnas de la campaña Litro de Luz" style="width:100%; aspect-ratio:16/9; object-fit:cover; border:2px solid #0A0A0A;">
+          <div data-gallery style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:4px;">
+            <img src="assets/img/presentaciones/ldl-01.jpg" alt="Slide 'Cultura organizacional' (Misión, Visión, Propósitos) de la campaña Litro de Luz" class="lightbox-img cursor-target" style="width:100%; aspect-ratio:16/9; object-fit:cover; border:2px solid #0A0A0A;">
+            <img src="assets/img/presentaciones/ldl-02.jpg" alt="Slide de infografía de stakeholders de la campaña Litro de Luz" class="lightbox-img cursor-target" style="width:100%; aspect-ratio:16/9; object-fit:cover; border:2px solid #0A0A0A;">
+            <img src="assets/img/presentaciones/ldl-03.jpg" alt="Slide 'Objetivos SMART' a tres columnas de la campaña Litro de Luz" class="lightbox-img cursor-target" style="width:100%; aspect-ratio:16/9; object-fit:cover; border:2px solid #0A0A0A;">
           </div>
           <p style="font-size:12px; font-weight:600; opacity:.6; margin:0;">Ejemplo: campaña digital "Litro de Luz" — diagramación de stakeholders, objetivos y cultura organizacional.</p>
         </div>
@@ -608,6 +614,15 @@
       </div>
 
     </div>
+  </div>
+
+  <!-- ===== LIGHTBOX (galería de imágenes en pantalla completa) ===== -->
+  <div id="lightbox-backdrop" data-lightbox-close hidden style="position:fixed; inset:0; z-index:200; background:rgba(0,0,0,.85); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); align-items:center; justify-content:center; padding:24px;">
+    <button type="button" data-lightbox-close aria-label="Cerrar" class="cursor-target lightbox-btn" style="position:absolute; top:20px; right:20px; width:44px; height:44px; border:2px solid #FFFFFF; border-radius:999px; background:rgba(255,255,255,.08); color:#FFFFFF; font-size:16px; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center;">✕</button>
+    <button type="button" id="lightbox-prev" aria-label="Imagen anterior" class="cursor-target lightbox-btn" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); width:48px; height:48px; border:2px solid #FFFFFF; border-radius:999px; background:rgba(255,255,255,.08); color:#FFFFFF; font-size:22px; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center;">‹</button>
+    <button type="button" id="lightbox-next" aria-label="Imagen siguiente" class="cursor-target lightbox-btn" style="position:absolute; right:12px; top:50%; transform:translateY(-50%); width:48px; height:48px; border:2px solid #FFFFFF; border-radius:999px; background:rgba(255,255,255,.08); color:#FFFFFF; font-size:22px; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center;">›</button>
+    <img id="lightbox-image" src="" alt="" style="max-width:90vw; max-height:90vh; object-fit:contain; box-shadow:0 20px 60px rgba(0,0,0,.5);">
+    <p id="lightbox-counter" aria-live="polite" style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); margin:0; color:#FFFFFF; font-size:12px; font-weight:700; letter-spacing:.05em; opacity:.8;"></p>
   </div>
 
 </div>
@@ -844,6 +859,69 @@
     });
   }
 
+  // lightbox: cualquier imagen dentro de un contenedor [data-gallery] se abre en
+  // pantalla completa con navegación entre las imágenes de ese mismo grupo.
+  // Modular: agregar una nueva <img class="lightbox-img"> dentro de un
+  // [data-gallery] existente (o uno nuevo) no requiere tocar este script.
+  function setupLightbox() {
+    var backdrop = document.getElementById('lightbox-backdrop');
+    var imgEl = document.getElementById('lightbox-image');
+    var counterEl = document.getElementById('lightbox-counter');
+    var prevBtn = document.getElementById('lightbox-prev');
+    var nextBtn = document.getElementById('lightbox-next');
+    if (!backdrop || !imgEl) return;
+
+    var gallery = [];
+    var index = 0;
+
+    function render() {
+      var item = gallery[index];
+      if (!item) return;
+      imgEl.src = item.src;
+      imgEl.alt = item.alt;
+      var multi = gallery.length > 1;
+      counterEl.textContent = multi ? (index + 1) + ' / ' + gallery.length : '';
+      prevBtn.style.display = multi ? 'flex' : 'none';
+      nextBtn.style.display = multi ? 'flex' : 'none';
+    }
+    function open(images, startIndex) {
+      gallery = images;
+      index = startIndex;
+      render();
+      backdrop.hidden = false;
+      backdrop.style.display = 'flex';
+    }
+    function close() {
+      backdrop.hidden = true;
+      backdrop.style.display = '';
+    }
+    function next() { index = (index + 1) % gallery.length; render(); }
+    function prev() { index = (index - 1 + gallery.length) % gallery.length; render(); }
+
+    document.querySelectorAll('[data-gallery]').forEach(function (group) {
+      var imgs = Array.prototype.slice.call(group.querySelectorAll('img.lightbox-img'));
+      var images = imgs.map(function (im) { return { src: im.getAttribute('src'), alt: im.getAttribute('alt') || '' }; });
+      imgs.forEach(function (img, i) {
+        img.addEventListener('click', function () { open(images, i); });
+      });
+    });
+
+    document.querySelectorAll('[data-lightbox-close]').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        if (el === backdrop && e.target !== backdrop) return;
+        close();
+      });
+    });
+    prevBtn.addEventListener('click', prev);
+    nextBtn.addEventListener('click', next);
+    document.addEventListener('keydown', function (e) {
+      if (backdrop.hidden) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowRight') next();
+      else if (e.key === 'ArrowLeft') prev();
+    });
+  }
+
   render();
   setupNavSpy();
   setupCursor();
@@ -851,6 +929,7 @@
   setupTilt();
   setupTypewriter();
   setupContactForm();
+  setupLightbox();
 })();
 </script>
 </body>
